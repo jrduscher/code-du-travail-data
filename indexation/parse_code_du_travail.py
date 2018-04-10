@@ -1,5 +1,10 @@
 """
-Merge the Legilibre's `Code du travail` source and the ePoseidon classification.
+Merge the Legilibre's `Code du travail` source and the ePoseidon classification
+in a `CODE_DU_TRAVAIL_DICT` containing data suitable for Elasticsearch.
+
+Either import and call `get_code_du_travail_dict`, or just run the script standalone:
+
+    pipenv run python indexation/parse_code_du_travail.py --verbose
 """
 import argparse
 import json
@@ -29,7 +34,9 @@ STATS = {
 }
 
 
-# A global dict that will be used to populate Elasticsearch.
+# A global dict that will be used to populate Elasticsearch
+# where each key is the number of a `Code du travail`'s article
+# and each value a dict containing info about it.
 CODE_DU_TRAVAIL_DICT = {}
 
 
