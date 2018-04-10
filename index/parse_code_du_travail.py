@@ -1,5 +1,5 @@
 """
-Combine the Legilibre's `Code du travail` source and the ePoseidon classification.
+Merge the Legilibre's `Code du travail` source and the ePoseidon classification.
 """
 import argparse
 import json
@@ -23,6 +23,10 @@ STATS = {
 }
 
 
+# A global dict that will be used to populate Elasticsearch.
+CODE_DU_TRAVAIL_DICT = {}
+
+
 # A global dict where each key is the number of a `Code du travail`'s
 # article and each value is a set of one or more ePoseidon's tag.
 # Python's sets are used to avoid duplicates:
@@ -40,7 +44,8 @@ EPOSEIDON_TAGS_DICT = defaultdict(set)
 EposeidonTag = namedtuple('EposeidonTag', ['source', 'tags', 'tags_levels'])
 
 
-def extract_eposeidon_tags(json_file=os.path.join(BASE_DIR, 'dataset/codification-articles-eposeidon-20180404.json')):
+def populate_eposeidon_tags_dict(
+    json_file=os.path.join(BASE_DIR, 'dataset/codification-articles-eposeidon-20180404.json')):
     """
     Populate `EPOSEIDON_TAGS_DICT` with "tags" extracted from the existing
     ePoseidon's codification of the `Code du travail`.
@@ -90,7 +95,9 @@ def extract_eposeidon_tags(json_file=os.path.join(BASE_DIR, 'dataset/codificatio
                 STATS['eposeidon_tags'][tags_str] += 1
 
 
-def read_code_du_travail(json_file=os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')):
+def populate_code_du_travail_dict(json_file=os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')):
+
+    populate_eposeidon_tags_dict()
 
     with open(json_file) as json_data:
         data = json.load(json_data)
@@ -100,7 +107,7 @@ def read_code_du_travail(json_file=os.path.join(BASE_DIR, 'dataset/code-du-trava
 def inspect_code_du_travail_children(children):
     """
     Each children has the following structure and may contain 0 or more children
-    with the same structure.
+    with the same structure:
     {
         'type': 'article',
         'data': {
@@ -135,29 +142,34 @@ def inspect_code_du_travail_children(children):
                 logging.debug('%s NOT FOUND in ePoseidon.', article_num)
                 continue
 
-            # TODO: data to store in Elasticsearch
-
-            # child['data']['titre']
-            # child['data']['id']
-            # child['data']['section']
-            # child['data']['num']
-            # child['data']['etat']
-            # child['data']['date_debut']
-            # child['data']['date_fin']
-            # child['data']['type']
-            # child['data']['nota']
-            # child['data']['bloc_textuel']
-            # child['data']['dossier']
-            # child['data']['cid']
-            # child['data']['mtime']
-
-            # for item in eposeidon_match:
-            #     # item.source
-            #     # item.tags
-            #     # item.tags_levels
+            CODE_DU_TRAVAIL_DICT[article_num] = {
+                'titre': child['data']['titre'],
+                'id': child['data']['id'],
+                'section': child['data']['section'],
+                'num': child['data']['num'],
+                'etat': child['data']['etat'],  # 'ABROGE_DIFF', 'VIGUEUR', 'VIGUEUR_DIFF', 'MODIFIE'
+                'date_debut': child['data']['date_debut'],
+                'date_fin': child['data']['date_fin'],
+                'nota': child['data']['nota'],  # In HTML.
+                'bloc_textuel': child['data']['bloc_textuel'],  # In HTML.
+                'cid': child['data']['cid'],
+                'tags': [
+                    {
+                        'source': item.source,
+                        'tags': item.tags,
+                        'tags_levels': item.tags_levels,
+                    }
+                    for item in eposeidon_match
+                ]
+            }
 
         # Recursion: inspect children, if any.
         inspect_code_du_travail_children(child.get('children', []))
+
+
+def get_code_du_travail_dict():
+    populate_code_du_travail_dict()
+    return CODE_DU_TRAVAIL_DICT
 
 
 def show_stats():
@@ -193,6 +205,6 @@ if __name__ == '__main__':
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
 
-    extract_eposeidon_tags()
-    read_code_du_travail()
+    populate_code_du_travail_dict()
+
     show_stats()

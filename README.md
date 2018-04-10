@@ -36,10 +36,10 @@ $ docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.el
 
 ```shell
 # Cluster health check.
-$ curl 'localhost:9200/_cat/health?v'
+$ curl -XGET 'localhost:9200/_cat/health?v'
 
 # List of nodes in the cluster.
-$ curl 'localhost:9200/_cat/nodes?v'
+$ curl -XGET 'localhost:9200/_cat/nodes?v'
 ```
 
 ## Commandes Python
