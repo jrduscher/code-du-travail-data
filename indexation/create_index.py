@@ -2,8 +2,16 @@ import logging
 
 from elasticsearch import Elasticsearch
 
+from indexation.parse_code_du_travail import get_code_du_travail_dict
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
+
+console = logging.StreamHandler()
+formatter = logging.Formatter(fmt='[%(levelname)s - %(funcName)s] %(message)s')
+console.setFormatter(formatter)
+
+logger = logging.getLogger(__name__)
+logger.addHandler(console)
+logger.setLevel(logging.INFO)
 
 
 mapping_code_du_travail = {
@@ -61,9 +69,13 @@ def get_es_client():
 
 
 def test():
-    logging.info('Get a very simple status on the health of the cluster.')
+
+    code_du_travail_dict = get_code_du_travail_dict()
+    logger.info(len(code_du_travail_dict.keys()))
+
+    logger.info('Get a very simple status on the health of the cluster.')
     es = get_es_client()
-    logging.info(es.cluster.health())
+    logger.info(es.cluster.health())
 
 
 if __name__ == '__main__':

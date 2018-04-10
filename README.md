@@ -14,6 +14,16 @@ $ pipenv install
 $ pipenv install --dev
 ```
 
+### Paramétrage du fichier `.env`
+
+Le répertoire `code-du-travail-data` doit figurer dans votre `PYTHONPATH`.
+
+```
+PYTHONPATH=/your/path/to/code-du-travail-data
+ou
+PYTHONPATH=.
+```
+
 ### Elasticsearch avec Docker
 
 - Version: `6.2.x`
@@ -45,6 +55,6 @@ $ curl -XGET 'localhost:9200/_cat/nodes?v'
 ## Commandes Python
 
 ```shell
-$ pipenv run python index/create_index.py
-$ pipenv run python index/parse_code_du_travail.py
+$ pipenv run python indexation/create_index.py
+$ pipenv run python indexation/parse_code_du_travail.py
 ```

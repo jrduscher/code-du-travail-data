@@ -10,7 +10,13 @@ import re
 from collections import defaultdict, namedtuple
 
 
-logging.basicConfig(level=logging.WARNING, format='%(funcName)s() %(message)s')
+console = logging.StreamHandler()
+formatter = logging.Formatter(fmt='[%(levelname)s - %(funcName)s] %(message)s')
+console.setFormatter(formatter)
+
+logger = logging.getLogger(__name__)
+logger.addHandler(console)
+logger.setLevel(logging.INFO)
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -67,7 +73,7 @@ def populate_eposeidon_tags_dict(
                 source = article['attrs']['source']
 
                 if not source:
-                    logging.debug('Skipping item in article "%s" because its `source` was empty.', article_num)
+                    logger.debug('Skipping item in article "%s" because its `source` was empty.', article_num)
                     continue
 
                 multiple_spaces = r'\s+'
@@ -139,7 +145,7 @@ def inspect_code_du_travail_children(children):
             eposeidon_match = EPOSEIDON_TAGS_DICT.get(article_num)
 
             if not eposeidon_match:
-                logging.debug('%s NOT FOUND in ePoseidon.', article_num)
+                logger.debug('%s NOT FOUND in ePoseidon.', article_num)
                 continue
 
             CODE_DU_TRAVAIL_DICT[article_num] = {
@@ -174,26 +180,26 @@ def get_code_du_travail_dict():
 
 def show_stats():
 
-    if logging.getLogger().getEffectiveLevel() != logging.DEBUG:
+    if not logger.isEnabledFor(logging.DEBUG):
         return
 
-    logging.debug('-' * 80)
-    logging.debug('ePoseidon sources stats:')
+    logger.debug('-' * 80)
+    logger.debug('ePoseidon sources stats:')
     for key in sorted(STATS['eposeidon_sources'], key=STATS['eposeidon_sources'].get, reverse=True):
-        logging.debug('%5s - %s', STATS['eposeidon_sources'][key], key)
+        logger.debug('%5s - %s', STATS['eposeidon_sources'][key], key)
 
-    logging.debug('-' * 80)
-    logging.debug('ePoseidon tags stats:')
+    logger.debug('-' * 80)
+    logger.debug('ePoseidon tags stats:')
     for key in sorted(STATS['eposeidon_tags'], key=STATS['eposeidon_tags'].get, reverse=True):
-        logging.debug('%5s - %s', STATS['eposeidon_tags'][key], key)
+        logger.debug('%5s - %s', STATS['eposeidon_tags'][key], key)
 
-    logging.debug('-' * 80)
-    logging.debug('ePoseidon tags sorted:')
+    logger.debug('-' * 80)
+    logger.debug('ePoseidon tags sorted:')
     for key in sorted(STATS['eposeidon_tags'].keys()):
-        logging.debug('%s', key)
+        logger.debug('%s', key)
 
-    logging.debug('-' * 80)
-    logging.debug('Number of articles: %s', STATS['count_article'])
+    logger.debug('-' * 80)
+    logger.debug('Number of articles: %s', STATS['count_article'])
 
 
 if __name__ == '__main__':
@@ -203,7 +209,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.verbose:
-        logging.getLogger().setLevel(logging.DEBUG)
+        logger.setLevel(logging.DEBUG)
 
     populate_code_du_travail_dict()
 
