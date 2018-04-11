@@ -1,9 +1,9 @@
 import logging
 
 import elasticsearch
-# Elasticsearch, NotFoundError
+from elasticsearch.helpers import bulk
 
-# from indexation.parse_code_du_travail import get_code_du_travail_dict
+from indexation.parse_code_du_travail import CODE_DU_TRAVAIL_DICT
 
 
 console = logging.StreamHandler()
@@ -18,60 +18,98 @@ logger.setLevel(logging.INFO)
 INDEX_NAME = 'code_du_travail_numerique'
 
 
-filters = {}
+filters = {
+    'french_elision': {
+        'type': 'elision',
+        'articles_case': True,
+        'articles': [
+            'l', 'm', 't', 'qu', 'n', 's',
+            'j', 'd', 'c', 'jusqu', 'quoiqu',
+            'lorsqu', 'puisqu',
+        ],
+    },
+    'french_stop': {
+        'type': 'stop',
+        'stopwords': '_french_',
+    },
+    'french_keywords': {
+        'type': 'keyword_marker',
+        'keywords': ['Exemple'],
+    },
+    'french_stemmer': {
+        'type': 'stemmer',
+        'language': 'light_french',
+    },
+}
 
 
-analyzers = {}
+analyzers = {
+    'french_custom': {
+        'tokenizer': 'standard',
+        'char_filter': ['html_strip'],
+        'filter': [
+            'french_elision',
+            'lowercase',
+            'french_stop',
+            'french_keywords',
+            'french_stemmer',
+        ],
+    },
+}
 
 
+# A `mappings` object defines how the data looks in Elasticsearch.
+# It contains 1 or more `types`.
 mappings = {
 
     'code_du_travail': {
         'properties': {
-            'titre': {
-                'type': 'text',
-                # 'index': 'not_analyzed',
-            },
-            'id': {
-                'type': 'text',
-                # 'index': 'not_analyzed',
-            },
-            'section': {
-                'type': 'text',
-                # 'index': 'not_analyzed',
-            },
             'num': {
                 'type': 'text',
-                # 'index': 'not_analyzed',
+                'analyzer': 'french_custom',
             },
-            'etat': {
+            'titre': {
                 'type': 'text',
-                # 'index': 'not_analyzed',
-            },
-            'date_debut': {
-                'type': 'text',  # 2010-02-15
-                # 'index': 'not_analyzed',
-            },
-            'date_fin': {
-                'type': 'text',  # 2010-02-15
-                # 'index': 'not_analyzed',
+                'analyzer': 'french_custom',
             },
             'nota': {
                 'type': 'text',
-                # 'index': 'not_analyzed',
+                'analyzer': 'french_custom',
             },
             'bloc_textuel': {
                 'type': 'text',
-                # 'index': 'not_analyzed',
-            },
-            'cid': {
-                'type': 'text',
-                # 'index': 'not_analyzed',
+                'analyzer': 'french_custom',
             },
             # 'tags': {
             #     'type': 'object',
             #     'index': 'not_analyzed',
             # },
+            'id': {
+                'type': 'text',
+                'index': False,
+            },
+            'section': {
+                'type': 'text',
+                'index': False,
+            },
+            'etat': {
+                'type': 'text',
+                'index': False,
+            },
+            'date_debut': {
+                'type': 'date',
+                'format': 'yyyy-MM-dd',
+                'index': False,
+            },
+            'date_fin': {
+                'type': 'date',
+                'format': 'yyyy-MM-dd',
+                'index': False,
+            },
+            'cid': {
+                'type': 'text',
+                'index': False,
+            },
         },
     },
 
@@ -112,17 +150,52 @@ def drop_and_create_index(index_name=INDEX_NAME):
     logger.info("Index `%s` created.", index_name)
 
 
-# code_du_travail_dict = get_code_du_travail_dict()
-# for key, val in code_du_travail_dict.items():
-#     logger.info(val['titre'])
-#     logger.info(val['num'])
-
-
 def test():
     logger.info('Get a very simple status on the health of the cluster.')
     es = get_es_client()
     logger.info(es.cluster.health())
 
 
+def chunks(l, n):
+    """
+    Yield successive n-sized chunks from l.
+    """
+    for i in range(0, len(l), n):
+        yield l[i:i+n]
+
+
+def create_code_du_travail_documents(index_name=INDEX_NAME):
+    es = get_es_client()
+    actions = []
+    for val in CODE_DU_TRAVAIL_DICT.values():
+        body = {
+            'num': val['num'],
+            'titre': val['titre'],
+            'nota': val['nota'],
+            'bloc_textuel': val['bloc_textuel'],
+            'id': val['id'],
+            'section': val['section'],
+            'etat': val['etat'],
+            'date_debut': val['date_debut'],
+            'date_fin': val['date_fin'],
+            'cid': val['cid'],
+            # 'tags': val['tags'],
+        }
+        # print(val['tags'][0].source)
+        # print(val['tags'][0].tags)
+        # print(val['tags'][0].tags_levels)
+        actions.append({
+            '_op_type': 'index',
+            '_index': index_name,
+            '_type': 'code_du_travail',
+            '_source': body,
+        })
+
+    for batch_action in chunks(actions, 1000):
+        logger.info('Batch indexing %s documents', len(batch_action))
+        bulk(es, batch_action)
+
+
 if __name__ == '__main__':
     drop_and_create_index()
+    create_code_du_travail_documents()

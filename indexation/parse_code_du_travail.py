@@ -1,8 +1,14 @@
 """
 Merge the Legilibre's `Code du travail` source and the ePoseidon classification
-in a `CODE_DU_TRAVAIL_DICT` containing data suitable for Elasticsearch.
+in a `CODE_DU_TRAVAIL_DICT`.
 
-Either import and call `get_code_du_travail_dict`, or just run the script standalone:
+Usage:
+
+1) Simply import the `CODE_DU_TRAVAIL_DICT`:
+
+    from indexation.parse_code_du_travail import CODE_DU_TRAVAIL_DICT
+
+2) Or run the script standalone with the `--verbose` option for full debug info:
 
     pipenv run python indexation/parse_code_du_travail.py --verbose
 """
@@ -25,7 +31,6 @@ logger.setLevel(logging.INFO)
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 STATS = {
     'count_article': 0,
@@ -54,6 +59,7 @@ CODE_DU_TRAVAIL_DICT = {}
 #     ...
 # }
 EPOSEIDON_TAGS_DICT = defaultdict(set)
+
 EposeidonTag = namedtuple('EposeidonTag', ['source', 'tags', 'tags_levels'])
 
 
@@ -83,6 +89,12 @@ def populate_eposeidon_tags_dict(
                     logger.debug('Skipping item in article "%s" because its `source` was empty.', article_num)
                     continue
 
+                # Skip everything not directly concerned by the `Code du travail`
+                # because it's not available in the Legilibre's source.
+                if source != 'Code du travail':
+                    logger.debug('Skipping item in article "%s" because its `source` is "%s".', article_num, source)
+                    continue
+
                 multiple_spaces = r'\s+'
                 single_space = ' '
                 # TODO: fix typos in tags, replace abbreviations etc.
@@ -109,8 +121,6 @@ def populate_eposeidon_tags_dict(
 
 
 def populate_code_du_travail_dict(json_file=os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')):
-
-    populate_eposeidon_tags_dict()
 
     with open(json_file) as json_data:
         data = json.load(json_data)
@@ -149,9 +159,9 @@ def inspect_code_du_travail_children(children):
             STATS['count_article'] = STATS['count_article'] + 1
 
             article_num = child['data']['num']
-            eposeidon_match = EPOSEIDON_TAGS_DICT.get(article_num)
+            eposeidon_tags = EPOSEIDON_TAGS_DICT.get(article_num)
 
-            if not eposeidon_match:
+            if not eposeidon_tags:
                 logger.debug('%s NOT FOUND in ePoseidon.', article_num)
                 continue
 
@@ -166,23 +176,11 @@ def inspect_code_du_travail_children(children):
                 'nota': child['data']['nota'],  # In HTML.
                 'bloc_textuel': child['data']['bloc_textuel'],  # In HTML.
                 'cid': child['data']['cid'],
-                'tags': [
-                    {
-                        'source': item.source,
-                        'tags': item.tags,
-                        'tags_levels': item.tags_levels,
-                    }
-                    for item in eposeidon_match
-                ]
+                'tags': [tag for tag in eposeidon_tags],
             }
 
         # Recursion: inspect children, if any.
         inspect_code_du_travail_children(child.get('children', []))
-
-
-def get_code_du_travail_dict():
-    populate_code_du_travail_dict()
-    return CODE_DU_TRAVAIL_DICT
 
 
 def show_stats():
@@ -218,6 +216,12 @@ if __name__ == '__main__':
     if args.verbose:
         logger.setLevel(logging.DEBUG)
 
+    populate_eposeidon_tags_dict()
     populate_code_du_travail_dict()
 
     show_stats()
+
+else:
+
+    populate_eposeidon_tags_dict()
+    populate_code_du_travail_dict()
