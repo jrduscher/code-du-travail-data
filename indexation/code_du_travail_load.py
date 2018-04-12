@@ -1,16 +1,16 @@
 """
 Merge the Legilibre's `Code du travail` source and the ePoseidon classification
-in a `CODE_DU_TRAVAIL_DICT`.
+in a `CODE_DU_TRAVAIL_DICT` which will be used to populate Elasticsearch.
 
 Usage:
 
 1) Simply import the `CODE_DU_TRAVAIL_DICT`:
 
-    from indexation.parse_code_du_travail import CODE_DU_TRAVAIL_DICT
+    from indexation.code_du_travail_load import CODE_DU_TRAVAIL_DICT
 
 2) Or run the script standalone with the `--verbose` option for full debug info:
 
-    pipenv run python indexation/parse_code_du_travail.py --verbose
+    pipenv run python indexation/code_du_travail_load.py --verbose
 """
 import argparse
 import json
@@ -19,6 +19,8 @@ import os
 import re
 
 from collections import defaultdict, namedtuple
+
+from indexation.code_du_travail_cleaned_tags import CLEANED_EPOSEIDON_TAGS
 
 
 console = logging.StreamHandler()
@@ -39,8 +41,7 @@ STATS = {
 }
 
 
-# A global dict that will be used to populate Elasticsearch
-# where each key is the number of a `Code du travail`'s article
+# A global dict where each key is the number of a `Code du travail`'s article
 # and each value a dict containing info about it.
 CODE_DU_TRAVAIL_DICT = {}
 
@@ -50,17 +51,33 @@ CODE_DU_TRAVAIL_DICT = {}
 # Python's sets are used to avoid duplicates:
 # {
 #     'R742-9': {
-#         EposeidonTag(
-#             source='Code du travail',
-#             tags='Négociations collectives > Négo collective, Accords > Maritime > Maritime',
-#             tags_levels=4
-#         ),
+#         EposeidonTag(...),
+#         EposeidonTag(...),
 #     },
 #     ...
 # }
 EPOSEIDON_TAGS_DICT = defaultdict(set)
 
-EposeidonTag = namedtuple('EposeidonTag', ['source', 'tags', 'tags_levels'])
+EposeidonTag = namedtuple('EposeidonTag', ['source', 'name', 'levels'])
+
+
+def make_tag(tags, source="Code du travail"):
+    """
+    Parameters:
+        - tags: an array of tags extracted from ePoseidon attributes in this order: Theme, SousTheme, Objet, Aspect.
+        - source: a string of the source found in ePoseidon
+
+    Returns an EposeidonTag namedtuple:
+        EposeidonTag(
+            source='Code du travail',
+            name='Négociations collectives > Négo collective, Accords > Maritime > Maritime',
+            levels=4
+        )
+    """
+    # TODO: remove the spaces in tags_str.
+    tags_str = (' > ').join(tag for tag in tags if tag)
+    levels = len([tag for tag in tags if tag])
+    return EposeidonTag(source=source, name=tags_str, levels=levels)
 
 
 def populate_eposeidon_tags_dict(
@@ -89,7 +106,7 @@ def populate_eposeidon_tags_dict(
                     logger.debug('Skipping item in article "%s" because its `source` was empty.', article_num)
                     continue
 
-                # Skip everything not directly concerned by the `Code du travail`
+                # Skip everything not directly concerned by the `Code du travail` in ePoseidon
                 # because it's not available in the Legilibre's source.
                 if source != 'Code du travail':
                     logger.debug('Skipping item in article "%s" because its `source` is "%s".', article_num, source)
@@ -97,7 +114,6 @@ def populate_eposeidon_tags_dict(
 
                 multiple_spaces = r'\s+'
                 single_space = ' '
-                # TODO: fix typos in tags, replace abbreviations etc.
                 tags = [
                     # Level 1 = Theme.
                     re.sub(multiple_spaces, single_space, article['Theme']['nom']).strip(),
@@ -108,16 +124,17 @@ def populate_eposeidon_tags_dict(
                     # Level 4 = Aspect (may not exist in the source file).
                     re.sub(multiple_spaces, single_space, article.get('Aspect', {}).get('nom', '')).strip(),
                 ]
-                tags_str = (' > ').join(tag for tag in tags if tag)
 
-                tags_levels = len([tag for tag in tags if tag])
+                tag = make_tag(tags, source)
 
-                EPOSEIDON_TAGS_DICT[article_num].add(
-                    EposeidonTag(source=source, tags=tags_str, tags_levels=tags_levels)
-                )
+                EPOSEIDON_TAGS_DICT[article_num].add(tag)
 
-                STATS['eposeidon_sources'][source] += 1
-                STATS['eposeidon_tags'][tags_str] += 1
+                STATS['eposeidon_sources'][tag.source] += 1
+                STATS['eposeidon_tags'][tag.name] += 1
+
+    # Correct some ePoseidon tags.
+    for key, cleaned_tags in CLEANED_EPOSEIDON_TAGS.items():
+        EPOSEIDON_TAGS_DICT[key] = set([make_tag(tag) for tag in cleaned_tags])
 
 
 def populate_code_du_travail_dict(json_file=os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')):

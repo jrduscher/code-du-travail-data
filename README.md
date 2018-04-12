@@ -69,5 +69,5 @@ curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_sea
 
 ```shell
 $ pipenv run python indexation/create_index.py
-$ pipenv run python indexation/parse_code_du_travail.py
+$ pipenv run python indexation/code_du_travail_load.py
 ```

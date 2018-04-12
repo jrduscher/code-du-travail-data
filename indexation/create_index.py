@@ -3,7 +3,7 @@ import logging
 import elasticsearch
 from elasticsearch.helpers import bulk
 
-from indexation.parse_code_du_travail import CODE_DU_TRAVAIL_DICT
+from indexation.code_du_travail_load import CODE_DU_TRAVAIL_DICT
 
 
 console = logging.StreamHandler()
@@ -196,7 +196,7 @@ def create_code_du_travail_documents(index_name=INDEX_CODE_DU_TRAVAIL_NUMERIQUE)
             'titre': val['titre'],
             'nota': val['nota'],
             'bloc_textuel': val['bloc_textuel'],
-            'tags': val['tags'][0].tags,
+            'tags': val['tags'][0].name,
             'id': val['id'],
             'section': val['section'],
             'etat': val['etat'],
