@@ -15,7 +15,8 @@ logger.addHandler(console)
 logger.setLevel(logging.INFO)
 
 
-INDEX_NAME = 'code_du_travail_numerique'
+INDEX_CODE_DU_TRAVAIL_NUMERIQUE = 'code_du_travail_numerique'
+TYPE_CODE_DU_TRAVAIL = 'code_du_travail'
 
 
 filters = {
@@ -55,6 +56,17 @@ analyzers = {
             'french_stemmer',
         ],
     },
+    'path_analyzer_custom': {
+        'tokenizer': 'tags',
+    },
+}
+
+tokenizers = {
+    'tags': {
+        'type': 'path_hierarchy',
+        'delimiter': '>',
+        'replacement': '/',
+    },
 }
 
 
@@ -62,7 +74,7 @@ analyzers = {
 # It contains 1 or more `types`.
 mappings = {
 
-    'code_du_travail': {
+    TYPE_CODE_DU_TRAVAIL: {
         'properties': {
             'num': {
                 'type': 'text',
@@ -80,10 +92,20 @@ mappings = {
                 'type': 'text',
                 'analyzer': 'french_custom',
             },
-            # 'tags': {
-            #     'type': 'object',
-            #     'index': 'not_analyzed',
-            # },
+            'tags': {
+                'type': 'text',
+                'fields': {
+                    'name': {
+                        'type': 'text',
+                        'index': False,
+                    },
+                    'path': {
+                        'type': 'text',
+                        'analyzer': 'path_analyzer_custom',
+                        'store': True,
+                    },
+                }
+            },
             'id': {
                 'type': 'text',
                 'index': False,
@@ -123,7 +145,7 @@ def get_es_client():
     return elasticsearch.Elasticsearch()
 
 
-def drop_and_create_index(index_name=INDEX_NAME):
+def drop_and_create_index(index_name=INDEX_CODE_DU_TRAVAIL_NUMERIQUE):
     es = get_es_client()
 
     try:
@@ -139,11 +161,12 @@ def drop_and_create_index(index_name=INDEX_NAME):
                 'analysis': {
                     'filter': filters,
                     'analyzer': analyzers,
+                    'tokenizer': tokenizers,
                 },
             },
         },
         'mappings':  {
-            'code_du_travail': mappings['code_du_travail'],
+            TYPE_CODE_DU_TRAVAIL: mappings[TYPE_CODE_DU_TRAVAIL],
         },
     }
     es.indices.create(index=index_name, body=request_body)
@@ -164,7 +187,7 @@ def chunks(l, n):
         yield l[i:i+n]
 
 
-def create_code_du_travail_documents(index_name=INDEX_NAME):
+def create_code_du_travail_documents(index_name=INDEX_CODE_DU_TRAVAIL_NUMERIQUE):
     es = get_es_client()
     actions = []
     for val in CODE_DU_TRAVAIL_DICT.values():
@@ -173,21 +196,18 @@ def create_code_du_travail_documents(index_name=INDEX_NAME):
             'titre': val['titre'],
             'nota': val['nota'],
             'bloc_textuel': val['bloc_textuel'],
+            'tags': val['tags'][0].tags,
             'id': val['id'],
             'section': val['section'],
             'etat': val['etat'],
             'date_debut': val['date_debut'],
             'date_fin': val['date_fin'],
             'cid': val['cid'],
-            # 'tags': val['tags'],
         }
-        # print(val['tags'][0].source)
-        # print(val['tags'][0].tags)
-        # print(val['tags'][0].tags_levels)
         actions.append({
             '_op_type': 'index',
             '_index': index_name,
-            '_type': 'code_du_travail',
+            '_type': TYPE_CODE_DU_TRAVAIL,
             '_source': body,
         })
 
