@@ -35,16 +35,21 @@ logger.setLevel(logging.INFO)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+JSON_EPOSEIDON = os.path.join(BASE_DIR, 'dataset/nomenclatures-20180413.json')
+JSON_LEGILIBRE = os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')
+
 STATS = {
     'count_article': 0,
+    # Store unique ePoseidon tags and how many times they are used.
     'eposeidon_tags': defaultdict(int),
+    # Store new tags used in ePoseidon and how many times they are used.
+    # They may need to be renamed.
+    'eposeidon_new_tags': defaultdict(int),
 }
-
 
 # A global dict where each key is the number of a `Code du travail`'s article
 # and each value a dict containing info about it.
 CODE_DU_TRAVAIL_DICT = {}
-
 
 # A global dict where each key is the number of a `Code du travail`'s
 # article and each value is a set of one or more ePoseidon's tag.
@@ -77,19 +82,20 @@ def make_tag(tags, source="Code du travail"):
     """
     multiple_spaces = r'\s+'
     single_space = ' '
+    # Replace multiple spaces and remove empty tags.
     tags = [re.sub(multiple_spaces, single_space, tag).strip() for tag in tags if tag]
+    # This format is more easily read by humans.
     tags_as_str = (' > ').join(tags)
+    # This format is used by Elasticsearch path_hierarchy's tokenizer.
     tags_as_path = '/%s' % ('/').join(tags)
     return EposeidonTag(source=source, name=tags_as_str, path=tags_as_path, levels=len(tags))
 
 
-def populate_eposeidon_tags_dict(
-    json_file=os.path.join(BASE_DIR, 'dataset/codification-articles-eposeidon-20180404.json')):
+def populate_eposeidon_tags_dict(json_file=JSON_EPOSEIDON):
     """
     Populate `EPOSEIDON_TAGS_DICT` with "tags" extracted from the existing
     ePoseidon's codification of the `Code du travail`.
     """
-
     with open(json_file) as json_data:
 
         data = json.load(json_data)
@@ -125,7 +131,7 @@ def populate_eposeidon_tags_dict(
                 EPOSEIDON_TAGS_DICT[article_num].add(tag)
 
     # Correct ePoseidon tags.
-    # The correction work is based on tags found in ePoseidon before renaming.
+    # The correction work is based on tags found in ePoseidon before the renaming work.
     for key, cleaned_tags in CLEANED_EPOSEIDON_TAGS.items():
         EPOSEIDON_TAGS_DICT[key] = set([make_tag(tag) for tag in cleaned_tags])
 
@@ -133,15 +139,18 @@ def populate_eposeidon_tags_dict(
     for article_num in EPOSEIDON_TAGS_DICT.keys():
         renamed_tags = set()
         for tag in EPOSEIDON_TAGS_DICT[article_num]:
-            new_tag_str = RENAMED_EPOSEIDON_TAGS[tag.name]
+            try:
+                new_tag_str = RENAMED_EPOSEIDON_TAGS[tag.name]
+            except KeyError:
+                STATS['eposeidon_new_tags'][tag.name] += 1
+                continue
             new_tag = make_tag(new_tag_str.split(' > '))
             renamed_tags.add(new_tag)
             STATS['eposeidon_tags'][new_tag.name] += 1
         EPOSEIDON_TAGS_DICT[article_num] = renamed_tags
 
 
-def populate_code_du_travail_dict(json_file=os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')):
-
+def populate_code_du_travail_dict(json_file=JSON_LEGILIBRE):
     with open(json_file) as json_data:
         data = json.load(json_data)
         inspect_code_du_travail_children(data['children'])
@@ -171,7 +180,6 @@ def inspect_code_du_travail_children(children):
         'children': […]
     }
     """
-
     for child in children:
 
         if child['type'] == 'article':
@@ -205,21 +213,28 @@ def inspect_code_du_travail_children(children):
 
 def show_stats():
 
-    if not logger.isEnabledFor(logging.DEBUG):
-        return
+    if logger.isEnabledFor(logging.DEBUG):
 
-    logger.debug('-' * 80)
-    logger.debug('ePoseidon tags stats:')
-    for key in sorted(STATS['eposeidon_tags'], key=STATS['eposeidon_tags'].get, reverse=True):
-        logger.debug('%5s - %s', STATS['eposeidon_tags'][key], key)
+        logger.debug('-' * 80)
+        logger.debug('ePoseidon tags stats:')
+        for key in sorted(STATS['eposeidon_tags'], key=STATS['eposeidon_tags'].get, reverse=True):
+            logger.debug('%5s - %s', STATS['eposeidon_tags'][key], key)
 
-    logger.debug('-' * 80)
-    logger.debug('ePoseidon tags sorted:')
-    for key in sorted(STATS['eposeidon_tags'].keys()):
-        logger.debug('%s', key)
+        logger.debug('-' * 80)
+        logger.debug('ePoseidon tags sorted:')
+        for key in sorted(STATS['eposeidon_tags'].keys()):
+            logger.debug('%s', key)
 
-    logger.debug('-' * 80)
-    logger.debug('Number of articles: %s', STATS['count_article'])
+        logger.debug('-' * 80)
+        logger.debug('Number of articles: %s', STATS['count_article'])
+
+    if logger.isEnabledFor(logging.ERROR):
+
+        if STATS['eposeidon_new_tags']:
+            logger.error('-' * 80)
+            logger.error('New ePoseidon tags sorted:')
+            for key in sorted(STATS['eposeidon_new_tags'].keys()):
+                logger.error('%s', key)
 
 
 if __name__ == '__main__':
