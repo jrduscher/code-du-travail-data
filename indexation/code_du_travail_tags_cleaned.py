@@ -21,7 +21,7 @@ CLEANED_EPOSEIDON_TAGS = {
     'L1311-1': [
         [
             'Libertés et droits fondamentaux',
-            'Règlement intérieur et droit disciplinaire',
+            'Règlement intérieur',
             "Champ d'application",
             'Etablissements privés, EPIC'
         ],

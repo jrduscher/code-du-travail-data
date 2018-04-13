@@ -64,8 +64,6 @@ analyzers = {
 tokenizers = {
     'tags': {
         'type': 'path_hierarchy',
-        'delimiter': '>',
-        'replacement': '/',
     },
 }
 
@@ -196,7 +194,7 @@ def create_code_du_travail_documents(index_name=INDEX_CODE_DU_TRAVAIL_NUMERIQUE)
             'titre': val['titre'],
             'nota': val['nota'],
             'bloc_textuel': val['bloc_textuel'],
-            'tags': val['tags'][0].name,
+            'tags': val['tags'][0].path,
             'id': val['id'],
             'section': val['section'],
             'etat': val['etat'],

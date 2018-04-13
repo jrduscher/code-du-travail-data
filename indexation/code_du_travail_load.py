@@ -20,7 +20,8 @@ import re
 
 from collections import defaultdict, namedtuple
 
-from indexation.code_du_travail_cleaned_tags import CLEANED_EPOSEIDON_TAGS
+from indexation.code_du_travail_tags_cleaned import CLEANED_EPOSEIDON_TAGS
+from indexation.code_du_travail_tags_renamed import RENAMED_EPOSEIDON_TAGS
 
 
 console = logging.StreamHandler()
@@ -36,7 +37,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATS = {
     'count_article': 0,
-    'eposeidon_sources': defaultdict(int),
     'eposeidon_tags': defaultdict(int),
 }
 
@@ -58,26 +58,29 @@ CODE_DU_TRAVAIL_DICT = {}
 # }
 EPOSEIDON_TAGS_DICT = defaultdict(set)
 
-EposeidonTag = namedtuple('EposeidonTag', ['source', 'name', 'levels'])
+EposeidonTag = namedtuple('EposeidonTag', ['source', 'name', 'path', 'levels'])
 
 
 def make_tag(tags, source="Code du travail"):
     """
     Parameters:
-        - tags: an array of tags extracted from ePoseidon attributes in this order: Theme, SousTheme, Objet, Aspect.
-        - source: a string of the source found in ePoseidon
+        - tags: an array of tags extracted from ePoseidon attributes in this order: [Theme, SousTheme, Objet, Aspect]
+        - source: a string of the source extracted from ePoseidon
 
     Returns an EposeidonTag namedtuple:
         EposeidonTag(
             source='Code du travail',
             name='Négociations collectives > Négo collective, Accords > Maritime > Maritime',
+            path='/Négociations collectives/Négo collective, Accords/Maritime/Maritime',
             levels=4
         )
     """
-    # TODO: remove the spaces in tags_str.
-    tags_str = (' > ').join(tag for tag in tags if tag)
-    levels = len([tag for tag in tags if tag])
-    return EposeidonTag(source=source, name=tags_str, levels=levels)
+    multiple_spaces = r'\s+'
+    single_space = ' '
+    tags = [re.sub(multiple_spaces, single_space, tag).strip() for tag in tags if tag]
+    tags_as_str = (' > ').join(tags)
+    tags_as_path = '/%s' % ('/').join(tags)
+    return EposeidonTag(source=source, name=tags_as_str, path=tags_as_path, levels=len(tags))
 
 
 def populate_eposeidon_tags_dict(
@@ -106,35 +109,35 @@ def populate_eposeidon_tags_dict(
                     logger.debug('Skipping item in article "%s" because its `source` was empty.', article_num)
                     continue
 
-                # Skip everything not directly concerned by the `Code du travail` in ePoseidon
-                # because it's not available in the Legilibre's source.
                 if source != 'Code du travail':
+                    # Skip everything not directly concerned by the `Code du travail` in ePoseidon
+                    # because it's not available in the Legilibre's source.
                     logger.debug('Skipping item in article "%s" because its `source` is "%s".', article_num, source)
                     continue
 
-                multiple_spaces = r'\s+'
-                single_space = ' '
                 tags = [
-                    # Level 1 = Theme.
-                    re.sub(multiple_spaces, single_space, article['Theme']['nom']).strip(),
-                    # Level 2 = SousTheme.
-                    re.sub(multiple_spaces, single_space, article['SousTheme']['nom']).strip(),
-                    # Level 3 = Objet.
-                    re.sub(multiple_spaces, single_space, article['Objet']['nom']).strip(),
-                    # Level 4 = Aspect (may not exist in the source file).
-                    re.sub(multiple_spaces, single_space, article.get('Aspect', {}).get('nom', '')).strip(),
+                    article['Theme']['nom'],  # Level 1.
+                    article['SousTheme']['nom'],  # Level 2.
+                    article['Objet']['nom'],  # Level 3.
+                    article.get('Aspect', {}).get('nom', ''),  # Level 4 (may not exist in the source file).
                 ]
-
                 tag = make_tag(tags, source)
-
                 EPOSEIDON_TAGS_DICT[article_num].add(tag)
 
-                STATS['eposeidon_sources'][tag.source] += 1
-                STATS['eposeidon_tags'][tag.name] += 1
-
-    # Correct some ePoseidon tags.
+    # Correct ePoseidon tags.
+    # The correction work is based on tags found in ePoseidon before renaming.
     for key, cleaned_tags in CLEANED_EPOSEIDON_TAGS.items():
         EPOSEIDON_TAGS_DICT[key] = set([make_tag(tag) for tag in cleaned_tags])
+
+    # Rename ePoseidon tags.
+    for article_num in EPOSEIDON_TAGS_DICT.keys():
+        renamed_tags = set()
+        for tag in EPOSEIDON_TAGS_DICT[article_num]:
+            new_tag_str = RENAMED_EPOSEIDON_TAGS[tag.name]
+            new_tag = make_tag(new_tag_str.split(' > '))
+            renamed_tags.add(new_tag)
+            STATS['eposeidon_tags'][new_tag.name] += 1
+        EPOSEIDON_TAGS_DICT[article_num] = renamed_tags
 
 
 def populate_code_du_travail_dict(json_file=os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')):
@@ -204,11 +207,6 @@ def show_stats():
 
     if not logger.isEnabledFor(logging.DEBUG):
         return
-
-    logger.debug('-' * 80)
-    logger.debug('ePoseidon sources stats:')
-    for key in sorted(STATS['eposeidon_sources'], key=STATS['eposeidon_sources'].get, reverse=True):
-        logger.debug('%5s - %s', STATS['eposeidon_sources'][key], key)
 
     logger.debug('-' * 80)
     logger.debug('ePoseidon tags stats:')
