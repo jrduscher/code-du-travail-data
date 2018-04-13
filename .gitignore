@@ -105,3 +105,6 @@ ENV/
 
 # Editors
 .tm_properties
+
+# NPM
+node_modules/
