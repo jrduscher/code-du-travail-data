@@ -7,8 +7,7 @@ This file contains ePoseidon tags that were manually renamed.
 
 RENAMED_EPOSEIDON_TAGS = {
 
-    "Contrat de travail > CDI: Ruptures > Conséquences du licenciement > Cas particuliers":
-    "Contrat de travail > Contrat à durée Indéterminée (CDI): Ruptures > Conséquences du licenciement > Cas particuliers",
+    "Contrat de travail > CDI: Ruptures > Conséquences du licenciement > Cas particuliers": "Contrat de travail > Contrat à durée Indéterminée (CDI): Ruptures > Conséquences du licenciement > Cas particuliers",
 
     "Contrat de travail > CDI: Ruptures > Conséquences du licenciement > Documents remis au salarié":
     "Contrat de travail > Contrat à durée Indéterminée (CDI): Ruptures > Conséquences du licenciement > Documents remis au salarié",
