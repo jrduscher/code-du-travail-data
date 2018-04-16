@@ -76,7 +76,7 @@ mappings = {
         'properties': {
             'num': {
                 'type': 'text',
-                'analyzer': 'french_custom',
+                'analyzer': 'keyword',
             },
             'titre': {
                 'type': 'text',
@@ -92,17 +92,8 @@ mappings = {
             },
             'tags': {
                 'type': 'text',
-                'fields': {
-                    'name': {
-                        'type': 'text',
-                        'index': False,
-                    },
-                    'path': {
-                        'type': 'text',
-                        'analyzer': 'path_analyzer_custom',
-                        'store': True,
-                    },
-                }
+                'analyzer': 'path_analyzer_custom',
+                'fielddata': True,
             },
             'id': {
                 'type': 'text',
@@ -146,15 +137,14 @@ def get_es_client():
 def drop_and_create_index(index_name=INDEX_CODE_DU_TRAVAIL_NUMERIQUE):
     es = get_es_client()
 
-    try:
+    if es.indices.exists(index=index_name):
         es.indices.delete(index=index_name)
         logger.info("Index `%s` dropped.", index_name)
-    except elasticsearch.NotFoundError:
-        # This happens when the index did not previously exist.
-        pass
 
     request_body = {
         'settings': {
+            'number_of_shards': 1,
+            'number_of_replicas': 0,
             'index': {
                 'analysis': {
                     'filter': filters,
@@ -194,7 +184,7 @@ def create_code_du_travail_documents(index_name=INDEX_CODE_DU_TRAVAIL_NUMERIQUE)
             'titre': val['titre'],
             'nota': val['nota'],
             'bloc_textuel': val['bloc_textuel'],
-            'tags': val['tags'][0].path,
+            'tags': [tag.path for tag in val['tags']],
             'id': val['id'],
             'section': val['section'],
             'etat': val['etat'],
