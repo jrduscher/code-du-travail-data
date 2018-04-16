@@ -40,6 +40,14 @@ $ docker pull docker.elastic.co/elasticsearch/elasticsearch:6.2.3
 
 ```shell
 $ docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.2.3
+
+```
+
+Pour [activer CORS en mode développement](https://github.com/mobz/elasticsearch-head#enable-cors-in-elasticsearch) :
+
+```shell
+$ docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e "http.cors.enabled=true" -e "http.cors.allow-origin=*" docker.elastic.co/elasticsearch/elasticsearch:6.2.3
+
 ```
 
 #### Tests
@@ -67,7 +75,14 @@ curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_sea
 
 ## Commandes Python
 
+Pour vérifier les données du code du travail qui seront indexées dans Elasticsearch :
+
+```shell
+$ pipenv run python indexation/code_du_travail_load.py -v
+```
+
+Pour peupler l'index d'Elasticsearch :
+
 ```shell
 $ pipenv run python indexation/create_index.py
-$ pipenv run python indexation/code_du_travail_load.py
 ```
