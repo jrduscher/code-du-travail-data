@@ -131,7 +131,7 @@ def populate_eposeidon_tags_dict(json_file=JSON_EPOSEIDON):
                 EPOSEIDON_TAGS_DICT[article_num].add(tag)
 
     # Correct ePoseidon tags.
-    # The correction work is based on tags found in ePoseidon before the renaming work.
+    # Note: tags were corrected before being renamed.
     for key, cleaned_tags in CLEANED_EPOSEIDON_TAGS.items():
         EPOSEIDON_TAGS_DICT[key] = set([make_tag(tag) for tag in cleaned_tags])
 
@@ -190,7 +190,7 @@ def inspect_code_du_travail_children(children):
             eposeidon_tags = EPOSEIDON_TAGS_DICT.get(article_num)
 
             if not eposeidon_tags:
-                logger.debug('%s NOT FOUND in ePoseidon.', article_num)
+                logger.warning('%s found in Legilibre but NOT FOUND in ePoseidon.', article_num)
                 continue
 
             CODE_DU_TRAVAIL_DICT[article_num] = {
@@ -228,13 +228,11 @@ def show_stats():
         logger.debug('-' * 80)
         logger.debug('Number of articles: %s', STATS['count_article'])
 
-    if logger.isEnabledFor(logging.ERROR):
-
-        if STATS['eposeidon_new_tags']:
-            logger.error('-' * 80)
-            logger.error('New ePoseidon tags sorted:')
-            for key in sorted(STATS['eposeidon_new_tags'].keys()):
-                logger.error('%s', key)
+    if STATS['eposeidon_new_tags']:
+        logger.error('-' * 80)
+        logger.error('New ePoseidon that need to be renamed are sorted below:')
+        for key in sorted(STATS['eposeidon_new_tags'].keys()):
+            logger.error('%s', key)
 
 
 if __name__ == '__main__':

@@ -7,6 +7,8 @@ This file contains ePoseidon tags that were manually renamed.
 
 RENAMED_EPOSEIDON_TAGS = {
 
+    "Articles nouveaux > Articles nouveaux > Articles nouveaux": "Articles nouveaux > Articles nouveaux > Articles nouveaux",
+
     "Contrat de travail > CDI: Ruptures > Conséquences du licenciement > Cas particuliers": "Contrat de travail > Contrat à durée Indéterminée (CDI): Ruptures > Conséquences du licenciement > Cas particuliers",
 
     "Contrat de travail > CDI: Ruptures > Conséquences du licenciement > Documents remis au salarié":
@@ -2780,6 +2782,24 @@ RENAMED_EPOSEIDON_TAGS = {
 
     "Institutions représentatives du personnel > Comité d'entreprise > Champ d'application > Champ d'application":
     "Institutions représentatives du personnel > Comité d'entreprise > Champ d'application > Champ d'application",
+
+    "Institutions représentatives du personnel > Comité social et économique > CSE attributions": "Institutions représentatives du personnel > Comité social et économique (CSE) > Comité social et économique (CSE) attributions",
+
+    "Institutions représentatives du personnel > Comité social et économique > CSE attributions > Attributions entreprises 50 salariés et +": "Institutions représentatives du personnel > Comité social et économique (CSE) > Comité social et économique (CSE) attributions > Attributions entreprises 50 salariés et +",
+
+    "Institutions représentatives du personnel > Comité social et économique > CSE central et établissement": "Institutions représentatives du personnel > Comité social et économique (CSE) > Comité social et économique (CSE) central et établissement",
+
+    "Institutions représentatives du personnel > Comité social et économique > Champ d'application": "Institutions représentatives du personnel > Comité social et économique (CSE) > Champ d'application",
+
+    "Institutions représentatives du personnel > Comité social et économique > Mise en place, composition, fonctionnement > Composition, élection": "Institutions représentatives du personnel > Comité social et économique (CSE) > Mise en place, composition, fonctionnement > Composition, élection",
+
+    "Institutions représentatives du personnel > Comité social et économique > Mise en place, composition, fonctionnement > Fonctionnement": "Institutions représentatives du personnel > Comité social et économique (CSE) > Mise en place, composition, fonctionnement > Fonctionnement",
+
+    "Institutions représentatives du personnel > Comité social et économique > Mise en place, composition, fonctionnement > Mise en place, suppression": "Institutions représentatives du personnel > Comité social et économique (CSE) > Mise en place, composition, fonctionnement > Mise en place, suppression",
+
+    "Institutions représentatives du personnel > Comité social et économique > Pénal": "Institutions représentatives du personnel > Comité social et économique (CSE) > Pénal",
+
+    "Institutions représentatives du personnel > Conseil d'entreprise > Conseil d'entreprise": "Institutions représentatives du personnel > Conseil d'entreprise > Conseil d'entreprise",
 
     "Institutions représentatives du personnel > Commission paritaire interpro - 11 salariés > Commission paritaire interpro - 11 salariés":
     "Institutions représentatives du personnel > Commission paritaire interprofessionnelle - 11 salariés > Commission paritaire interprofessionnelle - 11 salariés",
