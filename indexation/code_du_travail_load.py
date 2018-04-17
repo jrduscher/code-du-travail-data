@@ -43,12 +43,12 @@ STATS = {
     # Store unique ePoseidon tags and how many times they are used.
     'eposeidon_tags': defaultdict(int),
     # Store new tags used in ePoseidon and how many times they are used.
-    # They may need to be renamed.
+    # They must be renamed.
     'eposeidon_new_tags': defaultdict(int),
 }
 
 # A global dict where each key is the number of a `Code du travail`'s article
-# and each value a dict containing info about it.
+# and each value is a dict containing info about it.
 CODE_DU_TRAVAIL_DICT = {}
 
 # A global dict where each key is the number of a `Code du travail`'s
@@ -142,6 +142,7 @@ def populate_eposeidon_tags_dict(json_file=JSON_EPOSEIDON):
             try:
                 new_tag_str = RENAMED_EPOSEIDON_TAGS[tag.name]
             except KeyError:
+                # Do nothing, those tags must be renamed.
                 STATS['eposeidon_new_tags'][tag.name] += 1
                 continue
             new_tag = make_tag(new_tag_str.split(' > '))
@@ -230,7 +231,7 @@ def show_stats():
 
     if STATS['eposeidon_new_tags']:
         logger.error('-' * 80)
-        logger.error('New ePoseidon that need to be renamed are sorted below:')
+        logger.error('New ePoseidon tags that need to be renamed are sorted below:')
         for key in sorted(STATS['eposeidon_new_tags'].keys()):
             logger.error('%s', key)
 
