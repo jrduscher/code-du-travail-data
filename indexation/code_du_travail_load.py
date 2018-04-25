@@ -40,11 +40,13 @@ JSON_LEGILIBRE = os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json
 
 STATS = {
     'count_article': 0,
-    # Store unique ePoseidon tags and how many times they are used.
+    # A dict of unique ePoseidon tags and how many times they are used.
     'eposeidon_tags': defaultdict(int),
-    # Store new tags used in ePoseidon and how many times they are used.
-    # They must be renamed.
-    'eposeidon_new_tags': defaultdict(int),
+    # A dict of unique ePoseidon tags and their associated articles.
+    'eposeidon_tags_for_articles': defaultdict(list),
+    # A dict of new tags used in ePoseidon and how many times they are used.
+    # They must be renamed to look good in the UI.
+    'eposeidon_new_tags_to_rename': defaultdict(int),
 }
 
 # A global dict where each key is the number of a `Code du travail`'s article
@@ -143,11 +145,13 @@ def populate_eposeidon_tags_dict(json_file=JSON_EPOSEIDON):
                 new_tag_str = RENAMED_EPOSEIDON_TAGS[tag.name]
             except KeyError:
                 # Do nothing, those tags must be renamed.
-                STATS['eposeidon_new_tags'][tag.name] += 1
+                STATS['eposeidon_new_tags_to_rename'][tag.name] += 1
                 continue
             new_tag = make_tag(new_tag_str.split(' > '))
             renamed_tags.add(new_tag)
             STATS['eposeidon_tags'][new_tag.name] += 1
+            STATS['eposeidon_tags_for_articles'][new_tag.name].append(article_num)
+
         EPOSEIDON_TAGS_DICT[article_num] = renamed_tags
 
 
@@ -222,17 +226,18 @@ def show_stats():
             logger.debug('%5s - %s', STATS['eposeidon_tags'][key], key)
 
         logger.debug('-' * 80)
-        logger.debug('ePoseidon tags sorted:')
+        logger.debug('ePoseidon tags sorted and their associated articles:')
         for key in sorted(STATS['eposeidon_tags'].keys()):
-            logger.debug('%s', key)
+            tags = ', '.join(STATS['eposeidon_tags_for_articles'][key])
+            logger.debug('%s\t%s', key, tags)  # TAB separated.
 
         logger.debug('-' * 80)
         logger.debug('Number of articles: %s', STATS['count_article'])
 
-    if STATS['eposeidon_new_tags']:
+    if STATS['eposeidon_new_tags_to_rename']:
         logger.error('-' * 80)
         logger.error('New ePoseidon tags that need to be renamed are sorted below:')
-        for key in sorted(STATS['eposeidon_new_tags'].keys()):
+        for key in sorted(STATS['eposeidon_new_tags_to_rename'].keys()):
             logger.error('%s', key)
 
 
