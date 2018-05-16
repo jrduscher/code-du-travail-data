@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    container_name: code-du-travail-data-elasticsearch
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+      - ./docker/dev/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 9200:9200
+      - 9300:9300
+    restart: always
+
+  python:
+    container_name: code-du-travail-data-python
+    depends_on:
+      - elasticsearch
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: ./docker/dev/Dockerfile
+    volumes:
+      - .:/app
+    restart: always
+
+volumes:
+  esdata:
+    driver: local

@@ -4,7 +4,7 @@
 # ============
 
 clean:
-	find . -type d -name "__pycache__" -depth -exec rm -rf '{}' \;
+	docker exec -t code-du-travail-data-python find . -type d -name "__pycache__" -depth -exec rm -rf '{}' \;
 
 pylint:
-	pipenv run pylint --rcfile='.pylintrc' --reports=no --output-format=colorized 'indexation';
+	docker exec -t code-du-travail-data-python pipenv run pylint --rcfile='.pylintrc' --reports=no --output-format=colorized 'indexation';

@@ -1,0 +1,13 @@
+cluster.name: "code-du-travail-data-elasticsearch"
+node.name: "code-du-travail-data-elasticsearch-single-node"
+network.host: 0.0.0.0
+
+# Use single node discovery in order to disable production mode and avoid bootstrap checks
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+discovery.type: single-node
+
+# https://github.com/mobz/elasticsearch-head#enable-cors-in-elasticsearch
+http.cors.enabled: true
+http.cors.allow-origin: '*'
+
+xpack.security.enabled: false

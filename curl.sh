@@ -2,8 +2,29 @@
 
 # ---------------------------------------------------------------------------------------------------
 
+# Cluster health check.
+$ curl -XGET 'localhost:9200/_cat/health?v'
+
+# List of nodes in the cluster.
+$ curl -XGET 'localhost:9200/_cat/nodes?v'
+
+# List of all indexes (indices).
+curl -XGET 'localhost:9200/_cat/indices?v'
+
+# Get information about one index.
+curl -XGET 'http://localhost:9200/code_du_travail_numerique/?pretty'
+
+# Retrieve mapping definitions for an index or type.
+curl -XGET 'http://localhost:9200/code_du_travail_numerique/_mapping/?pretty'
+curl -XGET 'http://localhost:9200/code_du_travail_numerique/_mapping/code_du_travail?pretty'
+
+# Search explicitly for documents of a given type within the code_du_travail index.
+curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty'
+
+# ---------------------------------------------------------------------------------------------------
+
 # Find by _id
-curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/WpH8uGIBlRNYkL9uQpaU?pretty'
+curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/cIATaWMBZaQe0cmOJ2iP?pretty'
 
 # Use the URI request query.
 curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?q=titre:L1141&pretty'

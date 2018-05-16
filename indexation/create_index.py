@@ -1,4 +1,5 @@
 import logging
+import os
 
 import elasticsearch
 from elasticsearch.helpers import bulk
@@ -129,9 +130,10 @@ mappings = {
 
 def get_es_client():
     """
-    Will be used to configure the client for different environments.
+    Configure the client for different environments.
     """
-    return elasticsearch.Elasticsearch()
+    hosts = [os.environ.get('ES_HOST')]
+    return elasticsearch.Elasticsearch(hosts=hosts)
 
 
 def drop_and_create_index(index_name=INDEX_CODE_DU_TRAVAIL_NUMERIQUE):
