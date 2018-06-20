@@ -21,6 +21,11 @@ TYPE_CODE_DU_TRAVAIL = 'code_du_travail'
 
 
 filters = {
+    'edge_ngram_filter': {
+        'type': 'edge_ngram',
+        'min_gram': 4,
+        'max_gram': 20,
+    },
     'french_elision': {
         'type': 'elision',
         'articles_case': True,
@@ -46,6 +51,15 @@ filters = {
 
 
 analyzers = {
+    'edge_ngram_custom': {
+        'type': 'custom',
+        'char_filter': ['html_strip'],
+        'tokenizer': 'standard',
+        'filter': [
+            'lowercase',
+            'edge_ngram_filter',
+        ],
+    },
     'french_custom': {
         'tokenizer': 'standard',
         'char_filter': ['html_strip'],
@@ -81,15 +95,45 @@ mappings = {
             },
             'titre': {
                 'type': 'text',
-                'analyzer': 'french_custom',
+                'analyzer': 'standard',
+                'fields': {
+                    'edge_ngram': {
+                        'type': 'text',
+                        'analyzer': 'edge_ngram_custom'
+                    },
+                    'french': {
+                        'type': 'text',
+                        'analyzer': 'french_custom'
+                    },
+                },
             },
             'nota': {
                 'type': 'text',
-                'analyzer': 'french_custom',
+                'analyzer': 'standard',
+                'fields': {
+                    'edge_ngram': {
+                        'type': 'text',
+                        'analyzer': 'edge_ngram_custom'
+                    },
+                    'french': {
+                        'type': 'text',
+                        'analyzer': 'french_custom'
+                    },
+                },
             },
             'bloc_textuel': {
                 'type': 'text',
-                'analyzer': 'french_custom',
+                'analyzer': 'standard',
+                'fields': {
+                    'edge_ngram': {
+                        'type': 'text',
+                        'analyzer': 'edge_ngram_custom'
+                    },
+                    'french': {
+                        'type': 'text',
+                        'analyzer': 'french_custom'
+                    },
+                },
             },
             'tags': {
                 'type': 'text',
