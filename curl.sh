@@ -142,6 +142,12 @@ curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/_analyze?p
 
 # ---------------------------------------------------------------------------------------------------
 
+# Test document regarding how term vectors are created.
+
+curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/g1RurGMByEj79ebsWMJM/_termvector?fields=bloc_textuel&pretty'
+
+# ---------------------------------------------------------------------------------------------------
+
 # Filter by tag.
 
 curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
