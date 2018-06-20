@@ -4,7 +4,7 @@ import os
 import elasticsearch
 from elasticsearch.helpers import bulk
 
-from indexation.code_du_travail_load import CODE_DU_TRAVAIL_DICT
+from indexation.code_du_travail.cleaned_tags.data import CODE_DU_TRAVAIL_DICT
 
 
 console = logging.StreamHandler()

@@ -20,8 +20,9 @@ import re
 
 from collections import defaultdict, namedtuple
 
-from indexation.code_du_travail_tags_cleaned import CLEANED_EPOSEIDON_TAGS
-from indexation.code_du_travail_tags_renamed import RENAMED_EPOSEIDON_TAGS
+from indexation.code_du_travail.eposeidon_tags.tags_cleaned import CLEANED_EPOSEIDON_TAGS
+from indexation.code_du_travail.eposeidon_tags.tags_renamed import RENAMED_EPOSEIDON_TAGS
+from indexation.settings import BASE_DIR
 
 
 console = logging.StreamHandler()
@@ -32,8 +33,6 @@ logger = logging.getLogger(__name__)
 logger.addHandler(console)
 logger.setLevel(logging.INFO)
 
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 JSON_EPOSEIDON = os.path.join(BASE_DIR, 'dataset/nomenclatures-20180413.json')
 JSON_LEGILIBRE = os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')

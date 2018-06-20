@@ -19,20 +19,24 @@ Puis :
 $ docker-compose up
 ```
 
-## Commandes Python
-
-D'abord lancer un shell Docker :
+## Pour lancer un shell Docker
 
 ```shell
 $ docker exec -ti code-du-travail-data-python /bin/sh
 ```
 
-Puis :
+## Indexation
 
 ```shell
+
 # Pour vérifier les données du code du travail qui seront indexées dans Elasticsearch :
-$ pipenv run python indexation/code_du_travail_load.py -v
+
+# 1) à partir des "tags" extraits de ePoseidon:
+$ docker exec -ti code-du-travail-data-python pipenv run python indexation/code_du_travail/eposeidon_tags/data.py -v
+
+# 2) ou à partir des "tags" renommés humainement à partir de l'extraction ePoseidon:
+$ docker exec -ti code-du-travail-data-python pipenv run python indexation/code_du_travail/cleaned_tags/data.py -v
 
 # Pour peupler l'index d'Elasticsearch :
-$ pipenv run python indexation/create_index.py
+$ docker exec -ti code-du-travail-data-python pipenv run python indexation/create_index.py
 ```
