@@ -35,14 +35,6 @@ filters = {
             'lorsqu', 'puisqu',
         ],
     },
-    'french_stop': {
-        'type': 'stop',
-        'stopwords': '_french_',
-    },
-    'french_keywords': {
-        'type': 'keyword_marker',
-        'keywords': ['Exemple'],
-    },
     'french_stemmer': {
         'type': 'stemmer',
         'language': 'light_french',
@@ -56,6 +48,7 @@ analyzers = {
         'char_filter': ['html_strip'],
         'tokenizer': 'standard',
         'filter': [
+            'asciifolding',
             'lowercase',
             'edge_ngram_filter',
         ],
@@ -66,8 +59,6 @@ analyzers = {
         'filter': [
             'french_elision',
             'lowercase',
-            'french_stop',
-            'french_keywords',
             'french_stemmer',
         ],
     },
