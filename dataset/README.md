@@ -13,6 +13,7 @@
 - `source_eposeidon/nomenclatures_*.xml` : taggages des articles du code du travail (depuis appli DGT ePoseidon)
 - `nomenclatures-*.json` : conversion des XML ePoseidon en JSON
 - `faq.json` : 55 questions fréquentes, reformulées par les services de renseignement des DIRECCTE
+- `fiches-sp-travail.json` : extraction fiches "vos droits" travail [service-public.fr](https://www.data.gouv.fr/fr/datasets/service-public-fr-guide-vos-droits-et-demarches-particuliers/)
 
 # Comment générer un JSON depuis un XML ePoseidon
 
