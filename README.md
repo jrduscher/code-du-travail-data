@@ -38,5 +38,5 @@ $ docker exec -ti code-du-travail-data-python pipenv run python indexation/code_
 $ docker exec -ti code-du-travail-data-python pipenv run python indexation/code_du_travail/cleaned_tags/data.py -v
 
 # Pour peupler l'index d'Elasticsearch :
-$ docker exec -ti code-du-travail-data-python pipenv run python indexation/create_index.py
+$ docker exec -ti code-du-travail-data-python pipenv run python indexation/elastic/create_indexes.py
 ```
