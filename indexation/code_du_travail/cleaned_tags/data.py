@@ -23,20 +23,14 @@ import re
 
 from collections import namedtuple
 
+from indexation import settings
 from indexation.code_du_travail.cleaned_tags.tags import TAGS_DICT
-from indexation.settings import BASE_DIR
 
 
-console = logging.StreamHandler()
-formatter = logging.Formatter(fmt='[%(levelname)s - %(funcName)s] %(message)s')
-console.setFormatter(formatter)
-
-logger = logging.getLogger(__name__)
-logger.addHandler(console)
-logger.setLevel(logging.INFO)
+logger = settings.get_logger(__name__)
 
 
-JSON_LEGILIBRE = os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')
+JSON_LEGILIBRE = os.path.join(settings.BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')
 
 CODE_DU_TRAVAIL_DICT = {}
 

@@ -100,10 +100,11 @@ def create_fiches_service_public_documents(index_name, type_name):
     for val in FICHES_SERVICE_PUBLIC:
         body = {
             'url': val['url'],
+            'sous_theme': val['sous_theme'],
             'title': val['title'],
+            'text': val['text'],
             'tags': val['tags'],
-            'refs_sujets': val['refs_sujets'],
-            'refs_sources': val['refs_sources'],
+            'refs': val['refs'],
         }
         actions.append({
             '_op_type': 'index',

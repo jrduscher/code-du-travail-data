@@ -4,7 +4,35 @@ fiches_service_public_mapping = {
             'type': 'text',
             'analyzer': 'keyword',
         },
+        'sous_theme': {
+            'type': 'text',
+            'analyzer': 'standard',
+            'fields': {
+                'edge_ngram': {
+                    'type': 'text',
+                    'analyzer': 'edge_ngram_custom'
+                },
+                'french': {
+                    'type': 'text',
+                    'analyzer': 'french_custom'
+                },
+            },
+        },
         'title': {
+            'type': 'text',
+            'analyzer': 'standard',
+            'fields': {
+                'edge_ngram': {
+                    'type': 'text',
+                    'analyzer': 'edge_ngram_custom'
+                },
+                'french': {
+                    'type': 'text',
+                    'analyzer': 'french_custom'
+                },
+            },
+        },
+        'text': {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
@@ -32,13 +60,42 @@ fiches_service_public_mapping = {
                 },
             },
         },
-        'refs_sujets': {
-            'type': 'text',
-            'analyzer': 'standard',
-        },
-        'refs_sources': {
-            'type': 'text',
-            'analyzer': 'standard',
+        'refs': {
+            'type': 'nested',
+            'properties': {
+                'url': {
+                    'type': 'text',
+                    'analyzer': 'keyword',
+                },
+                'source': {
+                    'type': 'text',
+                    'analyzer': 'standard',
+                    'fields': {
+                        'edge_ngram': {
+                            'type': 'text',
+                            'analyzer': 'edge_ngram_custom'
+                        },
+                        'french': {
+                            'type': 'text',
+                            'analyzer': 'french_custom'
+                        },
+                    },
+                },
+                'sujet': {
+                    'type': 'text',
+                    'analyzer': 'standard',
+                    'fields': {
+                        'edge_ngram': {
+                            'type': 'text',
+                            'analyzer': 'edge_ngram_custom'
+                        },
+                        'french': {
+                            'type': 'text',
+                            'analyzer': 'french_custom'
+                        },
+                    },
+                },
+            },
         },
     },
 }

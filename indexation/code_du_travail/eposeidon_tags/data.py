@@ -20,22 +20,16 @@ import re
 
 from collections import defaultdict, namedtuple
 
+from indexation import settings
 from indexation.code_du_travail.eposeidon_tags.tags_cleaned import CLEANED_EPOSEIDON_TAGS
 from indexation.code_du_travail.eposeidon_tags.tags_renamed import RENAMED_EPOSEIDON_TAGS
-from indexation.settings import BASE_DIR
 
 
-console = logging.StreamHandler()
-formatter = logging.Formatter(fmt='[%(levelname)s - %(funcName)s] %(message)s')
-console.setFormatter(formatter)
-
-logger = logging.getLogger(__name__)
-logger.addHandler(console)
-logger.setLevel(logging.INFO)
+logger = settings.get_logger(__name__)
 
 
-JSON_EPOSEIDON = os.path.join(BASE_DIR, 'dataset/nomenclatures-20180413.json')
-JSON_LEGILIBRE = os.path.join(BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')
+JSON_EPOSEIDON = os.path.join(settings.BASE_DIR, 'dataset/nomenclatures-20180413.json')
+JSON_LEGILIBRE = os.path.join(settings.BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')
 
 STATS = {
     'count_article': 0,
