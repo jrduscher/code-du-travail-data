@@ -50,6 +50,16 @@ code_du_travail_mapping = {
             'type': 'text',
             'analyzer': 'path_analyzer_custom',
             'fielddata': True,
+            'fields': {
+                'edge_ngram': {
+                    'type': 'text',
+                    'analyzer': 'edge_ngram_custom'
+                },
+                'french': {
+                    'type': 'text',
+                    'analyzer': 'french_custom'
+                },
+            },
         },
         'id': {
             'type': 'text',
