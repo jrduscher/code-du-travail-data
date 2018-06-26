@@ -9,7 +9,7 @@ Usage:
 
 1) Simply import the `CODE_DU_TRAVAIL_DICT`:
 
-    from indexation.code_du_travail_load import CODE_DU_TRAVAIL_DICT
+    from search.extraction.code_du_travail_load import CODE_DU_TRAVAIL_DICT
 
 2) Or run the script standalone with the `--verbose` option for full debug info:
 
@@ -23,8 +23,8 @@ import re
 
 from collections import namedtuple
 
-from indexation import settings
-from indexation.code_du_travail.cleaned_tags.tags import TAGS_DICT
+from search import settings
+from search.extraction.code_du_travail.cleaned_tags.tags import TAGS_DICT
 
 
 logger = settings.get_logger(__name__)

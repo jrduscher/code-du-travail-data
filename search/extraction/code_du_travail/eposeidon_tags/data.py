@@ -6,7 +6,7 @@ Usage:
 
 1) Simply import the `CODE_DU_TRAVAIL_DICT`:
 
-    from indexation.code_du_travail_load import CODE_DU_TRAVAIL_DICT
+    from search.extraction.code_du_travail_load import CODE_DU_TRAVAIL_DICT
 
 2) Or run the script standalone with the `--verbose` option for full debug info:
 
@@ -20,9 +20,9 @@ import re
 
 from collections import defaultdict, namedtuple
 
-from indexation import settings
-from indexation.code_du_travail.eposeidon_tags.tags_cleaned import CLEANED_EPOSEIDON_TAGS
-from indexation.code_du_travail.eposeidon_tags.tags_renamed import RENAMED_EPOSEIDON_TAGS
+from search import settings
+from search.extraction.code_du_travail.eposeidon_tags.tags_cleaned import CLEANED_EPOSEIDON_TAGS
+from search.extraction.code_du_travail.eposeidon_tags.tags_renamed import RENAMED_EPOSEIDON_TAGS
 
 
 logger = settings.get_logger(__name__)

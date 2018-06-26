@@ -3,7 +3,7 @@ import json
 import logging
 import os
 
-from indexation import settings
+from search import settings
 
 
 logger = settings.get_logger(__name__)

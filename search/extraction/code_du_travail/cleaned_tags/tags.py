@@ -12,7 +12,7 @@ and each value is its associated tag, e.g.:
 import os
 import csv
 
-from indexation.settings import BASE_DIR
+from search.settings import BASE_DIR
 
 
 # This file contains tag humanly renamed. Source:

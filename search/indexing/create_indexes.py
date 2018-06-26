@@ -5,13 +5,13 @@ import os
 import elasticsearch
 from elasticsearch.helpers import bulk
 
-from indexation import settings
-from indexation.code_du_travail.cleaned_tags.data import CODE_DU_TRAVAIL_DICT
-from indexation.elastic import analysis
-from indexation.elastic.mappings.code_du_travail import code_du_travail_mapping
-from indexation.elastic.mappings.faq import faq_mapping
-from indexation.elastic.mappings.fiches_service_public import fiches_service_public_mapping
-from indexation.fiches_service_public.data import FICHES_SERVICE_PUBLIC
+from search import settings
+from search.extraction.code_du_travail.cleaned_tags.data import CODE_DU_TRAVAIL_DICT
+from search.extraction.fiches_service_public.data import FICHES_SERVICE_PUBLIC
+from search.indexing import analysis
+from search.indexing.mappings.code_du_travail import code_du_travail_mapping
+from search.indexing.mappings.faq import faq_mapping
+from search.indexing.mappings.fiches_service_public import fiches_service_public_mapping
 
 
 console = logging.StreamHandler()

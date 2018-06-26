@@ -32,11 +32,11 @@ $ docker exec -ti code-du-travail-data-python /bin/sh
 # Pour vérifier les données du code du travail qui seront indexées dans Elasticsearch :
 
 # 1) à partir des "tags" extraits de ePoseidon:
-$ docker exec -ti code-du-travail-data-python pipenv run python indexation/code_du_travail/eposeidon_tags/data.py -v
+$ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/code_du_travail/eposeidon_tags/data.py -v
 
 # 2) ou à partir des "tags" renommés humainement à partir de l'extraction ePoseidon:
-$ docker exec -ti code-du-travail-data-python pipenv run python indexation/code_du_travail/cleaned_tags/data.py -v
+$ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/code_du_travail/cleaned_tags/data.py -v
 
 # Pour peupler l'index d'Elasticsearch :
-$ docker exec -ti code-du-travail-data-python pipenv run python indexation/elastic/create_indexes.py
+$ docker exec -ti code-du-travail-data-python pipenv run python search/indexing/create_indexes.py
 ```
