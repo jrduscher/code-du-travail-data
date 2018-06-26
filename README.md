@@ -25,18 +25,27 @@ $ docker-compose up
 $ docker exec -ti code-du-travail-data-python /bin/sh
 ```
 
+## Extraction
+
+Exemple de commandes pour vérifier les données qui seront indexées dans Elasticsearch.
+
+```shell
+# Pour vérifier les données du code du travail :
+
+# 1) Données accompagnées des "tags" extraits de ePoseidon :
+$ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/code_du_travail/eposeidon_tags/data.py -v
+
+# 2) Données accompagnées des "tags" renommés humainement (depuis l'extraction ePoseidon) :
+$ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/code_du_travail/cleaned_tags/data.py -v
+
+# Pour vérifier les données des fiches services public :
+
+$ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/fiches_service_public/data.py -v
+```
+
 ## Indexation
 
 ```shell
-
-# Pour vérifier les données du code du travail qui seront indexées dans Elasticsearch :
-
-# 1) à partir des "tags" extraits de ePoseidon:
-$ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/code_du_travail/eposeidon_tags/data.py -v
-
-# 2) ou à partir des "tags" renommés humainement à partir de l'extraction ePoseidon:
-$ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/code_du_travail/cleaned_tags/data.py -v
-
 # Pour peupler l'index d'Elasticsearch :
 $ docker exec -ti code-du-travail-data-python pipenv run python search/indexing/create_indexes.py
 ```

@@ -3,6 +3,8 @@ import json
 import logging
 import os
 
+from pprint import pformat
+
 from search import settings
 
 
@@ -40,14 +42,18 @@ def populate_fiches_service_public(json_file=JSON_FICHES):
                 + item['sousDossiers']
             ))
 
-            FICHES_SERVICE_PUBLIC.append({
+            fiche = {
                 'url': item['url'],
                 'sous_theme': item['sousTheme'],
                 'title': item['title'],
                 'text': text,
                 'tags': tags,
                 'refs': item['refs'],  # List of {`url`, `source` and `sujet`} entries.
-            })
+            }
+            FICHES_SERVICE_PUBLIC.append(fiche)
+
+            logger.debug('-' * 80)
+            logger.debug(pformat(fiche))
 
 
 if __name__ == '__main__':
