@@ -1,6 +1,6 @@
 # Code du travail - Data
 
-Ce dépôt de code contient un prototype d'indexation du code du travail.
+Ce dépôt de code permet d'indexer différentes sources de données relatives au Code du travail dans Elasticsearch.
 
 ## Installation de l'environnement de développement
 
