@@ -11,7 +11,7 @@ from search import settings
 logger = settings.get_logger(__name__)
 
 
-JSON_FICHES = os.path.join(settings.BASE_DIR, 'dataset/fiches-sp-travail.json')
+JSON_FICHES = os.path.join(settings.BASE_DIR, 'dataset/fiches_service_public/fiches-sp-travail.json')
 
 FICHES_SERVICE_PUBLIC = []
 

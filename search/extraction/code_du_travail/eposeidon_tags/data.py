@@ -28,8 +28,8 @@ from search.extraction.code_du_travail.eposeidon_tags.tags_renamed import RENAME
 logger = settings.get_logger(__name__)
 
 
-JSON_EPOSEIDON = os.path.join(settings.BASE_DIR, 'dataset/nomenclatures-20180413.json')
-JSON_LEGILIBRE = os.path.join(settings.BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')
+JSON_EPOSEIDON = os.path.join(settings.BASE_DIR, 'dataset/code_du_travail/nomenclatures-20180413.json')
+JSON_LEGILIBRE = os.path.join(settings.BASE_DIR, 'dataset/code_du_travail/code-du-travail-2018-01-01.json')
 
 STATS = {
     'count_article': 0,

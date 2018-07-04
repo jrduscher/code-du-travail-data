@@ -30,7 +30,7 @@ from search.extraction.code_du_travail.cleaned_tags.tags import TAGS_DICT
 logger = settings.get_logger(__name__)
 
 
-JSON_LEGILIBRE = os.path.join(settings.BASE_DIR, 'dataset/code-du-travail-2018-01-01.json')
+JSON_LEGILIBRE = os.path.join(settings.BASE_DIR, 'dataset/code_du_travail/code-du-travail-2018-01-01.json')
 
 CODE_DU_TRAVAIL_DICT = {}
 

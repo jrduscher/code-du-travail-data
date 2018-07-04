@@ -17,7 +17,7 @@ from search.settings import BASE_DIR
 
 # This file contains tag humanly renamed. Source:
 # https://github.com/SocialGouv/code-du-travail-explorer/blob/5071d9/src/data/themes.js
-TAGS_CSV = os.path.join(BASE_DIR, 'dataset/themes.csv')
+TAGS_CSV = os.path.join(BASE_DIR, 'dataset/code_du_travail/themes.csv')
 
 
 TAGS_DICT = {}

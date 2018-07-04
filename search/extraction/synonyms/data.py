@@ -14,7 +14,7 @@ logger = settings.get_logger(__name__)
 SYNONYMS = []
 
 # TESS.json => Thesaurus Travail Emploi Santé Solidarité.
-JSON_FILE = os.path.join(settings.BASE_DIR, 'dataset/TESS.json')
+JSON_FILE = os.path.join(settings.BASE_DIR, 'dataset/thesaurus/TESS.json')
 
 
 def populate_synonyms(json_file=JSON_FILE):

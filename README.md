@@ -39,8 +39,10 @@ $ docker exec -ti code-du-travail-data-python pipenv run python search/extractio
 $ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/code_du_travail/cleaned_tags/data.py -v
 
 # Pour vérifier les données des fiches services public :
-
 $ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/fiches_service_public/data.py -v
+
+# Pour vérifier les données des synonymes :
+$ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/synonyms/data.py -v
 ```
 
 ## Indexation
