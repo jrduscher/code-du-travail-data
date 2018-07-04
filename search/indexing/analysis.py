@@ -1,4 +1,10 @@
 filters = {
+    'acronyms': {
+        'type': 'word_delimiter',
+        'catenate_all': True,
+        'generate_word_parts': False,
+        'generate_number_parts': False,
+    },
     'edge_ngram_filter': {
         'type': 'edge_ngram',
         'min_gram': 4,
@@ -28,6 +34,7 @@ analyzers = {
         'filter': [
             'asciifolding',
             'lowercase',
+            'acronyms',
             'edge_ngram_filter',
         ],
     },
@@ -37,6 +44,7 @@ analyzers = {
         'filter': [
             'french_elision',
             'lowercase',
+            'acronyms',
             'french_stemmer',
         ],
     },
