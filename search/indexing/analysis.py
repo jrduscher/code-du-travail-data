@@ -1,9 +1,15 @@
+from search.extraction.synonyms.data import SYNONYMS
+
 filters = {
     'acronyms': {
         'type': 'word_delimiter',
         'catenate_all': True,
         'generate_word_parts': False,
         'generate_number_parts': False,
+    },
+    'synonyms': {
+        'type': 'synonym',
+        'synonyms': SYNONYMS,
     },
     'edge_ngram_filter': {
         'type': 'edge_ngram',
@@ -45,6 +51,7 @@ analyzers = {
             'french_elision',
             'lowercase',
             'acronyms',
+            'synonyms',
             'french_stemmer',
         ],
     },
