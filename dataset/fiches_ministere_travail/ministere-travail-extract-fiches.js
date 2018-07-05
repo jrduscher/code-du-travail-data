@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const serialExec = require("promise-serial-exec");
 const JSDOM = require("jsdom").JSDOM;
 
-const FICHES_URLS = require("./ministere-travail-liste-fiches");
+const FICHES_URLS = require("./ministere-travail-liste-fiches.js");
 
 const qsa = (node, selector) => Array.from(node.querySelectorAll(selector));
 
@@ -25,6 +25,7 @@ const parseFiche = url =>
       title,
       text,
       summary,
+      url,
       articles
     };
   });
