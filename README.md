@@ -23,6 +23,7 @@ $ docker-compose up
 
 ```shell
 $ docker exec -ti code-du-travail-data-python /bin/sh
+$ docker exec -ti code-du-travail-data-elasticsearch /bin/sh
 ```
 
 ## Extraction
