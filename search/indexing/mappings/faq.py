@@ -1,58 +1,38 @@
 faq_mapping = {
     'properties': {
-        'question': {
+        'title': {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
+                'french_heavy': {
+                    'type': 'text',
+                    'analyzer': 'french_heavy'
+                },
+                'french_light': {
+                    'type': 'text',
+                    'analyzer': 'french_light'
+                },
                 'edge_ngram': {
                     'type': 'text',
                     'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
                 },
             },
         },
-        'reponse': {
+        'text': {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
+                'french_heavy': {
+                    'type': 'text',
+                    'analyzer': 'french_heavy'
+                },
+                'french_light': {
+                    'type': 'text',
+                    'analyzer': 'french_light'
+                },
                 'edge_ngram': {
                     'type': 'text',
                     'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
-                },
-            },
-        },
-        'theme': {
-            'type': 'text',
-            'analyzer': 'standard',
-            'fields': {
-                'edge_ngram': {
-                    'type': 'text',
-                    'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
-                },
-            },
-        },
-        'branche': {
-            'type': 'text',
-            'analyzer': 'standard',
-            'fields': {
-                'edge_ngram': {
-                    'type': 'text',
-                    'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
                 },
             },
         },

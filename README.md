@@ -39,6 +39,9 @@ $ docker exec -ti code-du-travail-data-python pipenv run python search/extractio
 # 2) Données accompagnées des "tags" renommés humainement (depuis l'extraction ePoseidon) :
 $ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/code_du_travail/cleaned_tags/data.py -v
 
+# Pour vérifier les données des fiches Ministère du Travail :
+$ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/fiches_ministere_travail/data.py -v
+
 # Pour vérifier les données des fiches services public :
 $ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/fiches_service_public/data.py -v
 

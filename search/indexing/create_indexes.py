@@ -73,17 +73,10 @@ def create_code_du_travail_documents(index_name, type_name):
     actions = []
     for val in CODE_DU_TRAVAIL_DICT.values():
         body = {
-            'num': val['num'],
-            'titre': val['titre'],
-            'nota': val['nota'],
-            'bloc_textuel': val['bloc_textuel'],
-            'tags': [tag.path for tag in val['tags']],
-            'id': val['id'],
-            'section': val['section'],
-            'etat': val['etat'],
-            'date_debut': val['date_debut'],
-            'date_fin': val['date_fin'],
-            'cid': val['cid'],
+            'title': val['titre'],
+            'text': val['bloc_textuel'],
+            'url': val['url'],
+            'path': [tag.path for tag in val['tags']],
         }
         actions.append({
             '_op_type': 'index',
@@ -102,11 +95,9 @@ def create_fiches_service_public_documents(index_name, type_name):
     for val in FICHES_SERVICE_PUBLIC:
         body = {
             'url': val['url'],
-            'sous_theme': val['sous_theme'],
             'title': val['title'],
             'text': val['text'],
             'tags': val['tags'],
-            'refs': val['refs'],
         }
         actions.append({
             '_op_type': 'index',
@@ -127,7 +118,6 @@ def create_fiches_ministere_travail_documents(index_name, type_name):
             'url': val['url'],
             'title': val['title'],
             'text': val['text'],
-            'questions': val['questions'],
         }
         actions.append({
             '_op_type': 'index',
@@ -147,10 +137,8 @@ def create_faq_documents(index_name, type_name):
         data = json.load(json_data)
         for val in data:
             body = {
-                'question': val['question'],
-                'reponse': val['reponse'],
-                'theme': val['theme'],
-                'branche': val['branche'],
+                'title': val['question'],
+                'text': f"{val['reponse']} {val['theme']} {val['branche']}",
             }
             actions.append({
                 '_op_type': 'index',

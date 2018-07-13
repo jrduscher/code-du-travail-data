@@ -31,17 +31,26 @@ filters = {
     },
 }
 
-
 analyzers = {
-    'edge_ngram_custom': {
+    'french_heavy': {
         'type': 'custom',
         'char_filter': ['html_strip'],
-        'tokenizer': 'standard',
+        'tokenizer': 'icu_tokenizer',
         'filter': [
-            'asciifolding',
-            'lowercase',
+            'french_elision',
+            'icu_folding',
             'acronyms',
-            'edge_ngram_filter',
+            'synonyms',
+            'french_stemmer',
+        ],
+    },
+    'french_light': {
+        'type': 'custom',
+        'char_filter': ['html_strip'],
+        'tokenizer': 'icu_tokenizer',
+        'filter': [
+            'french_elision',
+            'icu_folding',
         ],
     },
     'french_custom': {
@@ -53,6 +62,17 @@ analyzers = {
             'acronyms',
             'synonyms',
             'french_stemmer',
+        ],
+    },
+    'edge_ngram_custom': {
+        'type': 'custom',
+        'char_filter': ['html_strip'],
+        'tokenizer': 'standard',
+        'filter': [
+            'asciifolding',
+            'lowercase',
+            'acronyms',
+            'edge_ngram_filter',
         ],
     },
     'path_analyzer_custom': {

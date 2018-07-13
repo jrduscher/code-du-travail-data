@@ -23,14 +23,13 @@ def populate_fiches_ministere_travail(json_file=JSON_FICHES):
 
         for item in data:
 
-            text = item['text']
+            text = f"{item['text']} {' '.join(item['summary'])}"  # Summary = questions.
             text = text.replace('A SAVOIR', '')
             text = ' '.join(text.split())  # Replace multiple spaces by a single space.
 
             fiche = {
                 'title': item['title'],
                 'text': text,
-                'questions': item['summary'],  # Summary = questions.
                 'url': item['url'],
             }
 

@@ -8,13 +8,17 @@ fiches_ministere_travail_mapping = {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
+                'french_heavy': {
+                    'type': 'text',
+                    'analyzer': 'french_heavy'
+                },
+                'french_light': {
+                    'type': 'text',
+                    'analyzer': 'french_light'
+                },
                 'edge_ngram': {
                     'type': 'text',
                     'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
                 },
             },
         },
@@ -22,27 +26,17 @@ fiches_ministere_travail_mapping = {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
+                'french_heavy': {
+                    'type': 'text',
+                    'analyzer': 'french_heavy'
+                },
+                'french_light': {
+                    'type': 'text',
+                    'analyzer': 'french_light'
+                },
                 'edge_ngram': {
                     'type': 'text',
                     'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
-                },
-            },
-        },
-        'questions': {
-            'type': 'text',
-            'analyzer': 'standard',
-            'fields': {
-                'edge_ngram': {
-                    'type': 'text',
-                    'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
                 },
             },
         },

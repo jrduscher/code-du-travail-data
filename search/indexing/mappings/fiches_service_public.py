@@ -4,31 +4,21 @@ fiches_service_public_mapping = {
             'type': 'text',
             'analyzer': 'keyword',
         },
-        'sous_theme': {
-            'type': 'text',
-            'analyzer': 'standard',
-            'fields': {
-                'edge_ngram': {
-                    'type': 'text',
-                    'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
-                },
-            },
-        },
         'title': {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
+                'french_heavy': {
+                    'type': 'text',
+                    'analyzer': 'french_heavy'
+                },
+                'french_light': {
+                    'type': 'text',
+                    'analyzer': 'french_light'
+                },
                 'edge_ngram': {
                     'type': 'text',
                     'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
                 },
             },
         },
@@ -36,13 +26,17 @@ fiches_service_public_mapping = {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
+                'french_heavy': {
+                    'type': 'text',
+                    'analyzer': 'french_heavy'
+                },
+                'french_light': {
+                    'type': 'text',
+                    'analyzer': 'french_light'
+                },
                 'edge_ngram': {
                     'type': 'text',
                     'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
                 },
             },
         },
@@ -50,50 +44,17 @@ fiches_service_public_mapping = {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
+                'french_heavy': {
+                    'type': 'text',
+                    'analyzer': 'french_heavy'
+                },
+                'french_light': {
+                    'type': 'text',
+                    'analyzer': 'french_light'
+                },
                 'edge_ngram': {
                     'type': 'text',
                     'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
-                },
-            },
-        },
-        'refs': {
-            'type': 'nested',
-            'properties': {
-                'url': {
-                    'type': 'text',
-                    'analyzer': 'keyword',
-                },
-                'source': {
-                    'type': 'text',
-                    'analyzer': 'standard',
-                    'fields': {
-                        'edge_ngram': {
-                            'type': 'text',
-                            'analyzer': 'edge_ngram_custom'
-                        },
-                        'french': {
-                            'type': 'text',
-                            'analyzer': 'french_custom'
-                        },
-                    },
-                },
-                'sujet': {
-                    'type': 'text',
-                    'analyzer': 'standard',
-                    'fields': {
-                        'edge_ngram': {
-                            'type': 'text',
-                            'analyzer': 'edge_ngram_custom'
-                        },
-                        'french': {
-                            'type': 'text',
-                            'analyzer': 'french_custom'
-                        },
-                    },
                 },
             },
         },

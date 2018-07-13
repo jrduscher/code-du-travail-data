@@ -34,9 +34,10 @@ def populate_fiches_service_public(json_file=JSON_FICHES):
             # Replace multiple spaces by a single space.
             text = ' '.join(text.split())
 
-            # Merge all tags.
+            # Merge everything that look like a tag, remove duplicate values.
             tags = list(set(
-                item['tags']
+                [item['sousTheme']]
+                + item['tags']
                 + [item for item in item['ariane'] if item not in TAGS_IRRELEVANT]
                 + item['fiches']
                 + item['sousDossiers']
@@ -44,11 +45,9 @@ def populate_fiches_service_public(json_file=JSON_FICHES):
 
             fiche = {
                 'url': item['url'],
-                'sous_theme': item['sousTheme'],
                 'title': item['title'],
                 'text': text,
                 'tags': tags,
-                'refs': item['refs'],  # List of {`url`, `source` and `sujet`} entries.
             }
             FICHES_SERVICE_PUBLIC.append(fiche)
 

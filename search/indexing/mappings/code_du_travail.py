@@ -1,91 +1,63 @@
 code_du_travail_mapping = {
     'properties': {
-        'num': {
+        'title': {
+            'type': 'text',
+            'analyzer': 'standard',
+            'fields': {
+                'french_heavy': {
+                    'type': 'text',
+                    'analyzer': 'french_heavy'
+                },
+                'french_light': {
+                    'type': 'text',
+                    'analyzer': 'french_light'
+                },
+                'edge_ngram': {
+                    'type': 'text',
+                    'analyzer': 'edge_ngram_custom'
+                },
+            },
+        },
+        'text': {
+            'type': 'text',
+            'analyzer': 'standard',
+            'fields': {
+                'french_heavy': {
+                    'type': 'text',
+                    'analyzer': 'french_heavy'
+                },
+                'french_light': {
+                    'type': 'text',
+                    'analyzer': 'french_light'
+                },
+                'edge_ngram': {
+                    'type': 'text',
+                    'analyzer': 'edge_ngram_custom'
+                },
+            },
+        },
+        'url': {
             'type': 'text',
             'analyzer': 'keyword',
         },
-        'titre': {
-            'type': 'text',
-            'analyzer': 'standard',
-            'fields': {
-                'edge_ngram': {
-                    'type': 'text',
-                    'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
-                },
-            },
-        },
-        'nota': {
-            'type': 'text',
-            'analyzer': 'standard',
-            'fields': {
-                'edge_ngram': {
-                    'type': 'text',
-                    'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
-                },
-            },
-        },
-        'bloc_textuel': {
-            'type': 'text',
-            'analyzer': 'standard',
-            'fields': {
-                'edge_ngram': {
-                    'type': 'text',
-                    'analyzer': 'edge_ngram_custom'
-                },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
-                },
-            },
-        },
-        'tags': {
+        'path': {
             'type': 'text',
             'analyzer': 'path_analyzer_custom',
             'fielddata': True,
             'fields': {
+                'french_heavy': {
+                    'type': 'text',
+                    'analyzer': 'french_heavy'
+                },
+                'french_light': {
+                    'type': 'text',
+                    'analyzer': 'french_light'
+                },
                 'edge_ngram': {
                     'type': 'text',
                     'analyzer': 'edge_ngram_custom'
                 },
-                'french': {
-                    'type': 'text',
-                    'analyzer': 'french_custom'
-                },
             },
-        },
-        'id': {
-            'type': 'text',
-            'index': False,
-        },
-        'section': {
-            'type': 'text',
-            'index': False,
-        },
-        'etat': {
-            'type': 'text',
-            'index': False,
-        },
-        'date_debut': {
-            'type': 'date',
-            'format': 'yyyy-MM-dd',
-            'index': False,
-        },
-        'date_fin': {
-            'type': 'date',
-            'format': 'yyyy-MM-dd',
-            'index': False,
-        },
-        'cid': {
-            'type': 'text',
-            'index': False,
         },
     },
 }
