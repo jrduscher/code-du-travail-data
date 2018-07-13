@@ -30,6 +30,8 @@ from search.extraction.code_du_travail.cleaned_tags.tags import TAGS_DICT
 logger = settings.get_logger(__name__)
 
 
+LEGIFRANCE_BASE_URL = 'https://www.legifrance.gouv.fr/affichCodeArticle.do'
+
 JSON_LEGILIBRE = os.path.join(settings.BASE_DIR, 'dataset/code_du_travail/code-du-travail-2018-01-01.json')
 
 CODE_DU_TRAVAIL_DICT = {}
@@ -115,6 +117,7 @@ def inspect_code_du_travail_children(children):
                 'bloc_textuel': child['data']['bloc_textuel'],  # In HTML.
                 'cid': child['data']['cid'],
                 'tags': [make_tag(tag)],  # Stick to 1 tag for now.
+                'url': f"{LEGIFRANCE_BASE_URL}?idArticle={child['data']['id']}&cidTexte={child['data']['cid']}",
             }
 
         # Recursion: inspect children, if any.

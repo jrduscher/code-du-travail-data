@@ -28,6 +28,8 @@ from search.extraction.code_du_travail.eposeidon_tags.tags_renamed import RENAME
 logger = settings.get_logger(__name__)
 
 
+LEGIFRANCE_BASE_URL = 'https://www.legifrance.gouv.fr/affichCodeArticle.do'
+
 JSON_EPOSEIDON = os.path.join(settings.BASE_DIR, 'dataset/code_du_travail/nomenclatures-20180413.json')
 JSON_LEGILIBRE = os.path.join(settings.BASE_DIR, 'dataset/code_du_travail/code-du-travail-2018-01-01.json')
 
@@ -203,6 +205,7 @@ def inspect_code_du_travail_children(children):
                 'bloc_textuel': child['data']['bloc_textuel'],  # In HTML.
                 'cid': child['data']['cid'],
                 'tags': [tag for tag in eposeidon_tags],
+                'url': f"{LEGIFRANCE_BASE_URL}?idArticle={child['data']['id']}&cidTexte={child['data']['cid']}",
             }
 
         # Recursion: inspect children, if any.
