@@ -125,19 +125,24 @@ curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/_analyze?p
   "text": "Crime and Punishment"
 }'
 
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/_analyze?pretty' -d '{
-  "field": "tags",
-  "text": "/Santé Sécurité/Sécurité: Contrôle/Pénal/Infractions personne autre que employeur"
-}'
-
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/_analyze?pretty' -d '{
-  "field": "num",
-  "text": "R1227-7"
-}'
-
 curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/_analyze?pretty' -d '{
   "analyzer": "keyword",
   "text": "R1227-7"
+}'
+
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/all/_analyze?pretty' -d '{
+  "analyzer": "french_heavy",
+  "text": "chômage si le salarié en bénéficiait"
+}'
+
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/all/_analyze?pretty' -d '{
+  "analyzer": "french_light",
+  "text": "chômage si le salarié en bénéficiait"
+}'
+
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/all/_analyze?pretty' -d '{
+  "field": "path",
+  "text": "/Santé Sécurité/Sécurité: Contrôle/Pénal/Infractions personne autre que employeur"
 }'
 
 # ---------------------------------------------------------------------------------------------------

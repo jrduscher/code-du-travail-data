@@ -91,36 +91,41 @@ def create_all_documents(index_name, type_name):
     for val in CODE_DU_TRAVAIL_DICT.values():
         body_data.append({
             'source': 'code_du_travail',
-            'title': val['titre'],
             'text': val['bloc_textuel'],
-            'url': val['url'],
+            'title': val['titre'],
+            'all_text': f"{val['titre']} {val['bloc_textuel']}",
             'path': [tag.path for tag in val['tags']],
+            'url': val['url'],
         })
 
     for val in FICHES_SERVICE_PUBLIC:
         body_data.append({
             'source': 'fiches_service_public',
-            'url': val['url'],
-            'title': val['title'],
             'text': val['text'],
+            'title': val['title'],
+            'all_text': f"{val['title']} {val['text']}",
             'tags': val['tags'],
+            'url': val['url'],
         })
 
     for val in FICHES_MINISTERE_TRAVAIL:
         body_data.append({
             'source': 'fiches_ministere_travail',
-            'url': val['url'],
-            'title': val['title'],
             'text': val['text'],
+            'title': val['title'],
+            'all_text': f"{val['title']} {val['text']}",
+            'url': val['url'],
         })
 
     with open(os.path.join(settings.BASE_DIR, 'dataset/faq.json')) as json_data:
         data = json.load(json_data)
         for val in data:
+            text = f"{val['reponse']} {val['theme']} {val['branche']}"
             body_data.append({
                 'source': 'faq',
+                'text': f"{text}",
                 'title': val['question'],
-                'text': f"{val['reponse']} {val['theme']} {val['branche']}",
+                'all_text': f"val['question'] {text}",
             })
 
     return create_documents(body_data, index_name, type_name)

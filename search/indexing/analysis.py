@@ -7,10 +7,6 @@ filters = {
         'generate_word_parts': False,
         'generate_number_parts': False,
     },
-    'synonyms': {
-        'type': 'synonym',
-        'synonyms': SYNONYMS,
-    },
     'edge_ngram_filter': {
         'type': 'edge_ngram',
         'min_gram': 4,
@@ -28,6 +24,10 @@ filters = {
     'french_stemmer': {
         'type': 'stemmer',
         'language': 'light_french',
+    },
+    'synonyms': {
+        'type': 'synonym',
+        'synonyms': SYNONYMS,
     },
 }
 
@@ -51,17 +51,6 @@ analyzers = {
         'filter': [
             'french_elision',
             'icu_folding',
-        ],
-    },
-    'french_custom': {
-        'tokenizer': 'standard',
-        'char_filter': ['html_strip'],
-        'filter': [
-            'french_elision',
-            'lowercase',
-            'acronyms',
-            'synonyms',
-            'french_stemmer',
         ],
     },
     'edge_ngram_custom': {
