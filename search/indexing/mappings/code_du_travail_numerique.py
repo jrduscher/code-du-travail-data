@@ -1,4 +1,4 @@
-all_mapping = {
+code_du_travail_numerique_mapping = {
     'properties': {
         # Indicates the origin of the document, e.g. 'code_du_travail', 'fiches_service_public' etc.
         'source': {
