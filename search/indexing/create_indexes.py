@@ -130,13 +130,6 @@ if __name__ == '__main__':
     # Use 1 index by type, see:
     # https://www.elastic.co/blog/index-type-parent-child-join-now-future-in-elasticsearch
 
-    # Delete old indices. TODO: remove those lines once production indices have been deleted.
-    drop_index('all')
-    drop_index('code_du_travail')
-    drop_index('faq')
-    drop_index('fiches_ministere_travail')
-    drop_index('fiches_service_public')
-
     name = 'code_du_travail_numerique'
     drop_index(name)
     create_index(index_name=name, mapping_name=name, mapping=code_du_travail_numerique_mapping)
