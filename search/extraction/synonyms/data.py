@@ -13,16 +13,21 @@ logger = settings.get_logger(__name__)
 
 SYNONYMS = []
 
+# Homemade synonyms.
+# https://github.com/SocialGouv/code-du-travail-explorer/issues/56
+JSON_SYNONYMS_FILE = os.path.join(settings.BASE_DIR, 'dataset/synonyms.json')
+
 # TESS.json => Thesaurus Travail Emploi Santé Solidarité.
-JSON_FILE = os.path.join(settings.BASE_DIR, 'dataset/thesaurus/TESS.json')
+JSON_THESAURUS_FILE = os.path.join(settings.BASE_DIR, 'dataset/thesaurus/TESS.json')
 
 
-def populate_synonyms(json_file=JSON_FILE):
-    """
-    Extract synonyms from the TESS Thesaurus.
-    """
+def populate_synonyms():
 
-    with open(json_file) as json_data:
+    with open(JSON_SYNONYMS_FILE) as json_data:
+        SYNONYMS.extend(json.load(json_data))
+
+    # Extract synonyms from the TESS Thesaurus.
+    with open(JSON_THESAURUS_FILE) as json_data:
 
         data = json.load(json_data)
 
@@ -31,9 +36,8 @@ def populate_synonyms(json_file=JSON_FILE):
             if item.get('term') and item.get('equivalent'):
                 SYNONYMS.append(f"{item['term']}, {item['equivalent']}")
 
-
-        logger.debug('-' * 80)
-        logger.debug(pformat(SYNONYMS, width=120))
+    logger.debug('-' * 80)
+    logger.debug(pformat(SYNONYMS, width=120))
 
 
 if __name__ == '__main__':
