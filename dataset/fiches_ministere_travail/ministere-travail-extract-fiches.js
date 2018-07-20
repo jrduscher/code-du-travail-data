@@ -7,28 +7,54 @@ const FICHES_URLS = require("./ministere-travail-liste-fiches.js");
 const qsa = (node, selector) => Array.from(node.querySelectorAll(selector));
 
 const parseFiche = url =>
-  JSDOM.fromURL(url).then(dom => {
-    const article = qsa(dom.window.document, ".main-article")[0];
-    const title = qsa(article, "h1")[0].textContent.trim();
-    const text = qsa(article, ".main-article__texte")[0].textContent.trim();
-    const summary = qsa(dom.window.document, ".navigation-article li")
-      .map(n => n.textContent.trim())
-      .filter(t => t !== "L’INFO EN PLUS" && t !== "POUR ALLER PLUS LOIN");
-    const articles = qsa(
-      dom.window.document,
-      "article.encarts__article li"
-    ).map(n => ({
-      url: qsa(n, "a") && qsa(n, "a")[0] && qsa(n, "a")[0].getAttribute("href"),
-      text: n.textContent.trim()
-    }));
-    return {
-      title,
-      text,
-      summary,
-      url,
-      articles
-    };
-  });
+  JSDOM.fromURL(url)
+    .then(dom => {
+
+      const summary = qsa(dom.window.document, ".navigation-article li")
+        .map(n => n.textContent.trim())
+        .filter(t => t !== "L’INFO EN PLUS" && t !== "POUR ALLER PLUS LOIN");
+
+      // `articles` = textes de référence.
+      const articles = qsa(dom.window.document, "article.encarts__article li")
+        .map(n => ({
+          url: qsa(n, "a") && qsa(n, "a")[0] && qsa(n, "a")[0].getAttribute("href"),
+          text: n.textContent.trim()
+        }));
+
+      const article = qsa(dom.window.document, ".main-article")[0];
+
+      let result = {
+        articles,
+        summary,
+        title: qsa(article, "h1")[0].textContent.trim(),
+        text_full: qsa(article, ".main-article__texte")[0].textContent.trim(),
+        text_by_section: [],
+        url,
+      }
+
+      const articleChildren = qsa(article, '*');
+      articleChildren.forEach(function (el, index) {
+        if (el.tagName === 'H3') {
+          let subSection = {
+            title: el.textContent.trim(),
+            text: '',
+            url: `${url}#${el.id}`,
+          };
+          let nextEl = el.nextElementSibling;
+          while (nextEl && nextEl.tagName !== 'H3') {
+            subSection.text += nextEl.textContent.trim();
+            nextEl = nextEl.nextElementSibling;
+          }
+          result.text_by_section.push(subSection);
+        }
+      });
+
+      return result;
+
+    })
+    .catch(error => {
+      // Ignore 404 errors.
+    });
 
 serialExec(
   FICHES_URLS.map(f => () => parseFiche(f.url).catch()).filter(Boolean)
