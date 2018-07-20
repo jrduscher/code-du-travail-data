@@ -23,8 +23,12 @@
 
 - `thesaurus/TESS.json` : Thesaurus Travail Emploi Santé Solidarité
 
+- `synonyms.json` : liste de synonymes [élaborée à la main](https://github.com/SocialGouv/code-du-travail-explorer/issues/56)
 
-# Comment générer un JSON depuis un XML ePoseidon
+
+# Génération des fichiers JSON
+
+## Obtenir un fichier JSON depuis un XML ePoseidon
 
 Vérifier le chemin du XML dans la constante `INPUT_XML` du fichier `code_du_travail/eposeidon_script/index.js`, puis :
 
@@ -36,4 +40,11 @@ $ node --version
 v9.11.2
 $ npm install
 $ node index.js > ../nomenclatures-`date +%Y%m%d`.json
+```
+
+## Obtenir un fichier JSON des fiches du ministère du travail
+
+```
+$ cd dataset/fiches_ministere_travail
+$ node ministere-travail-extract-fiches.js > fiches-min-travail.json
 ```
