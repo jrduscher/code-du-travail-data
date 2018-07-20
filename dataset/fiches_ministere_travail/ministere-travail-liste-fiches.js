@@ -801,11 +801,6 @@ module.exports = [
   },
   {
     url:
-      "http://travail-emploi.gouv.fr/emploi/insertion-dans-l-emploi/emploi-et-handicap/rqth",
-    title: "La reconnaissance de la qualité de travailleur handicapé"
-  },
-  {
-    url:
       "http://travail-emploi.gouv.fr/droit-du-travail/contrats-et-carriere/contrats-de-travail/article/les-activites-d-adultes-relais",
     title: "Les activités d’adultes relais"
   },
@@ -893,11 +888,6 @@ module.exports = [
     url:
       "http://travail-emploi.gouv.fr/droit-du-travail/relations-au-travail/harcelement-discrimination/article/le-harcelement-moral",
     title: "Le harcèlement moral"
-  },
-  {
-    url:
-      "http://travail-emploi.gouv.fr/dialogue-social/egalite-professionnelle-et-salariale-femmes-hommes/article/l-egalite-de-remuneration",
-    title: "L’égalité de rémunération"
   },
   {
     url:
