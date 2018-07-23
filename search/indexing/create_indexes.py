@@ -108,7 +108,7 @@ def create_documents(index_name, type_name):
                 'source': 'faq',
                 'text': f"{text}",
                 'title': val['question'],
-                'all_text': f"val['question'] {text}",
+                'all_text': f"{val['question']} {text}",
             })
 
     actions = [
