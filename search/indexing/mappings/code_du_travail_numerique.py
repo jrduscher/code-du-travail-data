@@ -15,13 +15,17 @@ code_du_travail_numerique_mapping = {
             'analyzer': 'standard',
             'store': True,
             'fields': {
-                'french_heavy': {
+                'french_stemmed': {
                     'type': 'text',
-                    'analyzer': 'french_heavy',
+                    'analyzer': 'french_stemmed',
                 },
-                'french_light': {
+                'french_exact': {
                     'type': 'text',
-                    'analyzer': 'french_light',
+                    'analyzer': 'french_exact',
+                },
+                'shingle': {
+                    'type': 'text',
+                    'analyzer': 'shingle',
                 },
             },
         },
@@ -29,17 +33,22 @@ code_du_travail_numerique_mapping = {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
-                'french_heavy': {
+                'french_stemmed': {
                     'type': 'text',
-                    'analyzer': 'french_heavy',
+                    'analyzer': 'french_stemmed',
                 },
-                'french_light': {
+                'french_exact': {
                     'type': 'text',
-                    'analyzer': 'french_light',
+                    'analyzer': 'french_exact',
                 },
-                'edge_ngram': {
+                'shingle': {
                     'type': 'text',
-                    'analyzer': 'edge_ngram_custom',
+                    'analyzer': 'shingle',
+                },
+                # Useful to match articles by number, e.g. "R1227-7".
+                'whitespace': {
+                    'type': 'text',
+                    'analyzer': 'whitespace',
                 },
             },
         },
@@ -47,17 +56,17 @@ code_du_travail_numerique_mapping = {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
-                'french_heavy': {
+                'french_stemmed': {
                     'type': 'text',
-                    'analyzer': 'french_heavy',
+                    'analyzer': 'french_stemmed',
                 },
-                'french_light': {
+                'french_exact': {
                     'type': 'text',
-                    'analyzer': 'french_light',
+                    'analyzer': 'french_exact',
                 },
-                'edge_ngram': {
+                'shingle': {
                     'type': 'text',
-                    'analyzer': 'edge_ngram_custom',
+                    'analyzer': 'shingle',
                 },
             },
         },
@@ -66,17 +75,17 @@ code_du_travail_numerique_mapping = {
             'type': 'text',
             'analyzer': 'standard',
             'fields': {
-                'french_heavy': {
+                'french_stemmed': {
                     'type': 'text',
-                    'analyzer': 'french_heavy',
+                    'analyzer': 'french_stemmed',
                 },
-                'french_light': {
+                'french_exact': {
                     'type': 'text',
-                    'analyzer': 'french_light',
+                    'analyzer': 'french_exact',
                 },
-                'edge_ngram': {
+                'shingle': {
                     'type': 'text',
-                    'analyzer': 'edge_ngram_custom',
+                    'analyzer': 'shingle',
                 },
             },
         },
@@ -86,17 +95,17 @@ code_du_travail_numerique_mapping = {
             'analyzer': 'path_analyzer_custom',
             'fielddata': True,
             'fields': {
-                'french_heavy': {
+                'french_stemmed': {
                     'type': 'text',
-                    'analyzer': 'french_heavy',
+                    'analyzer': 'french_stemmed',
                 },
-                'french_light': {
+                'french_exact': {
                     'type': 'text',
-                    'analyzer': 'french_light',
+                    'analyzer': 'french_exact',
                 },
-                'edge_ngram': {
+                'shingle': {
                     'type': 'text',
-                    'analyzer': 'edge_ngram_custom',
+                    'analyzer': 'shingle',
                 },
             },
         },

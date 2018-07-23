@@ -10,11 +10,6 @@ filters = {
         'generate_word_parts': False,
         'generate_number_parts': False,
     },
-    'edge_ngram_filter': {
-        'type': 'edge_ngram',
-        'min_gram': 4,
-        'max_gram': 20,
-    },
     'french_elision': {
         'type': 'elision',
         'articles_case': True,
@@ -47,6 +42,13 @@ filters = {
         'type': 'stop',
         'stopwords': '_french_',
     },
+    'shingle': {
+        'type': 'shingle',
+        'min_shingle_size': 2,
+        'max_shingle_size': 5,
+        'output_unigrams': False,
+        'filler_token': '',
+    },
     'synonyms': {
         'type': 'synonym',
         'synonyms': SYNONYMS,
@@ -54,36 +56,45 @@ filters = {
 }
 
 analyzers = {
-    'french_heavy': {
+    'french_stemmed': {
         'type': 'custom',
         'char_filter': ['html_strip'],
         'tokenizer': 'icu_tokenizer',
         'filter': [
             'french_elision',
             'icu_folding',
+            'lowercase',
             'acronyms',
             'synonyms',
+            'french_stop',
             'french_stemmer',
         ],
     },
-    'french_light': {
+    'french_exact': {
         'type': 'custom',
         'char_filter': ['html_strip'],
         'tokenizer': 'icu_tokenizer',
         'filter': [
             'french_elision',
             'icu_folding',
-        ],
-    },
-    'edge_ngram_custom': {
-        'type': 'custom',
-        'char_filter': ['html_strip'],
-        'tokenizer': 'standard',
-        'filter': [
-            'asciifolding',
             'lowercase',
             'acronyms',
-            'edge_ngram_filter',
+            'synonyms',
+            'french_stop',
+        ],
+    },
+    'shingle': {
+        'type': 'custom',
+        'char_filter': ['html_strip'],
+        'tokenizer': 'icu_tokenizer',
+        'filter': [
+            'french_elision',
+            'icu_folding',
+            'lowercase',
+            'acronyms',
+            'synonyms',
+            'french_stop',
+            'shingle',
         ],
     },
     'path_analyzer_custom': {
