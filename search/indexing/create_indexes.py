@@ -76,8 +76,8 @@ def create_documents(index_name, type_name):
             'source': 'code_du_travail',
             'text': val['bloc_textuel'],
             'title': val['titre'],
-            'all_text': f"{val['titre']} {val['bloc_textuel']}",
-            'path': [tag.path for tag in val['tags']],
+            'all_text': f"{val['titre']} {val['bloc_textuel']} {val['tags'][0].name}",
+            'path': val['tags'][0].path,
             'url': val['url'],
         })
 
