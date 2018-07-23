@@ -43,6 +43,10 @@ filters = {
         'type': 'stemmer',
         'language': 'light_french',
     },
+    'french_stop': {
+        'type': 'stop',
+        'stopwords': '_french_',
+    },
     'synonyms': {
         'type': 'synonym',
         'synonyms': SYNONYMS,
