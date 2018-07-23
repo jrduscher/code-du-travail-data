@@ -11,68 +11,66 @@ $ curl -XGET 'localhost:9200/_cat/nodes?v'
 # List of all indexes (indices).
 curl -XGET 'localhost:9200/_cat/indices?v'
 
-# Get information about one index.
+# Get information about one index (also list synonyms etc.).
 curl -XGET 'http://localhost:9200/code_du_travail_numerique/?pretty'
 
 # Retrieve mapping definitions for an index or type.
 curl -XGET 'http://localhost:9200/code_du_travail_numerique/_mapping/?pretty'
-curl -XGET 'http://localhost:9200/code_du_travail_numerique/_mapping/code_du_travail?pretty'
 
 # Search explicitly for documents of a given type within the code_du_travail index.
-curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty'
+curl -XGET 'http://localhost:9200/code_du_travail_numerique/_search?pretty'
 
 # ---------------------------------------------------------------------------------------------------
 
+# Match all of the documents in the index.
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
+  "query": {
+    "match_all": {}
+  }
+}'
+
 # Find by _id
-curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/cIATaWMBZaQe0cmOJ2iP?pretty'
+curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/2oeWxmQBNQ4Yw-wXdU_k?pretty'
 
 # Use the URI request query.
-curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?q=titre:L1141&pretty'
+curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?q=title:L1141&pretty'
 
 # Same as above with the query DSL.
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
   "query": {
-    "query_string": { "query": "titre:L1141" }
+    "query_string": { "query": "title:L1141" }
   }
 }'
 
 # With `_version` of the document.
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
   "version": true,
   "query": {
-    "query_string": { "query": "titre:L1141" }
+    "query_string": { "query": "title:L1141" }
   }
 }'
 
 # With `min_score`.
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
   "min_score": 8,
   "query": {
-    "query_string": { "query": "titre:L1141" }
-  }
-}'
-
-# Choosing the fields that we want to return you can only return these fields if they are marked as stored in the mappings used to create the index, or if the _source field was used.
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
-  "stored_fields": ["tags.path"],
-  "query": {
-    "query_string": { "query": "titre:L1141" }
+    "query_string": { "query": "title:L1141" }
   }
 }'
 
 # Hide source.
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
   "_source": false,
   "query": {
-    "query_string": { "query": "titre:L1141" }
+    "query_string": { "query": "title:L1141" }
   }
 }'
 
 # Filter source fields.
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
-  "_source": ["titre", "nota", "bloc_textuel"],
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
+  "_source": ["title", "text"],
   "query": {
-    "query_string": { "query": "titre:L1141" }
+    "query_string": { "query": "title:L1141" }
   }
 }'
 
@@ -80,45 +78,15 @@ curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_tr
 
 # Term query: matches the document that has a term in a given field - the exact, not analyzed term.
 # Search for 'l1141' in lowercase instead of 'L1141': because 'L1141' becomes 'l1141' after analysis.
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
   "query": {
-    "term": { "titre": "l1141" }
-  }
-}'
-
-# Match all of the documents in the index.
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
-  "query": {
-    "match_all": {}
-  }
-}'
-
-# Find all the documents with a certain type.
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/_search?pretty' -d '{
-  "query": {
-    "type": { "value": "code_du_travail" }
-  }
-}'
-
-# The match query: takes the values given in the query parameter, analyzes it,
-# and constructs the appropriate query out of it.
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
-  "query": {
-    "match": { "titre": "Article L1141-1" }
-  }
-}'
-
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
-  "query": {
-    "match": {
-        "titre": {"query": "Article L1141-", "operator": "and"}
-    }
+    "term": { "title": "l1141" }
   }
 }'
 
 # ---------------------------------------------------------------------------------------------------
 
-# Test analyzers regarding how tokens will be created.
+# Test default analyzers.
 
 curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/_analyze?pretty' -d '{
   "analyzer": "english",
@@ -130,65 +98,60 @@ curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/_analyze?p
   "text": "R1227-7"
 }'
 
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/all/_analyze?pretty' -d '{
-  "analyzer": "french_heavy",
-  "text": "chômage si le salarié en bénéficiait"
+# Test custom analyzers.
+
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/_analyze?pretty' -d '{
+  "analyzer": "french_stemmed",
+  "text": "CSP : quelle est la procédure à faire dans ce cas là ?"
 }'
 
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/all/_analyze?pretty' -d '{
-  "analyzer": "french_light",
-  "text": "chômage si le salarié en bénéficiait"
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/_analyze?pretty' -d '{
+  "analyzer": "french_exact",
+  "text": "CSP : quelle est la procédure à faire dans ce cas là ?"
 }'
 
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/all/_analyze?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/_analyze?pretty' -d '{
+  "analyzer": "shingle",
+  "text": "CSP : quelle est la procédure à faire dans ce cas là ?"
+}'
+
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/_analyze?pretty' -d '{
   "field": "path",
   "text": "/Santé Sécurité/Sécurité: Contrôle/Pénal/Infractions personne autre que employeur"
 }'
 
 # ---------------------------------------------------------------------------------------------------
 
-# Test document regarding how term vectors are created.
-
-curl -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/g1RurGMByEj79ebsWMJM/_termvector?fields=bloc_textuel&pretty'
-
-# ---------------------------------------------------------------------------------------------------
-
 # Filter by tag.
 
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
     "query": {
         "bool": {
             "must": {
                 "match": {
-                    "bloc_textuel": "interentreprises"
+                    "all_text": "interentreprises"
                 }
             },
             "filter": {
-                "term": {"tags": "/Santé Sécurité/Sécurité: Contrôle/Pénal/Infractions personne autre que employeur"}
+                "term": {"path": "/Santé Sécurité/Sécurité: Contrôle/Pénal/Infractions règles femmes maternité"}
             }
         }
     }
 }'
 
-# Find R1227-7 (because it has 2 tags).
+# Find R1227-7.
 
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
   "query": {
-    "term": { "num": "R1227-7" }
+    "term": { "title.whitespace": "R1227-7" }
   }
 }'
 
-# Ensure that we can fetch R1227-7 with any of its tags.
+# Fetch R1227-7 by its tag.
 
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
   "query": {
-    "term": {"tags": "/Contrat de travail/Contrat de Travail: Généralités, Embauche/Registre Unique du Personnel (RUP)> Registre Unique du Personnel (RUP) Pénal"}
-  }
-}'
-
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
-  "query": {
-    "term": {"tags": "/Contrat de travail/Contrat de Travail: Généralités, Embauche/Déclaration préalable à l\u0027embauche (DPAE)/Déclaration préalable à l\u0027embauche (DPAE) Pénal"}
+    "term": {"path": "/Contrat de travail/Embauche/Registre Unique du Personnel (RUP)/Sanction"}
   }
 }'
 
@@ -196,12 +159,12 @@ curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_tr
 
 # Count all tags
 
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
   "size": 0,
   "aggs": {
     "count_tags": {
       "cardinality": {
-        "field": "tags"
+        "field": "path"
       }
     }
   }
@@ -211,12 +174,12 @@ curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_tr
 # https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html
 # https://qbox.io/blog/how-to-download-all-unique-terms-field-elasticsearch
 
-curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail/_search?pretty' -d '{
+curl -H "Content-Type: application/json" -XGET 'http://localhost:9200/code_du_travail_numerique/code_du_travail_numerique/_search?pretty' -d '{
   "size": 0,
   "aggs": {
     "distinct_tags": {
       "terms": {
-        "field": "tags",
+        "field": "path",
         "size": 100000
       }
     }
