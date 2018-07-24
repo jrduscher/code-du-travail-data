@@ -111,6 +111,16 @@ def create_documents(index_name, type_name):
                 'all_text': f"{val['question']} {text}",
             })
 
+    with open(os.path.join(settings.BASE_DIR, 'dataset/code_bfc.json')) as json_data:
+        data = json.load(json_data)
+        for val in data:
+            body_data.append({
+                'source': 'code_bfc',
+                'text': val['reponse'],
+                'title': val['question'],
+                'all_text': f"<p>{val['question']}</p>{val['reponse']}",
+            })
+
     actions = [
         {
             '_op_type': 'index',

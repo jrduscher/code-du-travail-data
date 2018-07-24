@@ -8,6 +8,8 @@
 
 # Fichiers
 
+- `code_bfc.json` : fichier de questions-réponses élaborées par la DIRECCTE de Bourgogne-Franche-Comté (daté de juin 2017)
+
 - `code_du_travail/`
 
     - `code-du-travail-2018-03-13.pdf` : PDF officiel du code du travail (legilibre)
@@ -24,6 +26,7 @@
 - `thesaurus/TESS.json` : Thesaurus Travail Emploi Santé Solidarité
 
 - `synonyms.json` : liste de synonymes [élaborée à la main](https://github.com/SocialGouv/code-du-travail-explorer/issues/56)
+
 
 
 # Génération des fichiers JSON
