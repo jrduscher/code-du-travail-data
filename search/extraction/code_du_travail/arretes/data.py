@@ -13,8 +13,8 @@ But, there may be multiple "Arrêtés" with the same title, e.g. "Arrêté du 2 
 In this case, there is nothing to distinguish articles with the same title.
 
 It could be worth exploring:
-- another format for ePoseidon data
-- another data source
+- obtain another format for ePoseidon "Arrêtés" data
+- found another data source for "Arrêtés"
 """
 import argparse
 import json

@@ -7,6 +7,7 @@ from elasticsearch.helpers import bulk
 
 from search import settings
 from search.extraction.code_du_travail.cleaned_tags.data import CODE_DU_TRAVAIL_DICT
+from search.extraction.conventions_collectives_nationales.data import CONVENTIONS_COLLECTIVES
 from search.extraction.fiches_ministere_travail.data import FICHES_MINISTERE_TRAVAIL
 from search.extraction.fiches_service_public.data import FICHES_SERVICE_PUBLIC
 from search.indexing import analysis
@@ -120,6 +121,15 @@ def create_documents(index_name, type_name):
                 'title': val['question'],
                 'all_text': f"<p>{val['question']}</p>{val['reponse']}",
             })
+
+    for val in CONVENTIONS_COLLECTIVES:
+        body_data.append({
+            'source': 'conventions_collectives',
+            'text': val['text'],
+            'title': f"{val['idcc']} - {val['title']}",
+            'all_text': f"{val['idcc']} - {val['title']} {val['text']}",
+            'url': val['url'],
+        })
 
     actions = [
         {
