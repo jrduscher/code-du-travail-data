@@ -104,12 +104,11 @@ def create_documents(index_name, type_name):
     with open(os.path.join(settings.BASE_DIR, 'dataset/faq.json')) as json_data:
         data = json.load(json_data)
         for val in data:
-            text = f"{val['reponse']} {val['theme']} {val['branche']}"
             body_data.append({
                 'source': 'faq',
-                'text': f"{text}",
+                'text': val['reponse'],
                 'title': val['question'],
-                'all_text': f"{val['question']} {text}",
+                'all_text': f"{val['question']} {val['reponse']} {val['theme']} {val['branche']}",
             })
 
     with open(os.path.join(settings.BASE_DIR, 'dataset/code_bfc.json')) as json_data:
