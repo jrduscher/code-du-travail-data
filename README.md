@@ -9,7 +9,7 @@ Créez un fichier `.env` (utilisé par Docker) :
 ```shell
 PYTHONPATH=.
 
-# The Docker elasticsearch's hostname. Defaults to the container's name if not specified.
+# Use the Docker elasticsearch's hostname: defaults to the container's name if not specified.
 ES_HOST=code-du-travail-data-elasticsearch
 ```
 
@@ -19,6 +19,14 @@ Puis :
 $ docker-compose up
 ```
 
+## Indexation des données
+
+Lors du premier lancement d'Elasticsearch ou d'une modification des données indexées, vous avez besoin d'indexer les données dans la base :
+
+```shell
+$ docker exec -ti code-du-travail-data-python pipenv run python search/indexing/create_indexes.py
+```
+
 ## Pour lancer un shell Docker
 
 ```shell
@@ -26,17 +34,15 @@ $ docker exec -ti code-du-travail-data-python /bin/sh
 $ docker exec -ti code-du-travail-data-elasticsearch /bin/sh
 ```
 
-## Extraction
+## Extraction : vérifier les données qui seront indexées dans Elasticsearch
 
-Exemple de commandes pour vérifier les données qui seront indexées dans Elasticsearch.
+Il est possible de visualiser les données qui seront indexées dans Elasticsearch dans un shell en utilisant l'option `verbose` des commandes :
 
 ```shell
 # Pour vérifier les données du code du travail :
-
 # 1) Données accompagnées des "tags" extraits de ePoseidon :
 $ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/code_du_travail/eposeidon_tags/data.py -v
-
-# 2) Données accompagnées des "tags" renommés humainement (depuis l'extraction ePoseidon) :
+# 2) Données accompagnées des "tags" renommés humainement :
 $ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/code_du_travail/cleaned_tags/data.py -v
 
 # Pour vérifier les données des fiches Ministère du Travail :
@@ -47,11 +53,4 @@ $ docker exec -ti code-du-travail-data-python pipenv run python search/extractio
 
 # Pour vérifier les données des synonymes :
 $ docker exec -ti code-du-travail-data-python pipenv run python search/extraction/synonyms/data.py -v
-```
-
-## Indexation
-
-```shell
-# Pour peupler l'index d'Elasticsearch :
-$ docker exec -ti code-du-travail-data-python pipenv run python search/indexing/create_indexes.py
 ```
