@@ -499,7 +499,7 @@
     "question": "Je vais quitter mon entreprise de transports routiers, est-ce que je dois rendre ma carte conducteur à mon patron ?"
   },
   {
-    "reponse": "<p> La loi ne prévoit pas de date précise mais impose un versement une fois par mois. Vous pouvez demander un acompte de 50% du salaire pour 15 jours de travail. L’employeur ne peut pas le refuser.</p><p> Ces dispositions ne s'appliquent pas aux salariés travaillant à domicile, aux saisonniers, aux intermittents, VRP, et aux salariés temporaires. Pour ces catégories listées, d’autres modalités s’appliquent. Pour une information personnalisée, contactez votre service renseignements en droit du travail de la DIRECCTE.</p>",
+    "reponse": "<p> La loi ne prévoit pas de date précise mais impose un versement une fois par mois. Vous pouvez demander un acompte de 50% du salaire pour 15 jours de travail. L’employeur ne peut pas le refuser.</p><p> Ces dispositions ne s'appliquent pas :</p><li> - aux salariés travaillant à domicile, aux saisonniers, aux intermittents qui doivent être payés deux fois par mois, à 16 jours au plus d’intervalle et aux travailleurs temporaires, </li><li>- aux VRP à qui les commissions sont versées au moins tous les trois mois.</li><p>Pour ces catégories listées, d’autres modalités s’appliquent. Pour une information personnalisée, contactez votre service renseignements en droit du travail de la DIRECCTE.</p>",
     "theme": "SALAIRE" ,
     "branche": null,
     "themes": [
@@ -542,11 +542,18 @@
   	"question": "Mon employeur ne me donne plus de travail, que faire ?"
   },
   {
-  	"reponse": "<p> Votre contrat de travail est maintenu, vous êtes obligé de travailler avec le nouvel employeur. </p><p>En effet, en cas de rachat ou fusion de l’entreprise, les contrats de travail signés avec l’ancien employeur se poursuivent avec le nouveau. </p>",
+  	"reponse": "<p>Oui, en cas de rachat ou fusion de l’entreprise, le contrat de travail est maintenu.</p>",
   	"theme": "CONTRAT DE TRAVAIL ET EMBAUCHE",
   	"branche": null,
   	"themes": [],
-  	"question": " Avec le rachat de mon entreprise mon employeur change. Suis-je obligé de travailler avec la nouvelle entreprise ?"
+  	"question": " Avec le rachat de mon entreprise mon employeur change. Ai-je l'obligation de travailler avec la nouvelle entreprise ?"
+   },
+   {
+  	"reponse": "<p>Le solde de tout compte est remis avec le bulletin de salaire suivant la rupture du contrat de travail. Le solde de tout compte est donc remis dans le mois ou au début du mois suivant selon les habitudes de l’entreprise.</p><p>Le solde de tout compte liste l’ensemble des sommes versés au salarié lors de la rupture du contrat de travail. Il est établi par l’employeur.</p><p>Le salarié signe un reçu de ce solde de tout compte, en double exemplaire. Il en conserve un exemplaire.</p><p>Le salarié peut contester ce document par lettre recommandée dans les six mois suivant la signature du reçu.</p>,
+  	"theme": " RUPTURE DU CONTRAT",
+  	"branche": null,
+  	"themes": [],
+  	"question": "A quel moment mon employeur doit-il me fournir mon solde tout compte ?"
    },
    {
     "reponse": "<p>Le préavis de démission diffère suivant la qualification. Il est de :</p><ul>\n<li>8 jours pour les employés ayant moins de 6 mois d’ancienneté, de 15 jours pour ceux ayant entre 6 mois et moins de 2 ans d’ancienneté, et d’1 mois pour ceux ayant 2 ans d’ancienneté et plus,</li>\n<li>15 jours pour les agents de maîtrise ayant moins de 6 mois d’ancienneté, d’1 mois pour ceux ayant entre 6 mois et moins de 2 ans d’ancienneté, et de 2 mois pour ceux ayant 2 ans d’ancienneté et plus.</li>\n<li>1 mois pour les cadres ayant moins de 6 mois d’ancienneté, et 3 mois pour ceux ayant 6 mois d’ancienneté et plus.</li>\n</ul><p>(Article 30.1 de la convention collective nationale des hôtels, cafés, restaurants, que vous pouvez consulter sur le site <a href=\"https://legifrance.gouv.fr\">https://legifrance.gouv.fr</a> avec son numéro d’identification (IDCC) 1979).</p>",
