@@ -499,7 +499,7 @@
     "question": "Je vais quitter mon entreprise de transports routiers, est-ce que je dois rendre ma carte conducteur à mon patron ?"
   },
   {
-    "reponse": "<p> La loi ne prévoit pas de date précise mais impose un versement une fois par mois. Vous pouvez demander un acompte de 50% du salaire pour 15 jours de travail. L’employeur ne peut pas le refuser.</p><p> Ces dispositions ne s'appliquent pas aux salariés travaillant à domicile, aux saisonniers, aux intermittents, VRP, et aux salariés temporaires. Pour ces catégories listées, d’autres modalités s’appliquent. Pour une information personnalisée, contactez votre service Renseignements en droit du travail de la DIRECCTE.</p>",
+    "reponse": "<p> La loi ne prévoit pas de date précise mais impose un versement une fois par mois. Vous pouvez demander un acompte de 50% du salaire pour 15 jours de travail. L’employeur ne peut pas le refuser.</p><p> Ces dispositions ne s'appliquent pas aux salariés travaillant à domicile, aux saisonniers, aux intermittents, VRP, et aux salariés temporaires. Pour ces catégories listées, d’autres modalités s’appliquent. Pour une information personnalisée, contactez votre service renseignements en droit du travail de la DIRECCTE.</p>",
     "theme": "SALAIRE" ,
     "branche": null,
     "themes": [
@@ -507,14 +507,21 @@
     "question": "A quelle date mon salaire doit être versé ?"
   },
   {
-  	"reponse": "<p>Votre employeur doit tenir à votre disposition  les documents suivants au dernier jour de votre contrat de travail : </p><p>*Un certificat de travail, </p><p>*Une attestation Pôle Emploi</p><p>*Un reçu pour solde de tout compte</p><p>A défaut,  vous pouvez exiger ces documents en adressant un courrier recommandé avec  accusé réception à votre employeur.</p><p>En l’absence de réponse, vous devez saisir le conseil de prud’hommes.</p>,"
+  	"reponse": "<p>Votre employeur doit tenir à votre disposition  les documents suivants au dernier jour de votre contrat de travail : </p><li>- Un certificat de travail,</li><li>- Une attestation Pôle Emploi</li><li>- Un reçu pour solde de tout compte</li><p>A défaut,  vous pouvez exiger ces documents en adressant un courrier recommandé avec  accusé réception à votre employeur.</p><p>En l’absence de réponse, vous devez saisir le conseil de prud’hommes.</p>",
   	"theme": "RUPTURE DU CONTRAT DE TRAVAIL",
   	"branche": null,
   	"themes": [],
   	"question": " Mon contrat de travail prend fin. Quels documents mon employeur doit me remettre ?"
   },
   {
-  	"reponse": "<p>Votre employeur doit tenir à votre disposition  les documents suivants au dernier jour de votre contrat de travail :</p><p>*De respecter les durées maximales de travail et les temps de repos,</p><p>*D’accorder les contreparties obligatoires aux heures supplémentaires.</p>,
+  	"reponse": "<p>Les heures supplémentaires sont payées au taux horaire majoré. La majoration est fixée par l’accord d’entreprise, s’il existe,  ou la convention  collective applicable. La majoration doit être égale ou supérieure à 10 %.</p><p>A défaut, la majoration applicable est de :</p><li>- 25 % pour les 8 premières heures</li><li>-	50 % pour les heures suivantes</li></p><p>Le paiement de ces heures peut être remplacé par un repos majoré dans les mêmes conditions.</p>",
+  	"theme": " DURÉE DU TRAVAIL",
+  	"branche": null,
+  	"themes": [],
+  	"question": "Comment sont payées les heures supplémentaires ?"
+  },
+  {
+  	"reponse": "<p>Votre employeur doit tenir à votre disposition  les documents suivants au dernier jour de votre contrat de travail :</p><li>- de respecter les durées maximales de travail et les temps de repos,</li><li>- d’accorder les contreparties obligatoires aux heures supplémentaires.</li>,
   	"theme": " DURÉE DU TRAVAIL",
   	"branche": null,
   	"themes": [],
