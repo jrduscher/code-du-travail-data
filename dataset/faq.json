@@ -501,29 +501,43 @@
   {
     "reponse": "<p> La loi ne prévoit pas de date précise mais impose un versement une fois par mois. Vous pouvez demander un acompte de 50% du salaire pour 15 jours de travail. L’employeur ne peut pas le refuser.</p><p> Ces dispositions ne s'appliquent pas aux salariés travaillant à domicile, aux saisonniers, aux intermittents, VRP, et aux salariés temporaires. Pour ces catégories listées, d’autres modalités s’appliquent. Pour une information personnalisée, contactez votre service Renseignements en droit du travail de la DIRECCTE.</p>",
     "theme": "SALAIRE" ,
-    "branche":"null",
+    "branche": null,
     "themes": [
     ],
     "question": "A quelle date mon salaire doit être versé ?"
   },
   {
+  	"reponse": "<p>Votre employeur doit tenir à votre disposition  les documents suivants au dernier jour de votre contrat de travail : </p><p>*Un certificat de travail, </p><p>*Une attestation Pôle Emploi</p><p>*Un reçu pour solde de tout compte</p><p>A défaut,  vous pouvez exiger ces documents en adressant un courrier recommandé avec  accusé réception à votre employeur.</p><p>En l’absence de réponse, vous devez saisir le conseil de prud’hommes.</p>,"
+  	"theme": "RUPTURE DU CONTRAT DE TRAVAIL",
+  	"branche": null,
+  	"themes": [],
+  	"question": " Mon contrat de travail prend fin. Quels documents mon employeur doit me remettre ?"
+  },
+  {
+  	"reponse": "<p>Votre employeur doit tenir à votre disposition  les documents suivants au dernier jour de votre contrat de travail :</p><p>*De respecter les durées maximales de travail et les temps de repos,</p><p>*D’accorder les contreparties obligatoires aux heures supplémentaires.</p>,
+  	"theme": " DURÉE DU TRAVAIL",
+  	"branche": null,
+  	"themes": [],
+  	"question": "Est-ce que mon employeur peut m’obliger à faire des heures supplémentaires ?"
+  },
+  {
   	"reponse": "<p> Votre employeur doit respecter la procédure de licenciement en fonction du motif de licenciement. </p><p>S’il n’entame pas cette procédure, représentez-vous à votre travail. </p><p>Si l’employeur refuse l’accès au poste de travail, faites un courrier en lettre recommandée avec accusé réception constatant la situation et demandez la régularisation de sa situation.</p><p> Si la régularisation n’est pas effectuée, saisissez le conseil des prud’hommes compétent.</p>",
   	"theme": "RUPTURE DU CONTRAT DE TRAVAIL",
-  	"branche": "null",
+  	"branche": null,
   	"themes": [],
   	"question": "Mon employeur m’a licencié verbalement, que faire ?"
   },
   {
   	"reponse": "<p> Si la baisse d’activité est temporaire, votre employeur a la possibilité de demander auprès de l’unité départementale de la DIRECCTE, un aide financière d’activité partielle.</p><p> A défaut votre employeur est tenu de maintenir votre rémunération habituelle. </p><p> Si la baisse d’activité est temporaire, votre employeur a la possibilité de demander auprès de l’unité départementale de la DIRECCTE, un aide financière d’activité partielle. </p><p> A défaut votre employeur est tenu de maintenir votre rémunération habituelle. </p>",
   	"theme": "RUPTURE DU CONTRAT DE TRAVAIL",
-  	"branche": "null",
+  	"branche": null,
   	"themes": [],
   	"question": "Mon employeur ne me donne plus de travail, que faire ?"
   },
   {
   	"reponse": "<p> Votre contrat de travail est maintenu, vous êtes obligé de travailler avec le nouvel employeur. </p><p>En effet, en cas de rachat ou fusion de l’entreprise, les contrats de travail signés avec l’ancien employeur se poursuivent avec le nouveau. </p>",
   	"theme": "CONTRAT DE TRAVAIL ET EMBAUCHE",
-  	"branche": "null",
+  	"branche": null,
   	"themes": [],
   	"question": " Avec le rachat de mon entreprise mon employeur change. Suis-je obligé de travailler avec la nouvelle entreprise ?"
    },
