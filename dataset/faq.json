@@ -420,18 +420,11 @@
     "question": "Mon employeur ne me donne plus de travail, que faire ?"
   },
   {
-    "reponse": "<p> Votre contrat de travail est maintenu, vous êtes obligé de travailler avec le nouvel employeur. </p><p>En effet, en cas de rachat ou fusion de l’entreprise, les contrats de travail signés avec l’ancien employeur se poursuivent avec le nouveau. </p>",
-    "theme": "CONTRAT DE TRAVAIL ET EMBAUCHE",
-    "branche": null,
-    "themes": [],
-    "question": " Avec le rachat de mon entreprise mon employeur change. Suis-je obligé de travailler avec la nouvelle entreprise ?"
-  },
-  {
     "reponse": "<p>Oui, en cas de rachat ou fusion de l’entreprise, le contrat de travail est maintenu.</p>",
     "theme": "CONTRAT DE TRAVAIL ET EMBAUCHE",
     "branche": null,
     "themes": [],
-    "question": " Avec le rachat de mon entreprise mon employeur change. Ai-je l'obligation de travailler avec la nouvelle entreprise ?"
+    "question": "Avec le rachat de mon entreprise mon employeur change. Ai-je l'obligation de travailler avec la nouvelle entreprise ?"
   },
   {
     "reponse": "<p>Le solde de tout compte est remis avec le bulletin de salaire suivant la rupture du contrat de travail. Le solde de tout compte est donc remis dans le mois ou au début du mois suivant selon les habitudes de l’entreprise.</p><p>Le solde de tout compte liste l’ensemble des sommes versés au salarié lors de la rupture du contrat de travail. Il est établi par l’employeur.</p><p>Le salarié signe un reçu de ce solde de tout compte, en double exemplaire. Il en conserve un exemplaire.</p><p>Le salarié peut contester ce document par lettre recommandée dans les six mois suivant la signature du reçu.</p>",
