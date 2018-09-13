@@ -499,6 +499,15 @@
     "question": "Je vais quitter mon entreprise de transports routiers, est-ce que je dois rendre ma carte conducteur à mon patron ?"
   },
   {
+    "reponse": "<p> La loi ne prévoit pas de date précise mais impose un versement une fois par mois. Vous pouvez demander un acompte de 50% du salaire pour 15 jours de travail. L’employeur ne peut pas le refuser.</p><p> Ces dispositions ne s'appliquent pas aux salariés travaillant à domicile, aux saisonniers, aux intermittents, VRP, et aux salariés temporaires. Pour ces catégories listées, d’autres modalités s’appliquent. Pour une information personnalisée, contactez votre service Renseignements en droit du travail de la DIRECCTE.",
+    "theme": "SALAIRE" ,
+    "branche":,
+    "themes": [
+      100900
+    ],
+    "question": " A quelle date mon salaire doit être versé ?"
+  },
+  {
     "reponse": "<p>Le préavis de démission diffère suivant la qualification. Il est de :</p><ul>\n<li>8 jours pour les employés ayant moins de 6 mois d’ancienneté, de 15 jours pour ceux ayant entre 6 mois et moins de 2 ans d’ancienneté, et d’1 mois pour ceux ayant 2 ans d’ancienneté et plus,</li>\n<li>15 jours pour les agents de maîtrise ayant moins de 6 mois d’ancienneté, d’1 mois pour ceux ayant entre 6 mois et moins de 2 ans d’ancienneté, et de 2 mois pour ceux ayant 2 ans d’ancienneté et plus.</li>\n<li>1 mois pour les cadres ayant moins de 6 mois d’ancienneté, et 3 mois pour ceux ayant 6 mois d’ancienneté et plus.</li>\n</ul><p>(Article 30.1 de la convention collective nationale des hôtels, cafés, restaurants, que vous pouvez consulter sur le site <a href=\"https://legifrance.gouv.fr\">https://legifrance.gouv.fr</a> avec son numéro d’identification (IDCC) 1979).</p>",
     "theme": "RUPTURE DU CONTRAT DE TRAVAIL",
     "branche": "HOTELS-CAFÉS-RESTAURANTS",
