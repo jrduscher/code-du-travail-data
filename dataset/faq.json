@@ -399,7 +399,7 @@
     "question": "Comment sont payées les heures supplémentaires ?"
   },
   {
-    "reponse": "<p>Votre employeur doit tenir à votre disposition  les documents suivants au dernier jour de votre contrat de travail :</p><li>- de respecter les durées maximales de travail et les temps de repos,</li><li>- d’accorder les contreparties obligatoires aux heures supplémentaires.</li>",
+    "reponse": "<p>Votre employeur est en droit de vous demander d’effectuer des heures supplémentaires à condition:</p><li>- de respecter les durées maximales de travail et les temps de repos,</li><li>- d’accorder les contreparties obligatoires aux heures supplémentaires.</li>",
     "theme": "DURÉE DU TRAVAIL",
     "branche": null,
     "themes": [],
