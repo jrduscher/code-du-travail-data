@@ -1,6 +1,6 @@
 [
 {
-"question": "Mon employeur veut modifier mon planninge, est ce que je peux refuser?",
+"question": "Mon employeur veut modifier mon planning, est ce que je peux refuser?",
 "theme": "durée du travail"
 },
 {
@@ -67,7 +67,7 @@
 ,
 {
 "question" :"mon employeur demande de travailler le dimanche, en a-t-il le droit?",
-"theme": travail du dimanche"
+"theme": "travail du dimanche"
 }
 ,
 {
