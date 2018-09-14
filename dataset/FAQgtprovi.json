@@ -54,7 +54,7 @@
 ,
 {
 "question": "Que faire en cas de retard de paiment de salaire?",
-"theme":"rémunération",
+"theme":"rémunération"
 }
 ,
 {
@@ -91,7 +91,7 @@
 },
 {
 "question": "Mon employeur veut que je signe une rupture conventionnelle , est-ce que je peux refuser ?",
-"theme": "rupture conventionnelle",
+"theme": "rupture conventionnelle"
 }
 ,
 {
@@ -107,57 +107,57 @@
 {
 "question": "Je suis en maladie, est-ce que je peux signer une rupture conventionnelle ?",
 "theme":"rupture conventionnelle"
-//attention: autre thème , arre^t de travail
+//autre thème arret de travail
 // repréciser le thème 
 }
 ,
 {
 "question" : "Puis-je démissionner pendant mon arrêt maladie ?",
 "theme":"rupture conventionnelle"
-//attention: autre thème , arrêt de travail
+// autre thème arrêt de travail
 // repréciser le thème 
 }
 ,
 {
 "question" : "Peut on me licencier pendant mon arrêt maladie ?",
 "theme":"rupture conventionnelle"
-//attention: autre thème , arrêt de travail
+//autre thème arrêt de travail
 // repréciser le thème 
 }
 ,
 {
 "question" : "Je suis en CDD, est-ce que je peux quitter mon emploi ?",
 "theme":"rupture du contrat de travail"
-//attention: autre thème , arrêt de travail
-// repréciser le thème "démission"
+//autre thème arrêt de travail
+// repréciser le thème démission
 }
 ,
 {
 "question" : "Je suis en CDI, est-ce que je peux quitter mon emploi ?",
 "theme":"rupture du contrat de travail"
 /
-// repréciser le thème "démission"
+// repréciser le thème démission
 }
 ,
 {
 "question" : "Je suis intérimaire, est-ce que je peux quitter mon emploi ?",
 "theme":"rupture du contrat de travail"
 
-// repréciser le thème "démission"
+// repréciser le thème démission
 }
 ,
 {
 "question" : "Je suis apprenti, est-ce que je peux quitter mon emploi ?",
 "theme":"rupture du contrat de travail"
 
-// repréciser le thème "démission"
+// repréciser le thème démission
 }
 ,
 {
 "question" : "Je suis en CDD, est-ce que je peux quitter mon emploi ?",
 "theme":"rupture du contrat de travail"
 //attention: autre thème , arrêt de travail
-// repréciser le thème "démission"
+// repréciser le thème démission
 }
 ,
 {
@@ -173,29 +173,29 @@
 {
 "question" : "Dois-je déclarer mon invalidité à l'employeur ?",
 "theme":"rupture du contrat de travail"
-//attention: autre thème , arrêt de travail
+// autre thème arrêt de travail
 // repréciser le thème "démission"
 }
 ,
 {
 "question" : "Je suis en CDD, est-ce que je peux quitter mon emploi?",
 "theme":"rupture du contrat de travail"
-//attention: autre thème , arrêt de travail
-// repréciser le thème "démission"
+//autre thème arrêt de travail
+// repréciser le thème démission
 }
 ,
 {
 "question" : "Une clause de concurrenc figure dans mon contrat, qu'est ce que cela sgnifie pour moi?",
 "theme":"contrat de travail
 //attention: autre thème , arrêt de travail
-// repréciser le thème "démission"
+// repréciser le thème démission
 }
 ,
 {
 "question" : "La clause d'exclusivité est-elle légale?",
 "theme":"contrat de travail"
-//attention: autre thème , arrêt de travail
-// repréciser le thème "démission"
+//attention autre thème  arrêt de travail
+// repréciser le thème démission
 }
 ,
 {
