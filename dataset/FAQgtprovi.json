@@ -18,12 +18,12 @@
 }
  ,
   {
-"question": "y at-il un préavis en cas de démission?",
+"question": "y a t-il un préavis en cas de démission?",
 "theme": "rupture du contat"
 },
 {
-"question": "Je n'ai pas signé mon contrat de travail, et ma période d'essau est passée, est-ce normal?",
-"theme": "péride d'essai"
+"question": "Je n'ai pas signé mon contrat de travail, et ma période d'essai est passée, est-ce normal?",
+"theme": "période d'essai"
 },
 {
 "question": "Si je n'ai pas signé mon contrat de travail, qu'en est il de la période d'essai?",
@@ -95,7 +95,7 @@
 }
 ,
 {
-"question" : "Victime de pression, j'ai signé une rupture conventionnele,comment revenir sur ma décision ?",
+"question" : "Victime de pression, j'ai signé une rupture conventionnelle,comment revenir sur ma décision ?",
 "theme":"rupture conventionnelle"
 }
 ,
