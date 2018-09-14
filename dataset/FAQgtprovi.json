@@ -66,18 +66,18 @@
 }
 ,
 {
-"question" :"mon employeur demande de travailler le dimanche, en a-t-il le droit?",
+"question" :"mon employeur demande de travailler le dimanche, en a-t-il le droit ?",
 "theme": "travail du dimanche"
 }
 ,
 {
-"question": "est-ce normal de perdre du salaire en accident de travail?",
+"question": "est-ce normal de perdre du salaire en accident de travail ?",
 "theme": "arret de travail",
 // repréciser le thème 
 }
 ,
 {
-"question":"Mon parton na pas envoyé les attestations de salaire à la CPAM, est-ce normal?",
+"question":"Mon parton na pas envoyé les attestations de salaire à la CPAM, est-ce normal ?",
 "theme": "arret de travail"
 // repréciser le thème 
 }
@@ -88,66 +88,90 @@
 // repréciser le thème 
 },
 {
-"question": "Mon employeur veut que je signe une rupture conventionnelle , est-ce que je peux refuser?",
+"question": "Mon employeur veut que je signe une rupture conventionnelle , est-ce que je peux refuser ?",
 "theme": "rupture conventionnelle",
 }
 ,
 {
-"Victime de pression, j'ai signé une rupture conventionnele,comment revenir sur ma décision?",
+"Victime de pression, j'ai signé une rupture conventionnele,comment revenir sur ma décision ?",
 "theme":"rupture conventionnelle"
 }
 ,
 {
-"question":"quel est le montant de mon indemnité de licenciement?",
+"question":"quel est le montant de mon indemnité de licenciement ?",
 "theme": "arret de travail"
 // repréciser le thème
 },
 {
-"question": "Je suis en maladie, est-ce que je peux signer une rupture conventionnelle?",
+"question": "Je suis en maladie, est-ce que je peux signer une rupture conventionnelle ?",
 "theme":"rupture conventionnelle"
 //attention: autre thème , arre^t de travail
 // repréciser le thème 
 }
 ,
 {
-"question" : "Puis-je démissionner pendant mon arrêt maladie?",
+"question" : "Puis-je démissionner pendant mon arrêt maladie ?",
 "theme":"rupture conventionnelle"
 //attention: autre thème , arrêt de travail
 // repréciser le thème 
 }
 ,
 {
-"question" : "Peut on me licencier pendant mon arrêt maladie?",
+"question" : "Peut on me licencier pendant mon arrêt maladie ?",
 "theme":"rupture conventionnelle"
 //attention: autre thème , arrêt de travail
 // repréciser le thème 
 }
 ,
 {
-"question" : "Je suis en CDD, est-ce que je peux quitter mon emploi?",
+"question" : "Je suis en CDD, est-ce que je peux quitter mon emploi ?",
 "theme":"rupture du contrat de travail"
 //attention: autre thème , arrêt de travail
 // repréciser le thème "démission"
 }
 ,
 {
-"question" : "Je suis en CDI, est-ce que je peux quitter mon emploi?",
+"question" : "Je suis en CDI, est-ce que je peux quitter mon emploi ?",
 "theme":"rupture du contrat de travail"
 /
 // repréciser le thème "démission"
 }
 ,
 {
-"question" : "Je suis intérimaire, est-ce que je peux quitter mon emploi?",
+"question" : "Je suis intérimaire, est-ce que je peux quitter mon emploi ?",
 "theme":"rupture du contrat de travail"
 
 // repréciser le thème "démission"
 }
 ,
 {
-"question" : "Je suis apprenti, est-ce que je peux quitter mon emploi?",
+"question" : "Je suis apprenti, est-ce que je peux quitter mon emploi ?",
 "theme":"rupture du contrat de travail"
 
+// repréciser le thème "démission"
+}
+,
+{
+"question" : "Je suis en CDD, est-ce que je peux quitter mon emploi ?",
+"theme":"rupture du contrat de travail"
+//attention: autre thème , arrêt de travail
+// repréciser le thème "démission"
+}
+,
+{
+"question" : "Ai-je droit à une prime à la fin du CDD saisonnier ?",
+"theme":"rupture du contrat de travail"
+}
+,
+{
+"question" : "Ai-je droit à une indemnité de précarité ?",
+"theme":"rupture du contrat de travail"
+}
+,
+{
+"question" : "Dois-je déclarer mon invalidité à l'employeur ?",
+"theme":"rupture du contrat de travail"
+//attention: autre thème , arrêt de travail
 // repréciser le thème "démission"
 }
 ,
@@ -159,31 +183,7 @@
 }
 ,
 {
-"question" : "Ai-je droit à une prime à la fin du CDD saisonnier?",
-"theme":"rupture du contrat de travail"
-}
-,
-{
-"question" : "Ai-je droit à une indemnité de précarité?",
-"theme":"rupture du contrat de travail"
-}
-,
-{
-"question" : "dois-je déclarer mon invalidité à l'employeur",
-"theme":"rupture du contrat de travail"
-//attention: autre thème , arrêt de travail
-// repréciser le thème "démission"
-}
-,
-{
-"question" : "Je suis en CDD, est-ce que je peux quitter mon emploi?",
-"theme":"rupture du contrat de travail"
-//attention: autre thème , arrêt de travail
-// repréciser le thème "démission"
-}
-,
-{
-"question" : "une clause de concurrenc figure dans mon contrat, qu'est ce que cela sgnifie pour moi?",
+"question" : "Une clause de concurrenc figure dans mon contrat, qu'est ce que cela sgnifie pour moi?",
 "theme":"contrat de travail
 //attention: autre thème , arrêt de travail
 // repréciser le thème "démission"
@@ -197,13 +197,13 @@
 }
 ,
 {
-"question": " dois-je déclarer mon invalidité à mon employeur?",
+"question": "Dois-je déclarer mon invalidité à mon employeur?",
 "theme": "médecine du travail"
 // theme à repréciser
 }
 ,
 {
-"question": "Je suis enceinte, est-ce que je le déclare et quand?",
+"question": "Je suis enceinte, est-ce que je le déclare à mon employeur et quand?",
 "theme": "?"
 }
 ,
@@ -222,11 +222,11 @@
 }
 ,
 {
-"question": "J'ai été déclaré inapte par le médecin du trvail, à quelle moment dois-je être licencié ?"
+"question": "J'ai été déclaré inapte par le médecin du trvail, à quelle moment dois-je être licencié ?",
 "theme": "inaptitude"
 }
 ,
-"question": "si je suis licencié pour inaptitude, ai-je droit à une indemnité de licenciement?"
+"question": "Si je suis licencié pour inaptitude, ai-je droit à une indemnité de licenciement?"
 "theme": "inaptitude"
 }
 ,
@@ -262,4 +262,39 @@
   "question" : "mon employeur peut il refuser mes congés payés",
   "theme": "congés payés"
   }
+  ,
+  {
+  "question" : "est-ce que mon employeur est oligé de me licencier si j'abandonne mon poste?"
+  "theme" : "rupture du contrat"
+  }
+  ,
+  {
+  "question" : "l'employeur m'a proposé un avenant à mon contrat de travail, dois-je le signer?"
+  "theme":"modification du contrat de travail"
+  }
+  ,
+  {
+  "question":"mon employeur ne me licencie pas suite à mon abandon de poste, que faire pour obtenir les documents de fin de contrat?",
+  "theme" : "rupture de contrat"
+  }
+  ,
+  {
+  "question": "qui fixe les congés payés en cas de désaccord?",
+  "theme": "congés payés"
+  },
+  {
+  "question":"qui fixe l'ordre des congés payés?",
+  "theme": " congés payés"
+  }
+  ,
+  {
+  "question" : "qui décide des congés payés?",
+  "theme": "congés payés"
+  }
+  ,
+  {
+  "question":"L'employeur peut-il refuser mes congés?",
+  "theme": "congés payés"
+  }
+    
   ]
