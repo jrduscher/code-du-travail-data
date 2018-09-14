@@ -9,7 +9,7 @@
 "theme":"rupture du contrat"
 },
 {
-"question", "A quelle date débute mon préavis?",
+"question" : "A quelle date débute mon préavis?",
 "theme":"rupture du contrat"
 },
 {
@@ -93,7 +93,7 @@
 }
 ,
 {
-"Victime de pression, j'ai signé une rupture conventionnele,comment revenir sur ma décision ?",
+"question" : "Victime de pression, j'ai signé une rupture conventionnele,comment revenir sur ma décision ?",
 "theme":"rupture conventionnelle"
 }
 ,
