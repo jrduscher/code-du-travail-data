@@ -11,11 +11,11 @@ services:
         hard: -1
     volumes:
       - esdata:/usr/share/elasticsearch/data
-      - ./docker/dev/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./docker/dev:/docker/dev
     command:
       - sh
       - -c
-      - "./bin/elasticsearch-plugin list | grep -q analysis-icu || ./bin/elasticsearch-plugin install analysis-icu;
+      - "cp /docker/dev/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml && ./bin/elasticsearch-plugin list | grep -q analysis-icu || ./bin/elasticsearch-plugin install analysis-icu;
          docker-entrypoint.sh"
     ports:
       - 9200:9200
