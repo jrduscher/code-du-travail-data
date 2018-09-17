@@ -3,8 +3,15 @@ code_du_travail_numerique_mapping = {
         # Indicates the origin of the document, e.g. 'code_du_travail', 'fiches_service_public' etc.
         'source': {
             'type': 'text',
+            'fielddata': True,
             'analyzer': 'keyword',
         },
+        # The local document slug
+        'slug': {
+            'type': 'text',
+            'analyzer': 'keyword',
+        },
+        # The source URL
         'url': {
             'type': 'text',
             'analyzer': 'keyword',

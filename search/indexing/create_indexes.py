@@ -5,6 +5,8 @@ import os
 import elasticsearch
 from elasticsearch.helpers import bulk
 
+from slugify import slugify
+
 from search import settings
 from search.extraction.code_du_travail.cleaned_tags.data import CODE_DU_TRAVAIL_DICT
 from search.extraction.conventions_collectives_nationales.data import CONVENTIONS_COLLECTIVES
@@ -76,6 +78,7 @@ def create_documents(index_name, type_name):
         body_data.append({
             'source': 'code_du_travail',
             'text': val['bloc_textuel'],
+            'slug': slugify(val['titre'], to_lower=True),
             'title': val['titre'],
             'all_text': f"{val['titre']} {val['bloc_textuel']} {val['tags'][0].name}",
             'path': val['tags'][0].path,
@@ -86,6 +89,7 @@ def create_documents(index_name, type_name):
         body_data.append({
             'source': 'fiches_service_public',
             'text': val['text'],
+            'slug': slugify(val['title'], to_lower=True),
             'title': val['title'],
             'all_text': f"{val['title']} {val['text']}",
             'tags': val['tags'],
@@ -95,6 +99,7 @@ def create_documents(index_name, type_name):
     for val in FICHES_MINISTERE_TRAVAIL:
         body_data.append({
             'source': 'fiches_ministere_travail',
+            'slug': slugify(val['title'], to_lower=True),
             'text': val['text'],
             'title': val['title'],
             'all_text': f"{val['title']} {val['text']}",
@@ -106,6 +111,7 @@ def create_documents(index_name, type_name):
         for val in data:
             body_data.append({
                 'source': 'faq',
+                'slug': slugify(val['question'], to_lower=True),
                 'text': val['reponse'],
                 'title': val['question'],
                 'all_text': f"{val['question']} {val['reponse']} {val['theme']} {val['branche']}",
@@ -125,6 +131,7 @@ def create_documents(index_name, type_name):
         body_data.append({
             'source': 'conventions_collectives',
             'text': val['text'],
+            'slug': slugify(val['title'], to_lower=True),
             'title': f"{val['idcc']} - {val['title']}",
             'all_text': f"{val['idcc']} - {val['title']} {val['text']}",
             'url': val['url'],
