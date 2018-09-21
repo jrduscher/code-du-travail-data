@@ -479,19 +479,21 @@
     "question": "Qu’est-ce qu’un accord de performance collective (APC) ",
     "reponse": "<p>Un accord de performance collective est un accord d’entreprise qui peut avoir trois objets (qui ne se cumulent pas nécessairement) : celui d’aménager la durée du travail des salariés, celui d’aménager leur rémunération (éventuellement à la baisse) et celui de prévoir les conditions de leur mobilité professionnelle ou géographique au sein de l'entreprise.</p><p>Il se distingue des autres accords collectifs par son impact sur le contrat de travail des salariés. En effet, si des clauses du contrat de travail sont incompatibles avec les dispositions de l’accord de performance collective, et que le salarié accepte l’application de cet accord, elles vont être suspendues pendant la durée de vie de l’accord.<p></p>En cas de refus par le salarié de l’application de l’accord, celui-ci peut être licencié pour un motif spécifique qui constitue une cause réelle est sérieuse et selon la procédure de licenciement pour motif personnel.",
     "theme": "",
-    "themes": [110000]
-    "source" :"DGT"
-    "date" :"07/09/2018"
+    "themes": [110000],
+    "source" :"DGT",
+    "date" :"07/09/2018",
+      "profil":"employeur"
   }
   ,
   {
     "branche": "",
     "question": "Pour quels motifs un accord de performance collective peut-il être négocié dans l’entreprise ?  ",
     "reponse": "<p>L’accord de performance collective est conclu pour répondre aux nécessités liées au fonctionnement de l’entreprise ou en vue de préserver ou de développer l'emploi (art. L.2254-2). A titre d’exemples : </p><p>-	pour faire face à la nécessité de redéployer du personnel sur les sites de production de l’entreprise, un APC peut prévoir une mobilité géographique des salariés. Celle-ci s’imposera aux salariés, sauf en cas de refus , alors même que leur contrat de travail ne prévoit pas de clause de mobilité ;</p><p>-	pour faire face à un surcroît durable d’activité dans l’entreprise, un APC peut prévoir de majorer le temps de travail hebdomadaire au-delà de 35 heures (ou de 1607 heures si l’entreprise pratique déjà une annualisation du temps de travail), dans le respect des dispositions en vigueur sur les heures supplémentaires ;</p><p>-	pour rationaliser sa gestion du personnel, une entreprise peut conclure un APC en vue d’harmoniser les règles de rémunération et prévoir une modification de la structure des rémunérations (salaire de base, 13ème mois, primes et gratifications).</p>",
-    "theme": "METALLURGIE",
-    "themes": [110000]
-    "source" :"DGT"
-    "date" :"07/09/2018"
+    "theme": "",
+    "themes": [110000],
+    "source" :"DGT",
+    "date" :"07/09/2018",
+      "profil":"employeur"
   }
   ,
   {
@@ -499,9 +501,10 @@
     "question": "Un accord de performance collective est-il nécessairement conclu pour faire face à des difficultés économiques ? ",
     "reponse": "<p>Non. L’entreprise peut faire face à des difficultés économiques mais ce n’est pas une condition obligatoire pour recourir à un accord de performance collective.</p><p>L’objectif du législateur est d’offrir aux entreprises un cadre juridique sécurisé permettant, par le biais du dialogue social, de rechercher la performance sociale et économique. Via l’articulation de mesures portant sur la durée du travail, son organisation, la rémunération des salariés, voire leur mobilité, l’accord doit permettre à l’entreprise de conserver ou d’améliorer sa compétitivité (en conquérant, par exemple, de nouveaux marchés) et donc l’emploi.</p>",
     "theme": "",
-    "themes": [110000]
-    "source" :"DGT"
-    "date" :"07/09/2018"
+    "themes": [110000],
+    "source" :"DGT",
+    "date" :"07/09/2018",
+    "profil":"employeur"
   }
    ,
   {
@@ -509,9 +512,10 @@
     "question": "Quelle est la durée d’un accord de performance collective? Qu’advient-il des clauses suspendues du contrat de travail lorsque l’accord prend fin ? ",
     "reponse": "réponse non validée",
     "theme": "",
-    "themes": [110000]
-    "source" :"DGT"
-    "date" :"07/09/2018"
+    "themes": [110000],
+    "source" :"DGT",
+    "date" :"07/09/2018",
+    "profil":"employeur"
   }
    ,
   {
@@ -519,9 +523,10 @@
     "question": "Un salarié peut-il refuser l’application des stipulations de l’accord à son contrat de travail ? ",
     "reponse": "<p>Oui, un salarié peut refuser l’application de l’accord de performance collective à son contrat de travail.</p><p>Il dispose d’un délai d’un mois pour faire connaître son refus à son employeur. Ce délai court à compter de la date à laquelle l’employeur informe les salariés de l’existence et du contenu de l’accord, ainsi que de leur droit de l’accepter ou de le refuser.</p>",
     "theme": "",
-    "themes": [110000]
-    "source" :"DGT"
-    "date" :"07/09/2018"
+    "themes": [110000],
+    "source" :"DGT",
+    "date" :"07/09/2018",
+     "profil":"employeur"
   }
     ,
   {
@@ -529,9 +534,10 @@
     "question": "Que se passe-t-il en cas de refus du salarié de voir appliquer les stipulations de l’accord de performance collective à son contrat de travail ? ",
     "reponse": "Si un salarié refuse l’application de l’accord à son contrat de travail, il peut être licencié. La procédure de licenciement doit être engagée dans les deux mois qui suivent la notification du refus du salarié. Le licenciement repose sur un motif spécifique qui constitue une cause réelle et sérieuse. Le salarié étant en droit de refuser l’application de l’accord, son refus ne constitue pas une faute. Dès lors, son licenciement ne revêtira en aucun cas le caractère d’un licenciement disciplinaire",
     "theme": "",
-    "themes": [110000]
-    "source" :"DGT"
-    "date" :"07/09/2018"
+    "themes": [110000],
+    "source" :"DGT",
+    "date" :"07/09/2018",
+      "profil":"employeur"
   }
   ,
     {
@@ -539,9 +545,10 @@
     "question": "L’employeur peut-il décider de ne pas licencier un salarié qui refuse l’application de l’accord à son contrat de travail ?",
       "reponse": "Oui. En cas de refus par un ou plusieurs salariés de se voir appliquer les nouvelles conditions contractuelles résultant de l’accord de performance collective, l’employeur peut décider de licencier, ou non, tout ou partie de ces salariés. Si la loi prévoit que ce refus est un motif spécifique qui constitue une cause réelle et sérieuse de licenciement, elle ne crée pour autant aucune automaticité entre le refus du salarié et la mise en œuvre d’un licenciement. Le salarié étant en droit de refuser l’application de l’accord, son refus ne constitue pas une faute. Dès lors, même en l’absence de licenciement, son refus ne saurait entraîner aucune sanction disciplinaire.",
     "theme": "",
-    "themes": [110000]
-    "source" :"DGT"
-    "date" :"07/09/2018"
+    "themes": [110000],
+    "source" :"DGT",
+    "date" :"07/09/2018",
+      "profil":"employeur"
   }
    ,
     {
@@ -549,9 +556,10 @@
     "question": "De quels droits et garanties bénéficient le salarié licencié après avoir refusé l’application de l’accord à son contrat de travail ? ",
     "reponse": "S’il repose sur un « motif spécifique » qui constitue une cause réelle et sérieuse, le licenciement du salarié ou des salariés ayant refusé l’application de l’accord est assorti des garanties légales liées au licenciement individuel pour motif personnel en matière d’entretien préalable, de notification, de préavis et d’indemnités ( art. L. 1232-2 à L. 1232-14 et L. 1234-1 à L. 1234-11).</p><p>Le salarié licencié peut s’inscrire et être accompagné comme demandeur d’emploi auprès de Pôle emploi à l’issue du licenciement. Il bénéficie de l’indemnisation chômage dans les conditions prévues par les accords mentionnés à l’article L. 5422-20. </p><p>Son employeur est en outre tenu d’abonder son compte personnel de formation (CPF) à hauteur de 100 heures minimum (art. D. 6323-3-2). Le projet de loi pour la liberté de choisir son avenir professionnel pose les fondements d’un compte personnel de formation rénové et repensé qui sera désormais comptabilisé en euros, et non plus en heures. Les dispositions de l’article D6323-3-2 seront adaptées en conséquence.</p><p>En outre, comme pour tout licenciement, le salarié peut en contester la légalité devant le conseil de prud’hommes, dans les conditions et délais de droit commun. Dans ce cadre, le juge contrôle que l’employeur a bien respecté la procédure de licenciement prévue par la loi. Il contrôle également le motif spécifique lié au refus de l’accord nécessairement invoqué par l’employeur dans la lettre de licenciement. Il ne peut valider le licenciement intervenu dans le cadre d’un accord de performance collective qu’à la condition que l’accord collectif soit conforme aux dispositions légales applicables (bien-fondé, modalités d’adoption et contenu). L’accord doit aussi être conforme aux règles de droit du travail auxquelles il n’est pas permis de déroger. ",
     "theme": "",
-    "themes": [110000]
-    "source" :"DGT"
-    "date" :"07/09/2018"
+    "themes": [110000],
+    "source" :"DGT",
+    "date" :"07/09/2018",
+      "profil":"employeur"
   }
   ,
     {
@@ -561,7 +569,8 @@
       "theme": "",
     "themes": [110000]
     "source" :"DGT"
-    "date" :"07/09/2018"
+    "date" :"07/09/2018",
+      "profil":"employeur"
   }
   ,
     {
@@ -632,7 +641,7 @@
     "question": "Est-il toujours possible mettre en place un dispositif d’aménagement du temps de travail en dehors du cadre d’un accord de performance collective ? ",
     "reponse": "<p>Naturellement, il est toujours possible de mettre en place un aménagement du temps de travail dans le cadre habituel de l’accord prévu à l’article L. 3121-44 du code du travail.</p><p>Dans ce cadre juridique, l’accord s’impose au contrat de travail et l’accord du salarié n’a pas à être recueilli (article L.3121-43). Son refus peut alors entrainer un licenciement pour motif personnel.</p>",
     "theme": "",
-    "themes": [110000,19600]
+    "themes": [110000,19600],
     "source" :"DGT",
     "date" :"07/09/2018",
      "profil":"employeur"
@@ -643,7 +652,7 @@
     "question": "L’accord de performance collective peut-il mettre en place un dispositif de forfait annuel ? ", 
      "reponse": "Oui, un accord de performance collective peut mettre en place un dispositif de forfait annuel, en heures ou en jours, dès lors qu’il respecte l’ensemble des dispositions du code du travail relatives à ce dispositif. </p><p>A ce titre, l’accord doit contenir toutes les clauses légales obligatoires prévues par le code du travail : période de référence, plafond d’heures ou de jours, impact des absences sur la rémunération, etc. (art. L. 3121-64)</p><p>Il doit aussi respecter les conditions d’éligibilité des salariés aux forfaits annuels (art. L. 3121-56 et L. 3121-58).</p><p>De même, la mise en place du forfait doit recueillir l’accord du salarié, concrétisé par la signature d’une convention individuelle de forfait (art. L. 3121-55). Le fait qu’un accord de performance collective instaure un dispositif de forfait annuel ne dispense pas l’employeur de recueillir l’accord ultérieur du salarié pour une application effective du forfait à sa situation. Autrement dit, l’acceptation, par le salarié, de l’accord de performance collective n’entraine pas, d’office, l’acceptation du forfait pour sa propre situation. Le salarié ne peut pas se voir imposer le forfait et son refus ne peut être une cause de licenciement.",
      "theme": "",
-    "themes": [110000,20100]
+    "themes": [110000,20100],
     "source" :"DGT",
     "date" :"07/09/2018",
       "profil":"employeur"
@@ -655,10 +664,10 @@
     "question": "L’accord de performance collective peut-il modifier un dispositif de forfait annuel déjà en place ?",
      "reponse": "Oui, un accord de performance collective peut modifier les dispositions d’un accord relatif au forfait annuel applicable à l’entreprise. Les modifications peuvent porter sur toutes les clauses de l’accord préexistant, mais toujours dans le respect des dispositions légales.les clauses de la convention individuelle de forfait (ou les clauses du contrat de travail propres au forfait) qui sont contraires et incompatibles avec les stipulations de l’accord de performance collective, sont suspendues pendant la durée d’application de l’accord. Le salarié n’a pas à signer de nouvelle convention individuelle de forfait. Son acceptation de l’accord de performance collective vaut acceptation de la modification de sa convention individuelle. ",
      "theme": "",
-    "themes": [110000]
-    "source" :"DGT"
-    "date" :"07/09/2018"
-      "profil":"employeur",
+    "themes": [110000],
+    "source" :"DGT",
+    "date" :"07/09/2018",
+      "profil":"employeur"
   }
   ,
   {
@@ -666,10 +675,10 @@
     "question": "Est-il toujours possible mettre en place un dispositif de forfait annuel en dehors du cadre d’un accord de performance collective ? ",
      "reponse": "<p>Naturellement, il est toujours possible de mettre en place un dispositif de forfait annuel en heures ou en jours dans le cadre habituel de l’accord prévu aux articles L. 3121-63 et suivants du code du travail. Dans ce cadre juridique, le salarié n’a pas à donner son accord sur l’accord collectif en lui-même, contrairement à l’APC.</p<p>Quel que soit le vecteur de mise en place du forfait annuel (APC ou accord de droit commun), son application effective à la situation du salarié nécessite l’accord express de ce dernier via la signature d’une convention individuelle de forfait (article L.3121-55). Le refus du salarié ne peut entrainer aucune sanction disciplinaire ni licenciement.</p>",
     "theme": "",
-    "themes": [110000]
+    "themes": [110000],
     "source" :"DGT",
     "date" :"07/09/2018",
-     "profil":"employeur",
+     "profil":"employeur"
   }
   ,
    {
@@ -712,25 +721,19 @@
     "theme": "",
     "themes": [110000],
     "source" :"DGT",
-       "date" :"07/09/2018",
-     "profil":"employeur",
+    "date" :"07/09/2018",
+    "profil":"employeur"
   }
   ,
 {
     "branche": "",
     "question": "Comment s’applique un APC à un salarié en contrat à durée déterminée, notamment en matière de licenciement ?",   "reponse": "Le licenciement d’un salarié protégé résultant de son refus de se voir appliquer un APC est, comme tout licenciement, subordonné à l’autorisation préalable de l’inspecteur du travail. Ce dernier doit être saisi de la demande après la mise en œuvre de la procédure interne à l’entreprise applicable à tout licenciement d’un salarié protégé (entretien préalable au licenciement ; le cas échéant, consultation du CSE en fonction du mandat détenu par le salarié protégé), et de la procédure conventionnelle prévue par l’accord APC.",
-    "reponse": "<p>En ce qui concerne les salariés en CDD, il ne peut y avoir de licenciement en dehors des cas de rupture anticipée du contrat limitativement prévus par la loi (art. L. 1243-1 et L. 1243-2) :
-</p><p>-	en cas de faute grave,
-</p><p>-	de force majeure, 
-</p><p>-	ou d'inaptitude constatée par le médecin du travail, 
-</p><p>-	et à l'initiative du salarié, lorsque celui-ci justifie de la conclusion d'un contrat à durée indéterminée.
-</p><p>Dès lors, en cas de refus de modification du contrat de travail par un salarié en CDD, celui-ci ne peut pas être licencié.
-
+    "reponse": "<p>En ce qui concerne les salariés en CDD, il ne peut y avoir de licenciement en dehors des cas de rupture anticipée du contrat limitativement prévus par la loi (art. L. 1243-1 et L. 1243-2) :</p><p>-	en cas de faute grave,</p><p>-	de force majeure, </p><p>-	ou d'inaptitude constatée par le médecin du travail,</p><p>-	et à l'initiative du salarié, lorsque celui-ci justifie de la conclusion d'un contrat à durée indéterminée.</p><p>Dès lors, en cas de refus de modification du contrat de travail par un salarié en CDD, celui-ci ne peut pas être licencié.",
     "theme": "",
     "themes": [110000],
     "source" :"DGT",
        "date" :"07/09/2018",
-     "profil":"employeur",
+     "profil":"employeur"
   }
   
 ]
