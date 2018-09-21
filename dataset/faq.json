@@ -567,8 +567,8 @@
     "question": "Pour être valide, un accord de performance collective doit-il contenir certaines stipulations obligatoires ? ",
      "reponse": "<p>Non, il n’est pas prévu de clauses obligatoires.</p><p>L’accord définit ses objectifs dans son préambule et il énonce quatre clauses facultatives (art. L.2254-2): </p><p>- les efforts des dirigeants salariés, des mandataires sociaux et des actionnaires, proportionnés à ceux demandés aux salariés pendant la durée de l’accord ;</p><p>- les modalités d’information des salariés sur son application et son suivi pendant toute sa durée, ainsi que, le cas échéant, l’examen de la situation des salariés au terme de l’accord ; </p><p>- les modalités selon lesquelles sont conciliées la vie professionnelle et la vie personnelle et familiale des salariés ;</p><p>- les modalités d’accompagnement des salariés ainsi que l’abondement du compte personnel de formation au-delà du montant minimal supplétif (montant de 100 heures – art. D. 6323-3-2).",
       "theme": "",
-    "themes": [110000]
-    "source" :"DGT"
+    "themes": [110000],
+    "source" :"DGT",
     "date" :"07/09/2018",
       "profil":"employeur"
   }
