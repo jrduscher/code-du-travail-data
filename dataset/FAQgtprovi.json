@@ -113,94 +113,94 @@
 ,
 {
 "question" : "Puis-je démissionner pendant mon arrêt maladie ?",
-"theme":"rupture conventionnelle"
+"theme":"rupture conventionnelle",
 // autre thème arrêt de travail
 // repréciser le thème 
 }
 ,
 {
 "question" : "Peut on me licencier pendant mon arrêt maladie ?",
-"theme":"rupture conventionnelle"
+"theme":"rupture conventionnelle",
 //autre thème arrêt de travail
 // repréciser le thème 
 }
 ,
 {
 "question" : "Je suis en CDD, est-ce que je peux quitter mon emploi ?",
-"theme":"rupture du contrat de travail"
+"theme":"rupture du contrat de travail",
 //autre thème arrêt de travail
 // repréciser le thème démission
 }
 ,
 {
 "question" : "Je suis en CDI, est-ce que je peux quitter mon emploi ?",
-"theme":"rupture du contrat de travail"
+"theme":"rupture du contrat de travail",
 /
 // repréciser le thème démission
 }
 ,
 {
 "question" : "Je suis intérimaire, est-ce que je peux quitter mon emploi ?",
-"theme":"rupture du contrat de travail"
+"theme":"rupture du contrat de travail",
 
 // repréciser le thème démission
 }
 ,
 {
 "question" : "Je suis apprenti, est-ce que je peux quitter mon emploi ?",
-"theme":"rupture du contrat de travail"
+"theme":"rupture du contrat de travail",
 
 // repréciser le thème démission
 }
 ,
 {
 "question" : "Je suis en CDD, est-ce que je peux quitter mon emploi ?",
-"theme":"rupture du contrat de travail"
+"theme":"rupture du contrat de travail",
 //attention: autre thème , arrêt de travail
 // repréciser le thème démission
 }
 ,
 {
 "question" : "Ai-je droit à une prime à la fin du CDD saisonnier ?",
-"theme":"rupture du contrat de travail"
+"theme":"rupture du contrat de travail",
 }
 ,
 {
 "question" : "Ai-je droit à une indemnité de précarité ?",
-"theme":"rupture du contrat de travail"
+"theme":"rupture du contrat de travail",
 }
 ,
 {
 "question" : "Dois-je déclarer mon invalidité à l'employeur ?",
-"theme":"rupture du contrat de travail"
+"theme":"rupture du contrat de travail",
 // autre thème arrêt de travail
 // repréciser le thème "démission"
 }
 ,
 {
-"question" : "Je suis en CDD, est-ce que je peux quitter mon emploi?",
-"theme":"rupture du contrat de travail"
+"question" : "Je suis en CDD, est-ce que, je peux quitter mon emploi?",
+"theme":"rupture du contrat de travail",
 //autre thème arrêt de travail
 // repréciser le thème démission
 }
 ,
 {
 "question" : "Une clause de concurrenc figure dans mon contrat, qu'est ce que cela sgnifie pour moi?",
-"theme":"contrat de travail
+"theme":"contrat de travail,
 //attention: autre thème , arrêt de travail
 // repréciser le thème démission
 }
 ,
 {
 "question" : "La clause d'exclusivité est-elle légale?",
-"theme":"contrat de travail"
+"theme":"contrat de travail",
 //attention autre thème  arrêt de travail
 // repréciser le thème démission
 }
 ,
 {
 "question": "Dois-je déclarer mon invalidité à mon employeur?",
-"theme": "médecine du travail"
+"theme": "médecine du travail",
 // theme à repréciser
 }
 ,
