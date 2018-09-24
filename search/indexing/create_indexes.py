@@ -83,6 +83,7 @@ def create_documents(index_name, type_name):
             'slug': slugify(val['titre'], to_lower=True),
             'title': val['titre'],
             'all_text': f"{val['titre']} {val['bloc_textuel']} {val['tags'][0].name}",
+            'html': val['html'],
             'path': val['tags'][0].path,
             'url': val['url'],
         })

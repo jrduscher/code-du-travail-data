@@ -25,6 +25,7 @@ from collections import namedtuple
 
 from search import settings
 from search.extraction.code_du_travail.cleaned_tags.tags import TAGS_DICT
+from search.indexing.strip_html import strip_html
 
 
 logger = settings.get_logger(__name__)
@@ -114,7 +115,8 @@ def inspect_code_du_travail_children(children):
                 'date_debut': child['data']['date_debut'],
                 'date_fin': child['data']['date_fin'],
                 'nota': child['data']['nota'],  # In HTML.
-                'bloc_textuel': child['data']['bloc_textuel'],  # In HTML.
+                'bloc_textuel': strip_html(child['data']['bloc_textuel']),  # In HTML.
+                'html': child['data']['bloc_textuel'] + (child['data']['nota'] or ""),  # In HTML.
                 'cid': child['data']['cid'],
                 'tags': [make_tag(tag)],  # Stick to 1 tag for now.
                 'url': f"{LEGIFRANCE_BASE_URL}?idArticle={child['data']['id']}&cidTexte={child['data']['cid']}",
