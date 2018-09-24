@@ -1,8 +1,8 @@
 const fs = require("fs");
 const select = require("xpath.js");
 const dom = require("xmldom").DOMParser;
-const serialExec = require("promise-serial-exec");
 
+const xmlToHtml = require("./xmlToHtml");
 /*
 
 extrait les données avec les fichiers XML de :
@@ -68,6 +68,10 @@ const parseFiche = path => {
       select(doc, "/Publication/Texte") &&
       select(doc, "/Publication/Texte")[0] &&
       select(doc, "/Publication/Texte")[0].textContent.trim();
+    const html =
+      select(doc, "/Publication/Texte") &&
+      select(doc, "/Publication/Texte")[0] &&
+      xmlToHtml(select(doc, "/Publication/Texte")[0].toString());
     const intro =
       select(doc, "Introduction/Texte")[0] &&
       select(doc, "Introduction/Texte")[0].textContent.trim();
@@ -82,6 +86,7 @@ const parseFiche = path => {
       sousTheme,
       ariane,
       fiches,
+      html,
       text,
       sousDossiers,
       url,
@@ -99,4 +104,4 @@ const fiches = files
   .map(f => parseFiche(`${XMLS_PATH}/${f}`))
   .filter(Boolean);
 
-console.log(JSON.stringify(fiches));
+console.log(JSON.stringify(fiches, null, 2));
