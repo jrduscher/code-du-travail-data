@@ -27,7 +27,6 @@ def populate_fiches_ministere_travail(json_file=JSON_FICHES):
         data = json.load(json_data)
 
         for item in data:
-
             fiche_title = item['title']
 
             # Extract a prefix from the main fiche's title. It'll be used to avoid losing the context
@@ -80,6 +79,7 @@ def populate_fiches_ministere_travail(json_file=JSON_FICHES):
                 FICHES_MINISTERE_TRAVAIL.append({
                     'title': section_title,
                     'text': section['text'],
+                    'html': item.get("html"),
                     'url': section['url'],
                 })
 
