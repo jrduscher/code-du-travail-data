@@ -24,35 +24,36 @@ def populate_fiches_service_public(json_file=JSON_FICHES):
         TAGS_IRRELEVANT = ['Accueil particuliers', 'Travail']
 
         for item in data:
+            if item:
+                text = item.get('intro', '') + item.get('text', '') + item.get('situations', '')
+                if not text:
+                    logger.debug('No text found for title: %s\n%s', item['title'], item['url'])
 
-            text = item.get('intro', '') + item.get('text', '') + item.get('situations', '')
-            if not text:
-                logger.debug('No text found for title: %s\n%s', item['title'], item['url'])
+                # Replace new lines by spaces.
+                text = ' '.join(text.split('\n'))
+                # Replace multiple spaces by a single space.
+                text = ' '.join(text.split())
 
-            # Replace new lines by spaces.
-            text = ' '.join(text.split('\n'))
-            # Replace multiple spaces by a single space.
-            text = ' '.join(text.split())
+                # Merge everything that look like a tag, remove duplicate values.
+                tags = list(set(
+                    [item['sousTheme']]
+                    + item['tags']
+                    + [item for item in item['ariane'] if item not in TAGS_IRRELEVANT]
+                    + item['fiches']
+                    + item['sousDossiers']
+                ))
 
-            # Merge everything that look like a tag, remove duplicate values.
-            tags = list(set(
-                [item['sousTheme']]
-                + item['tags']
-                + [item for item in item['ariane'] if item not in TAGS_IRRELEVANT]
-                + item['fiches']
-                + item['sousDossiers']
-            ))
+                fiche = {
+                    'url': item['url'],
+                    'title': item['title'],
+                    'text': text,
+                    'html': item.get("html"),
+                    'tags': tags,
+                }
+                FICHES_SERVICE_PUBLIC.append(fiche)
 
-            fiche = {
-                'url': item['url'],
-                'title': item['title'],
-                'text': text,
-                'tags': tags,
-            }
-            FICHES_SERVICE_PUBLIC.append(fiche)
-
-            logger.debug('-' * 80)
-            logger.debug(pformat(fiche))
+                logger.debug('-' * 80)
+                logger.debug(pformat(fiche))
 
 
 if __name__ == '__main__':
