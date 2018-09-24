@@ -13,6 +13,8 @@ from search.extraction.conventions_collectives_nationales.data import CONVENTION
 from search.extraction.fiches_ministere_travail.data import FICHES_MINISTERE_TRAVAIL
 from search.extraction.fiches_service_public.data import FICHES_SERVICE_PUBLIC
 from search.indexing import analysis
+from search.indexing.strip_html import strip_html
+
 from search.indexing.mappings.code_du_travail_numerique import code_du_travail_numerique_mapping
 
 
@@ -91,6 +93,7 @@ def create_documents(index_name, type_name):
             'text': val['text'],
             'slug': slugify(val['title'], to_lower=True),
             'title': val['title'],
+            'html': val["html"],
             'all_text': f"{val['title']} {val['text']}",
             'tags': val['tags'],
             'url': val['url'],
@@ -101,6 +104,7 @@ def create_documents(index_name, type_name):
             'source': 'fiches_ministere_travail',
             'slug': slugify(val['title'], to_lower=True),
             'text': val['text'],
+            'html': val["html"],
             'title': val['title'],
             'all_text': f"{val['title']} {val['text']}",
             'url': val['url'],
@@ -109,12 +113,14 @@ def create_documents(index_name, type_name):
     with open(os.path.join(settings.BASE_DIR, 'dataset/faq.json')) as json_data:
         data = json.load(json_data)
         for val in data:
+            faq_text = strip_html(val['reponse'])
             body_data.append({
                 'source': 'faq',
                 'slug': slugify(val['question'], to_lower=True),
-                'text': val['reponse'],
+                'text': faq_text,
+                'html': val["reponse"],
                 'title': val['question'],
-                'all_text': f"{val['question']} {val['reponse']} {val['theme']} {val['branche']}",
+                'all_text': f"{val['question']} {faq_text} {val['theme']} {val['branche']}",
             })
 
     # with open(os.path.join(settings.BASE_DIR, 'dataset/code_bfc.json')) as json_data:
