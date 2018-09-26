@@ -584,7 +584,7 @@ vous avez droit à 2 heures par jour pour rechercher un emploi au cours de la de
 	
 	{
    "reponse","Votre employeur doit contractuellement vous fournir du travail. S'il ne peut en fournir, il devra donc vous rémunérer en conséquence. Dans ce cas, pour éviter que l'absence ne vous incombe(absence non rémunérée, abandn de poste fautive), un écrit peut être convenu avec l'employeur pour garder une trace, ou à défaut, signifiez par lettre avec accusé de réception la situation à votr employeur.",
-       "question","mon patron m'a indiqué qu'il n'a pas de travail pour moi aujourd'hui. En at-il le droit, et serais je payé?"
+       "question","mon employeur m'a indiqué qu'il n'a pas de travail pour moi aujourd'hui. En a t-il le droit, et serais je payé?"
   "catégorie","null",
   "particularismes","null",
        "branche": "autres",
@@ -598,7 +598,67 @@ vous avez droit à 2 heures par jour pour rechercher un emploi au cours de la de
 	}
 	,
 	// contrat de chantier
-
+	{
+   "reponse","le CDI de chantier ou d'opération ne peut être conclu, soit si la branche en prévoit les possibilités et modalités au travers de la convnetion collective, soit pour les branches dont il est usage d'y avoir recours au 1et janvier 2017",
+       "question","dans mon entreprise, peut on être embauché en contrat de chantier ou d'opération?"
+  "catégorie","null",
+  "particularismes","null",
+       "branche": "null",
+    "type de contrat": "CDI",
+    "travailleur particulier": "temps plein",
+    "themes": [12800],
+    "text_ccn":"",
+    "date_CCN":"",
+    "date rédaction": "26/09/2018",
+    "redacteur":"cdtn
+	}
+	,
+	{
+   "reponse","Oui, parceque dans le secteur du BTP, il est d'usage d'avoir recours aux contrat de chantiers ",
+       "question","dans mon entreprise, peut on être embauché en contrat de chantierou d'opération?"
+  "catégorie","null",
+  "particularismes","null",
+       "branche": "BTP",
+    "type de contrat": "CDI",
+    "travailleur particulier": "temps plein",
+    "themes": [12800],
+    "text_ccn":"",
+    "date_CCN":"",
+    "date rédaction": "26/09/2018",
+    "redacteur":"cdtn
+	}
+	,
+	{
+   "reponse","Non, il n'est pas possible à ce jour de contarcter des CDI de chantier ou d'opération dans votre branche d'activité",
+       "question","dans mon entreprise, peut on être embauché en contrat de chantier ou d'opération?"
+  "catégorie","null",
+  "particularismes","null",
+       "branche": "boulangerie pâtisserie artisanale",
+    "type de contrat": "CDI",
+    "travailleur particulier": "temps plein",
+    "themes": [12800],
+    "text_ccn":"",
+    "date_CCN":"",
+    "date rédaction": "26/09/2018",
+    "redacteur":"cdtn
+	}
+	,
+	{
+   "reponse","Non, il n'est pas possible à ce jour de contarcter des CDI de chantier ou d'opération dans votre branche d'activité",
+       "question","dans mon entreprise, peut on être embauché en contrat de chantier ou d'opération?"
+  "catégorie","null",
+  "particularismes","null",
+       "branche": "hotels,café restaurants",
+    "type de contrat": "CDI",
+    "travailleur particulier": "temps plein",
+    "themes": [12800],
+    "text_ccn":"",
+    "date_CCN":"",
+    "date rédaction": "26/09/2018",
+    "redacteur":"cdtn
+	}
+	
+	
 
 
 
