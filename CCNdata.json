@@ -2,7 +2,7 @@
 // contrat écrit
 {
     "reponse":"L'employeur ne peut vous engager sans qu'un écrit soit nécessaire uniquement pour un CDI à temps plein. Dans tous les autres cas un contrat écrit est nécessaire.- Si vous n'avez pas eu de contrat de travail, vous êtes donc présumé embauché en CDI à temps plein-.  Si votre entreprise dépend d'une branche d'activité en particulier, la convention collective peut prévoir des mesures spécifique en la matière.<p>De plus, l'employeur doit dans tous les cas vous remettre un document comprenant les informations de la déclaration préalable à l'embauche qu'il a du effectué auprès des organismes sociaux (URSSAF ou MSA)</p>",
-    "theme": "contrat de travail", "principes", "un contrat écrit en français",
+    "theme": "contrat de travail","principes","un contrat écrit en français",
     "branche": "null",
     "type de contrat": "CDI",
     "travailleur particulier": "null",
