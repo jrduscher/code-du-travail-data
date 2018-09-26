@@ -657,10 +657,56 @@ vous avez droit à 2 heures par jour pour rechercher un emploi au cours de la de
     "date rédaction": "26/09/2018",
     "redacteur":"cdtn
 	}
+,
+	{
+   "reponse","Oui, en principe il est possibe de contracter un contrat de chantier ou d'opération dans votre branche: il en était d'usage au 1er janvier 2017",
+       "question","dans mon entreprise, peut on être embauché en contrat de chantier ou d'opération?"
+  "catégorie","null",
+  "particularismes","null",
+       "branche": "industries chimiques",
+    "type de contrat": "CDI",
+    "travailleur particulier": "temps plein",
+    "themes": [12800],
+    "text_ccn":"",
+    "date_CCN":"",
+    "date rédaction": "26/09/2018",
+    "redacteur":"cdtn
+	}
+,
+	{
+   "reponse","Oui, un accord national existe en la matière dans votre branche: https://uimm.fr/wp-content/uploads/2018/07/2018-06-29_AN_contrat-chantier-ou-operation-dans-la-metallurgie.pdf ",
+       "question","dans mon entreprise, peut on être embauché en contrat de chantier ou d'opération?"
+  "catégorie","null",
+  "particularismes","null",
+       "branche": "Metallurgie",
+    "type de contrat": "CDI",
+    "travailleur particulier": "temps plein",
+    "themes": [12800],
+    "text_ccn":"",
+    "date_CCN":"",
+    "date rédaction": "26/09/2018",
+    "redacteur":"cdtn
+	}
+,
+{
+   "reponse","Oui,si l'employeur est  affilié à l'organsiation patronale SYNTEC: un texte le prévoit dans la CCN.Par aileurs, il apparait d'usage de recourir à ce type de contrat dans cette branche.",
+       "question","dans mon entreprise, peut on être embauché en contrat de chantier ou d'opération?"
+  "catégorie","null",
+  "particularismes","null",
+       "branche": "bureau d'étude technique",
+    "type de contrat": "CDI",
+    "travailleur particulier": "temps plein",
+    "themes": [12800],
+    "text_ccn":"",
+    "date_CCN":"",
+    "date rédaction": "26/09/2018",
+    "redacteur":"cdtn
+	}
+,
 	
 	
 
-
+]
 
 
 
