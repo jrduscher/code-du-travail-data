@@ -4,7 +4,6 @@ services:
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
-    container_name: code-du-travail-data-elasticsearch
     env_file:
       - .env
     ulimits:
@@ -24,7 +23,6 @@ services:
     restart: always
 
   python:
-    container_name: code-du-travail-data-python
     depends_on:
       - elasticsearch
     env_file:
