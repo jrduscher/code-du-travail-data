@@ -8,7 +8,7 @@ Créez un fichier `.env` (utilisé par Docker) :
 
 ```shell
 PYTHONPATH=.
-
+PORT=9200
 # Use the Docker elasticsearch's hostname: defaults to the container's name if not specified.
 ES_HOST=code-du-travail-data-elasticsearch
 ```
@@ -19,9 +19,11 @@ Puis :
 $ docker-compose up
 ```
 
+Modifier le fichier `docker-compose.override.yml` si besoin
+
 ## Indexation des données
 
-Lors du premier lancement d'Elasticsearch ou d'une modification des données indexées, vous avez besoin d'indexer les données dans la base :
+Si besoin de réindéxer les données :
 
 ```shell
 $ docker exec -ti code-du-travail-data-python pipenv run python search/indexing/create_indexes.py
