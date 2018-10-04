@@ -82,9 +82,11 @@ def create_documents(index_name, type_name):
             'text': val['bloc_textuel'],
             'slug': slugify(val['titre'], to_lower=True),
             'title': val['titre'],
-            'all_text': f"{val['titre']} {val['bloc_textuel']} {val['tags'][0].name}",
+            'all_text': f"{val['titre']} {val['bloc_textuel']} {[tag.name for tag in val.get('tags', [])]}",
             'html': val['html'],
-            'path': val['tags'][0].path,
+            'path': val['path'],
+            'date_debut': val['date_debut'],
+            'date_fin': val['date_fin'],
             'url': val['url'],
         })
 
