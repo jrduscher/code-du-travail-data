@@ -27,7 +27,10 @@ def get_cleaned_tags(csv_file=TAGS_CSV):
 
     with open(csv_file) as csv_data:
         tag_reader = csv.reader(csv_data, delimiter='\t')
-        for row in tag_reader:
+        for i, row in enumerate(tag_reader):
+          if len(row) < 3:
+            print("theme.csv: cannot parse row", i)
+          else:
             tag = row[1].strip()
             articles = [article.strip() for article in row[2].split(';')]
             for article in articles:
