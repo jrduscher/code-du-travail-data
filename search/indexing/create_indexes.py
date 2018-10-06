@@ -76,6 +76,56 @@ def create_documents(index_name, type_name):
     es = get_es_client()
     body_data = []
 
+    with open(os.path.join(settings.BASE_DIR, 'dataset/kali.json')) as json_data:
+        data = json.load(json_data)
+        logger.info("Load %s documents from kali", len(data))
+        for val in data:
+            body_data.append({
+                'source': 'kali',
+                'id': val['cid'],
+                #'text': val['bloc_textuel'],
+                'slug': slugify(val['titre'], to_lower=True),
+                'title': val['titre'],
+                'all_text': val['titre'],
+                #'html': val['html'],
+                #'path': val['path'],
+                #'date_debut': val['date_debut'],
+                #'date_fin': val['date_fin'],
+                'url': val['url'],
+            })
+
+
+    with open(os.path.join(settings.BASE_DIR, 'dataset/idcc-tags.json')) as idcc_tags_data:
+        tags_data = json.load(idcc_tags_data)
+        with open(os.path.join(settings.BASE_DIR, 'dataset/idcc.json')) as json_data:
+            data = json.load(json_data)
+            logger.info("Load %s documents from idcc", len(data))
+            for key, val in data.items():
+                title = "IDCC " + key + " : " +  val
+                tags = []
+                if tags_data.get(key) and tags_data.get(key).get("tags"):
+                    for key, value in tags_data.get(key).get("tags").items():
+                        if isinstance(value, list):
+                            for entry in value:
+                                tags.append(key + ":" + (entry or ""))
+                        else:
+                          tags.append(key + ":" + (value or ""))
+                body_data.append({
+                    'source': 'idcc',
+                    'id': key,
+                    #'text': val['bloc_textuel'],
+                    'slug': key, #slugify(val, to_lower=True),
+                    'title': title,
+                    'tags':tags,
+                    'all_text': title
+                    #'html': val['html'],
+                    #'path': val['path'],
+                    #'date_debut': val['date_debut'],
+                    #'date_fin': val['date_fin'],
+                    #'url': val['url'],
+                })
+
+    logger.info("Load %s documents from code-du-travail", len(CODE_DU_TRAVAIL_DICT))
     for val in CODE_DU_TRAVAIL_DICT.values():
         body_data.append({
             'source': 'code_du_travail',
@@ -90,6 +140,7 @@ def create_documents(index_name, type_name):
             'url': val['url'],
         })
 
+    logger.info("Load %s documents from service-public", len(FICHES_SERVICE_PUBLIC))
     for val in FICHES_SERVICE_PUBLIC:
         body_data.append({
             'source': 'fiches_service_public',
@@ -102,6 +153,7 @@ def create_documents(index_name, type_name):
             'url': val['url'],
         })
 
+    logger.info("Load %s documents from fiches-dgt", len(FICHES_MINISTERE_TRAVAIL))
     for val in FICHES_MINISTERE_TRAVAIL:
         body_data.append({
             'source': 'fiches_ministere_travail',
@@ -113,8 +165,10 @@ def create_documents(index_name, type_name):
             'url': val['url'],
         })
 
+
     with open(os.path.join(settings.BASE_DIR, 'dataset/faq.json')) as json_data:
         data = json.load(json_data)
+        logger.info("Load %s documents from FAQ", len(data))
         for val in data:
             faq_text = strip_html(val['reponse'])
             body_data.append({
@@ -136,6 +190,7 @@ def create_documents(index_name, type_name):
     #             'all_text': f"<p>{val['question']}</p>{val['reponse']}",
     #         })
 
+    logger.info("Load %s documents from conventions-collectives", len(CONVENTIONS_COLLECTIVES))
     for val in CONVENTIONS_COLLECTIVES:
         body_data.append({
             'source': 'conventions_collectives',
@@ -146,6 +201,7 @@ def create_documents(index_name, type_name):
             'url': val['url'],
         })
 
+    logger.info('Loaded %s documents', len(body_data))
     actions = [
         {
             '_op_type': 'index',
