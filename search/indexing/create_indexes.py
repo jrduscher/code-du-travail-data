@@ -104,12 +104,12 @@ def create_documents(index_name, type_name):
                 title = "IDCC " + key + " : " +  val
                 tags = []
                 if tags_data.get(key) and tags_data.get(key).get("tags"):
-                    for key, value in tags_data.get(key).get("tags").items():
+                    for key2, value in tags_data.get(key).get("tags").items():
                         if isinstance(value, list):
                             for entry in value:
-                                tags.append(key + ":" + (entry or ""))
+                                tags.append(key2 + ":" + (entry or ""))
                         else:
-                          tags.append(key + ":" + (value or ""))
+                          tags.append(key2 + ":" + (value or ""))
                 body_data.append({
                     'source': 'idcc',
                     'id': key,
@@ -125,20 +125,21 @@ def create_documents(index_name, type_name):
                     #'url': val['url'],
                 })
 
-    logger.info("Load %s documents from code-du-travail", len(CODE_DU_TRAVAIL_DICT))
-    for val in CODE_DU_TRAVAIL_DICT.values():
-        body_data.append({
-            'source': 'code_du_travail',
-            'text': val['bloc_textuel'],
-            'slug': slugify(val['titre'], to_lower=True),
-            'title': val['titre'],
-            'all_text': f"{val['titre']} {val['bloc_textuel']} {[tag.name for tag in val.get('tags', [])]}",
-            'html': val['html'],
-            'path': val['path'],
-            'date_debut': val['date_debut'],
-            'date_fin': val['date_fin'],
-            'url': val['url'],
-        })
+    if True:
+        logger.info("Load %s documents from code-du-travail", len(CODE_DU_TRAVAIL_DICT))
+        for val in CODE_DU_TRAVAIL_DICT.values():
+            body_data.append({
+                'source': 'code_du_travail',
+                'text': val['bloc_textuel'],
+                'slug': slugify(val['titre'], to_lower=True),
+                'title': val['titre'],
+                'all_text': f"{val['titre']} {val['bloc_textuel']} {[tag.name for tag in val.get('tags', [])]}",
+                'html': val['html'],
+                'path': val['path'],
+                'date_debut': val['date_debut'],
+                'date_fin': val['date_fin'],
+                'url': val['url'],
+            })
 
     logger.info("Load %s documents from service-public", len(FICHES_SERVICE_PUBLIC))
     for val in FICHES_SERVICE_PUBLIC:
@@ -171,12 +172,24 @@ def create_documents(index_name, type_name):
         logger.info("Load %s documents from FAQ", len(data))
         for val in data:
             faq_text = strip_html(val['reponse'])
+            tags = []
+            if val.get('branche'):
+                tags.append("branche" + ":" + val['branche'])
+            if val.get('theme'):
+                tags.append("theme" + ":" + val['theme'])
+            if val.get('type_entreprise'):
+                tags.append("type_entreprise" + ":" + val['type_entreprise'])
+            if val.get('profil'):
+                tags.append("profil" + ":" + val['profil'])
+            if val.get('sousTheme'):
+                tags.append("sousTheme" + ":" + val['sousTheme'])
             body_data.append({
                 'source': 'faq',
                 'slug': slugify(val['question'], to_lower=True),
                 'text': faq_text,
                 'html': val["reponse"],
                 'title': val['question'],
+                'tags': tags,
                 'all_text': f"{val['question']} {faq_text} {val['theme']} {val['branche']}",
             })
 
