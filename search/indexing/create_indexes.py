@@ -126,7 +126,7 @@ def create_documents(index_name, type_name):
                 'all_text': f"{val['question']} {faq_text} {val['theme']} {val['branche']}",
             })
 
-    with open(os.path.join(settings.BASE_DIR, 'modeles_de_courriers.json')) as json_data:
+    with open(os.path.join(settings.BASE_DIR, 'dataset/export-courriers.json')) as json_data:
         data = json.load(json_data)
         for val in data:
             body_data.append({
