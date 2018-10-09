@@ -188,7 +188,7 @@
     "theme": "DURÉE DU TRAVAIL",
     "branche": "boulangerie",
     "type_entreprise": "artisanal",
-    "contrat": "CDI",
+    "type_contrat": "CDI",
     "sousTheme": "temps-de-travail-minimum",
     "themes": [21500],
     "question": "Je suis artisan boulanger et j’emploie actuellement deux salariés. Je souhaite embaucher sous CDI une vendeuse à temps partiel. Suis-je tenu de l’employer pendant un nombre minimum d’heures par semaine ?"

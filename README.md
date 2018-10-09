@@ -26,7 +26,7 @@ Modifier le fichier `docker-compose.override.yml` si besoin
 Si besoin de réindéxer les données :
 
 ```shell
-$ docker exec -ti code-du-travail-data-python pipenv run python search/indexing/create_indexes.py
+$ docker-compose exec python pipenv run python /app/search/indexing/create_indexes.py
 ```
 
 ## Pour lancer un shell Docker

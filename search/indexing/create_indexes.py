@@ -72,6 +72,16 @@ def chunks(l, n):
         yield l[i:i+n]
 
 
+def parse_hash_tags(tags):
+    newTags = []
+    for key, value in tags.items():
+        if isinstance(value, list):
+            for entry in value:
+                newTags.append(key + ":" + (str(entry) or ""))
+        else:
+          newTags.append(key + ":" + (str(value) or ""))
+    return newTags
+
 def create_documents(index_name, type_name):
     es = get_es_client()
     body_data = []
@@ -93,6 +103,7 @@ def create_documents(index_name, type_name):
                 #'date_fin': val['date_fin'],
                 'url': val['url'],
             })
+
 
 
     with open(os.path.join(settings.BASE_DIR, 'dataset/idcc-tags.json')) as idcc_tags_data:
@@ -166,10 +177,9 @@ def create_documents(index_name, type_name):
             'url': val['url'],
         })
 
-
     with open(os.path.join(settings.BASE_DIR, 'dataset/faq.json')) as json_data:
         data = json.load(json_data)
-        logger.info("Load %s documents from FAQ", len(data))
+        logger.info("Load %s documents from faq.json", len(data))
         for val in data:
             faq_text = strip_html(val['reponse'])
             tags = []
@@ -192,6 +202,24 @@ def create_documents(index_name, type_name):
                 'tags': tags,
                 'all_text': f"{val['question']} {faq_text} {val['theme']} {val['branche']}",
             })
+
+
+    with open(os.path.join(settings.BASE_DIR, 'dataset/faq-conventions-collectives.json')) as json_data:
+        data = json.load(json_data)
+        logger.info("Load %s documents from faq-conventions-collectives.json", len(data))
+        for val in data:
+            faq_text = strip_html(val['reponse'])
+            tags = parse_hash_tags(val.get("tags"))
+            body_data.append({
+                'source': 'faq',
+                'slug': slugify(val['question'], to_lower=True),
+                'text': faq_text,
+                'html': val["reponse"],
+                'title': val['question'],
+                'tags': tags,
+                'all_text': f"{val['question']} {faq_text} {val.get('tags', {}).get('theme','')} {val.get('tags', {}).get('branche','')}",
+            })
+
 
     # with open(os.path.join(settings.BASE_DIR, 'dataset/code_bfc.json')) as json_data:
     #     data = json.load(json_data)
