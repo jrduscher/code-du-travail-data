@@ -62,7 +62,7 @@
   },
   {
     "question": "Je n'ai pas eu de contrat de travail écrit est-ce normal?",
-    "reponse": "Si vous avez moins de 16 ans aujourd'hui, et que vous travaillez dans une entreprise, alors que vous n'avez reçu aucun papier: contactez immédiatemnt l'inspection du travail du lieu où se situe l'entreprise.",
+    "reponse": "Si vous avez moins de 16 ans aujourd'hui, et que vous travaillez dans une entreprise, alors que vous n'avez reçu aucun papier: contactez immédiatement l'inspection du travail du lieu où se situe l'entreprise.",
     "tags": {
       "theme": [
         "contrat de travail",
@@ -481,7 +481,7 @@
   },
   {
     "question": "mon employeur m'a indiqué qu'il n'a pas de travail pour moi aujourd'hui. En a t-il le droit, et serais je payé?",
-    "reponse": "Votre employeur doit contractuellement vous fournir du travail. S'il ne peut en fournir, il devra donc vous rémunérer en conséquence. Dans ce cas, pour éviter que l'absence ne vous incombe(absence non rémunérée, abandn de poste fautive), un écrit peut être convenu avec l'employeur pour garder une trace, ou à défaut, signifiez par lettre avec accusé de réception la situation à votr employeur.",
+    "reponse": "Votre employeur doit contractuellement vous fournir du travail. S'il ne peut en fournir, il devra donc vous rémunérer en conséquence. Dans ce cas, pour éviter que l'absence ne vous incombe(absence non rémunérée, abandon de poste fautive), un écrit peut être convenu avec l'employeur pour garder une trace, ou à défaut, signifiez par lettre avec accusé de réception la situation à votre employeur.",
     "tags": {
       "type_contrat": "CDI",
       "travailleur_particulier": "temps plein"
@@ -492,7 +492,7 @@
   },
   {
     "question": "dans mon entreprise, peut on être embauché en contrat de chantier ou d'opération?",
-    "reponse": "le CDI de chantier ou d'opération ne peut être conclu, soit si la branche en prévoit les possibilités et modalités au travers de la convnetion collective, soit pour les branches dont il est usage d'y avoir recours au 1et janvier 2017",
+    "reponse": "Le CDI de chantier ou d'opération peut être conclu, soit si la branche en prévoit les possibilités et modalités, soit pour les branches d'activité dont il est usage d'y avoir recours au 1er janvier 2017",
     "tags": {
       "type_contrat": "CDI",
       "travailleur_particulier": "temps plein"
@@ -515,7 +515,7 @@
   },
   {
     "question": "dans mon entreprise, peut on être embauché en contrat de chantier ou d'opération?",
-    "reponse": "Non, il n'est pas possible à ce jour de contarcter des CDI de chantier ou d'opération dans votre branche d'activité",
+    "reponse": "Non, il n'est pas possible à ce jour de contracter des CDI de chantier ou d'opération dans votre branche d'activité",
     "tags": {
       "branche": "boulangerie",
       "type_entreprise": "artisanale",
@@ -528,7 +528,7 @@
   },
   {
     "question": "dans mon entreprise, peut on être embauché en contrat de chantier ou d'opération?",
-    "reponse": "Non, il n'est pas possible à ce jour de contarcter des CDI de chantier ou d'opération dans votre branche d'activité",
+    "reponse": "Non, il n'est pas possible à ce jour de contracter des CDI de chantier ou d'opération dans votre branche d'activité",
     "tags": {
       "branche": "hôtels, cafés restaurants",
       "type_contrat": "CDI",
